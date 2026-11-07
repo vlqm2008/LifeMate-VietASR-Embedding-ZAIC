@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.env
+
+# Data and large binary files (Tuân thủ bản quyền ZAIC)
+*.wav
+*.mp3
+*.flac
+*.m4a
+*.ogg
+data/
+raw_data/
+*.parquet
+*.csv
+
+# Model Checkpoints and Weights
+checkpoints/
+*.pt
+*.bin
+*.safetensors
+*.ckpt
+
+# Logs and Tensorboard
+runs/
+events.out.tfevents.*
+
+# Jupyter
+.ipynb_checkpoints
