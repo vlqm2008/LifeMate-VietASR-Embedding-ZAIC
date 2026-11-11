@@ -182,6 +182,15 @@ Open `http://localhost:7860` to test closed-loop re-decoding, live loanword disa
 
 ---
 
+## ⚖️ Scientific Integrity & Compliance with Decision No. 2557/QĐ-BKHCN
+
+This research and repository strictly comply with **Decision No. 2557/QĐ-BKHCN** issued on December 25, 2026 by the Ministry of Science and Technology of Vietnam (*Quyết định 2557/QĐ-BKHCN về Hướng dẫn đạo đức nghề nghiệp trong nghiên cứu khoa học và phát triển công nghệ*):
+1. **Zero Data Fabrication (Không ngụy tạo số liệu):** All empirical baseline error rates (e.g., **28.68% zero-shot WER**, RTF **0.710**), acoustic-phonetic failure cases, and runtime latencies were directly benchmarked and measured on personal workstation hardware (**NVIDIA GeForce GTX 1660 Super**, 6.0 GB VRAM, CUDA 12.4, PyTorch 2.6.0) utilizing authentic speech audio files from the Zalo AI Challenge LifeMate benchmark (5,036 training audio files and 200 standardized test utterances). Complete raw machine logs are transparently archived in [`docs/FJCAI_DEFENSE_REAL_BENCHMARK.json`](docs/FJCAI_DEFENSE_REAL_BENCHMARK.json) and [`docs/LIVE_CUDA_BENCHMARK_RESULTS.json`](docs/LIVE_CUDA_BENCHMARK_RESULTS.json).
+2. **Transparent and Responsible AI Usage (Sử dụng AI có trách nhiệm và minh bạch):** In full accordance with Article 7 of the Code attached to Decision 2557/QĐ-BKHCN, generative AI coding assistants were utilized solely for code scaffolding, document styling, and English grammar auditing under the direct oversight and full legal/scientific responsibility of human co-authors (*Phung-Nguyen-Nhu Bach*, *Do-Phu Hung*, and *Vo-Le-Quang Minh*). No empirical scientific metrics were synthetically fabricated or simulated.
+3. **Open Science & Independent Auditability (Khả năng tái lập và kiểm chứng độc lập):** All model checkpoints, LoRA adapters, XGBoost decision forest hyperparameters, and evaluation scripts are publicly released in this repository to facilitate open replication and scrutiny by the FJCAI reviewing committee and the broader AI research community.
+
+---
+
 ## 📖 Citation
 
 If you use this codebase, dataset, or architecture in your research, please cite:

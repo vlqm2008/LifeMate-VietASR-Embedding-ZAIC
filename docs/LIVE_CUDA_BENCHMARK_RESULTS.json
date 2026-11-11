@@ -1,0 +1,163 @@
+{
+  "audit_compliance": "Quyết định 2557/QĐ-BKHCN (Trung thực, Tái lập, Không ngụy tạo)",
+  "model_id": "openai/whisper-large-v3-turbo",
+  "device": "cuda:0",
+  "timestamp": "2026-11-11 18:28:54",
+  "total_samples": 15,
+  "total_audio_seconds": 89.59,
+  "total_infer_seconds": 63.63,
+  "average_rtf": 0.7102,
+  "average_wer_percent": 35.77,
+  "detailed_traces": [
+    {
+      "idx": 1,
+      "audio_path": "D:\\Dataset\\LifeMate_CS_ASR\\data\\train+public_test\\train\\audio\\train_0001\\train_0001.wav",
+      "ref_text": "Nếu mai mưa thì dời chạy bộ muộn 1 tiếng, nhắn Sếp Dũng giờ mới; không mưa thì thôi.",
+      "hyp_text": " Nếu mai mưa thì giờ chạy vỡ muộn một tiếng nhắn xếp dũng giờ mới, không mưa thì thôi.",
+      "duration_sec": 7.491,
+      "infer_time_sec": 5.376,
+      "rtf": 0.7177,
+      "wer_pct": 21.05
+    },
+    {
+      "idx": 2,
+      "audio_path": "D:\\Dataset\\LifeMate_CS_ASR\\data\\train+public_test\\train\\audio\\train_0004\\train_0004.wav",
+      "ref_text": "Trợ lý ơi, giảm độ sáng đèn phòng ngủ nhỏ xuống còn một nửa nhé.",
+      "hyp_text": " Trời lý ơi, giảm đồ sáng điện phòng ngũ nhỏ xuống còn một nửa nhé!",
+      "duration_sec": 4.923,
+      "infer_time_sec": 4.158,
+      "rtf": 0.8447,
+      "wer_pct": 26.67
+    },
+    {
+      "idx": 3,
+      "audio_path": "D:\\Dataset\\LifeMate_CS_ASR\\data\\train+public_test\\train\\audio\\train_0011\\train_0011.wav",
+      "ref_text": "Nếu ví đủ thì trả điện và nhắn Bố là đã đóng, còn không thì trả ngân hàng và nhắc tôi tám giờ tối nay nạp tiền vào ví nhé.",
+      "hyp_text": " Nếu ví đủ thì trả điện và nhắn bố là đã đóng, còn không thì trả ngân hàng và nhắc tôi 8 giờ tối nay nạp tiền vào ví nha.",
+      "duration_sec": 8.77,
+      "infer_time_sec": 4.29,
+      "rtf": 0.4892,
+      "wer_pct": 6.67
+    },
+    {
+      "idx": 4,
+      "audio_path": "D:\\Dataset\\LifeMate_CS_ASR\\data\\train+public_test\\train\\audio\\train_0014\\train_0014.wav",
+      "ref_text": "Tắt hết đèn tầng 2 dùm chị, phòng nào đang bật máy lạnh thì để nguyên nha.",
+      "hyp_text": " Kết hết điện, thầm 2 dùng trị, phòng nào đang bật máy lạnh thì để nguyên nha.",
+      "duration_sec": 7.939,
+      "infer_time_sec": 4.159,
+      "rtf": 0.5238,
+      "wer_pct": 29.41
+    },
+    {
+      "idx": 5,
+      "audio_path": "D:\\Dataset\\LifeMate_CS_ASR\\data\\train+public_test\\train\\audio\\train_0027\\train_0027.wav",
+      "ref_text": "Nhắc dùm chị ra sân bay lúc 8 giờ kém 15 tối mai nha.",
+      "hyp_text": " Nhật chương trì là sinh bay lúc tạm giới kẹ 15 tuổi mai nhé.",
+      "duration_sec": 5.742,
+      "infer_time_sec": 4.176,
+      "rtf": 0.7272,
+      "wer_pct": 71.43
+    },
+    {
+      "idx": 6,
+      "audio_path": "D:\\Dataset\\LifeMate_CS_ASR\\data\\train+public_test\\train\\audio\\train_0031\\train_0031.wav",
+      "ref_text": "Nhớ nhắc mình gọi lại cho khách lúc tám rưỡi tối mai nhé.",
+      "hyp_text": " Nhớ nhắc mình gọi lại cho khách lúc tầm dưới tối mai nhé.",
+      "duration_sec": 5.54,
+      "infer_time_sec": 4.135,
+      "rtf": 0.7464,
+      "wer_pct": 15.38
+    },
+    {
+      "idx": 7,
+      "audio_path": "D:\\Dataset\\LifeMate_CS_ASR\\data\\train+public_test\\train\\audio\\train_0045\\train_0045.wav",
+      "ref_text": "Trợ lý ơi, chuyển giúp tôi cho anh Trần Văn Tuấn số tiền bằng hóa đơn nước tháng này nhé.",
+      "hyp_text": " Trợ lý ơi, chuyển giúp tôi cho anh Trần Vân Tuấn số tiền bằng hóa đơn nước tháng này nhé.",
+      "duration_sec": 6.022,
+      "infer_time_sec": 4.259,
+      "rtf": 0.7072,
+      "wer_pct": 5.0
+    },
+    {
+      "idx": 8,
+      "audio_path": "D:\\Dataset\\LifeMate_CS_ASR\\data\\train+public_test\\train\\audio\\train_0060\\train_0060.wav",
+      "ref_text": "Đặt giùm tui báo thức 7 rưỡi sáng mai nha.",
+      "hyp_text": " Đặt dùm tôi báo thức 7h30 sáng mai nghe.",
+      "duration_sec": 5.461,
+      "infer_time_sec": 4.072,
+      "rtf": 0.7457,
+      "wer_pct": 50.0
+    },
+    {
+      "idx": 9,
+      "audio_path": "D:\\Dataset\\LifeMate_CS_ASR\\data\\train+public_test\\train\\audio\\train_0061\\train_0061.wav",
+      "ref_text": "Nhắc mình gọi lại cho khách lúc 9 giờ kém 15 tối mai nhé.",
+      "hyp_text": " Giác mình gọi lời cho khách lúc 9h kém 15h tối mai nhé.",
+      "duration_sec": 4.758,
+      "infer_time_sec": 4.155,
+      "rtf": 0.8732,
+      "wer_pct": 35.71
+    },
+    {
+      "idx": 10,
+      "audio_path": "D:\\Dataset\\LifeMate_CS_ASR\\data\\train+public_test\\train\\audio\\train_0076\\train_0076.wav",
+      "ref_text": "Đặt xe bốn chỗ từ công ty đến chỗ hẹn cà phê với gia đình chiều nay, đón sớm bốn mươi lăm phút, nhắc tôi mang laptop trước giờ xe đón mười lăm phút.",
+      "hyp_text": " Đặt xe đúng chỗ từ công ty đến chỗ hình chặt kê với gia đình truyền này, toán sớm 45 phút, nhắc tôi mây lắp tác trước giờ khi đó 15 phút.",
+      "duration_sec": 11.192,
+      "infer_time_sec": 4.318,
+      "rtf": 0.3858,
+      "wer_pct": 50.0
+    },
+    {
+      "idx": 11,
+      "audio_path": "D:\\Dataset\\LifeMate_CS_ASR\\data\\train+public_test\\train\\audio\\train_0094\\train_0094.wav",
+      "ref_text": "Mai nếu mưa thì dời lịch chạy bộ sáng mai muộn hai tiếng rồi nhắn SMS cho bố báo giờ mới, không mưa thì thôi.",
+      "hyp_text": " Mai nếu mưa thì rời lịch chay bộ sáng mai 1-2 tiếng rồi nhấn SMS trong bộ báo giờ mới. Không mưa thì thôi.",
+      "duration_sec": 8.215,
+      "infer_time_sec": 4.213,
+      "rtf": 0.5129,
+      "wer_pct": 28.0
+    },
+    {
+      "idx": 12,
+      "audio_path": "D:\\Dataset\\LifeMate_CS_ASR\\data\\train+public_test\\train\\audio\\train_0094\\train_0094_u1.wav",
+      "ref_text": "Ngoài trời lúc này bao nhiêu độ nhỉ?",
+      "hyp_text": " Mọi người lúc này và nhiều đồng ý.",
+      "duration_sec": 2.988,
+      "infer_time_sec": 4.031,
+      "rtf": 1.3493,
+      "wer_pct": 75.0
+    },
+    {
+      "idx": 13,
+      "audio_path": "D:\\Dataset\\LifeMate_CS_ASR\\data\\train+public_test\\train\\audio\\train_0094\\train_0094_u2.wav",
+      "ref_text": "Xăng RON95 dạo này bao nhiêu một lít nhỉ?",
+      "hyp_text": " Sang ron thì lăng trong này bao nhiêu một lít nhỉ?",
+      "duration_sec": 3.711,
+      "infer_time_sec": 4.117,
+      "rtf": 1.1094,
+      "wer_pct": 55.56
+    },
+    {
+      "idx": 14,
+      "audio_path": "D:\\Dataset\\LifeMate_CS_ASR\\data\\train+public_test\\train\\audio\\train_0094\\train_0094_u3.wav",
+      "ref_text": "Ví của chị còn bao nhiêu?",
+      "hyp_text": " Phíu của chị còn bao nhiêu?",
+      "duration_sec": 3.129,
+      "infer_time_sec": 4.047,
+      "rtf": 1.2934,
+      "wer_pct": 16.67
+    },
+    {
+      "idx": 15,
+      "audio_path": "D:\\Dataset\\LifeMate_CS_ASR\\data\\train+public_test\\train\\audio\\train_0103\\train_0103.wav",
+      "ref_text": "Đặt báo thức 6 rưỡi sáng mai, rồi gọi cho Minh giúp tôi nhé.",
+      "hyp_text": " Đặt báo thức sau lúc đã xong mai là gọi mình giúp tôi nhé.",
+      "duration_sec": 3.706,
+      "infer_time_sec": 4.123,
+      "rtf": 1.1125,
+      "wer_pct": 50.0
+    }
+  ]
+}
