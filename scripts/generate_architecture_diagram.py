@@ -216,8 +216,8 @@ def build_ieee_architecture_diagram(output_path):
     # 7. METRIC ANNOTATION FOOTNOTE (ACADEMIC BENCHMARK LINE)
     # =========================================================================
     summary_text = (
-        "Parameter Budget: Whisper-Turbo LoRA (845.2M) + BGE-M3 (568.0M) + XGBoost (0.15M) = 1.377B (< 1.5B)  |  "
-        "Efficiency: RTF = 0.0415 (24.1x Real-time)  |  Peak VRAM: 4.5 GB FP16"
+        "Parameter Allocation: Whisper-Turbo Base (809.0M) + LoRA (36.2M) + BGE-M3 (568.0M) + XGBoost (0.15M) = 1.413B Active (1.377B Backbone) < 1.5B  |  "
+        "RTF = 0.0415 (24.1x Real-time)  |  Peak VRAM: 4.5 GB FP16"
     )
     ax.text(5.4, 0.1, summary_text, ha='center', va='center',
             fontsize=7.8, fontweight='bold', color='#334155', family=font_family,

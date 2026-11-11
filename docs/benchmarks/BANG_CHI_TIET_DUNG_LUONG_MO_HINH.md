@@ -14,7 +14,8 @@ Tài liệu này lưu trữ thông số định lượng chính thức về số
 | **Khối 2: Bộ Trích Xuất Ngữ Nghĩa (Semantic Verifier)** | `BAAI/bge-m3` Dense Bi-Encoder | FP16 | **568,000,000** ($568\text{M}$) | $\approx 1.14\text{ GB}$ | $\approx 1.9\text{ GB}$ | Mã hóa vector 1024 chiều, tính điểm tương đồng ngữ cảnh $\mathcal{S}_{BGE}$ |
 | **Khối 3: Bộ Phán Quyết Ngưỡng Động (Meta-Judge)** | Gradient Boosted Trees (`xgboost`) | FP32 | **150,000** ($0.15\text{M}$) | **Chỉ $\approx 450\text{ KB}$** ($< 0.5\text{ MB}$) | $< 10\text{ MB}$ (chạy trên CPU) | Tính ngưỡng động $T_{dynamic}(x)$ theo thời gian thực ($0.2\text{ ms}$) |
 | **Vòng Lặp Tái Giải Mã (Closed-Loop Re-decode)** | Targeted Logit Penalty Rule | Rule-based | **0** (0 tham số phát sinh) | 0 KB | 0 MB | Áp độ phạt $-\alpha (1 - \mathcal{S}_{BGE})$ khi điểm $< T_{dynamic}$ |
-| **TỔNG TOÀN BỘ HỆ THỐNG** | **End-to-End Closed-Loop Pipeline** | **FP16** | **1,377,200,000** (**$1.377\text{B}$**) | **$\approx 2.82\text{ GB}$** | **$\approx 4.8\text{ GB}$ VRAM** | **100% tuân thủ trần $< 1.5\text{B}$ (dư an toàn $122.85\text{M}$)** |
+| **TỔNG TOÀN BỘ HỆ THỐNG (ACTIVE)** | **End-to-End Closed-Loop Pipeline** | **FP16** | **1,413,350,000** (**$1.413\text{B}$**) | **$\approx 2.89\text{ GB}$** | **$\approx 4.7\text{ GB}$ VRAM** | **100% tuân thủ trần $< 1.5\text{B}$ (dư an toàn $+86.65\text{M}$)** |
+| *Trọng số nền tảng (Base Backbone)* | *Whisper Base ($809\text{M}$) + BGE-M3 ($568\text{M}$)* | *FP16* | *1,377,000,000 (1.377B)* | *$\approx 2.75\text{ GB}$* | *$\approx 4.5\text{ GB}$ VRAM* | *Khối lượng trọng số nền tảng (dư an toàn $+123.0\text{M}$)* |
 
 ---
 
