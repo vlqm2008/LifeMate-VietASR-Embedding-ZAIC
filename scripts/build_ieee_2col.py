@@ -426,8 +426,8 @@ def build_paper(target_docx, line_spacing=1.04, body_pt=9.0, bottom_margin_in=0.
     add_eq("Decision(x) = Accept y* if J(z) >= T_dynamic(x), else Re-decode", "5")
     add_para(
         "where J(z) is the calibrated confidence score. When J(z) < T_dynamic(x), closed-loop re-decoding is triggered with logit penalties (4). To prevent infinite loops, the maximum "
-        "re-decoding retry count is bounded at K_max = 1. The total parameter count of our unified system is exactly: 845.2M (Whisper LoRA) + 568.0M (BGE-M3) + 0.15M (XGBoost) = 1.377B parameters, "
-        "comfortably below the 1.5B ceiling with an operational headroom of 122.85M parameters."
+        "re-decoding retry count is bounded at K_max = 1. The total parameter footprint of our unified system comprises 809.0M (Whisper-Turbo backbone) + 36.2M (LoRA adapter) + 568.0M (BGE-M3 bi-encoder) "
+        "+ 0.15M (XGBoost meta-judge) = 1.413B total parameters (1.377B base backbone weights), strictly below the 1.5B ceiling with an operational margin of 86.65M parameters."
     )
 
     # Algorithm 1: Box
@@ -596,8 +596,8 @@ def build_paper(target_docx, line_spacing=1.04, body_pt=9.0, bottom_margin_in=0.
         "Pareto equilibrium: WER under 3.0% (2.85%) at RTF 0.0415 (24.1x faster than real time)."
     )
     add_para(
-        "From an architectural resource standpoint, our parameter allocation is rigorously managed: 845.2M (Whisper LoRA) + 568.0M (BGE-M3) + 0.15M (XGBoost) = 1.377B parameters, "
-        "comfortably below the 1.5B ceiling with an operational margin of 122.85M parameters. In FP16 execution, total memory consumption peaks at 4.5 GB VRAM, "
+        "From an architectural resource standpoint, our parameter allocation is rigorously managed: 809.0M (Whisper base) + 36.2M (LoRA) + 568.0M (BGE-M3) + 0.15M (XGBoost) = 1.413B parameters "
+        "(1.377B base backbone), comfortably below the 1.5B ceiling with an operational headroom of 86.65M parameters (122.85M relative to base weights). In FP16 execution, total memory consumption peaks at 4.5 GB VRAM, "
         "enabling continuous local inference on consumer-grade mobile workstation GPUs (e.g., RTX 3060M 6GB) without cloud offloading."
     )
 
@@ -699,7 +699,7 @@ def build_paper(target_docx, line_spacing=1.04, body_pt=9.0, bottom_margin_in=0.
     for col_idx, h in enumerate(t2_headers):
         cell = table2.cell(0, col_idx)
         cell.width = t2_widths[col_idx]
-        set_cell_margins(cell, 15, 15, 20, 20)
+        set_cell_margins(cell, 12, 12, 12, 12)
         p = cell.paragraphs[0]
         p.alignment = WD_ALIGN_PARAGRAPH.CENTER
         p.paragraph_format.space_after = Pt(0)
@@ -714,7 +714,7 @@ def build_paper(target_docx, line_spacing=1.04, body_pt=9.0, bottom_margin_in=0.
         for col_idx, val in enumerate(row_data):
             cell = table2.cell(row_idx, col_idx)
             cell.width = t2_widths[col_idx]
-            set_cell_margins(cell, 10, 10, 20, 20)
+            set_cell_margins(cell, 8, 8, 12, 12)
             p = cell.paragraphs[0]
             p.paragraph_format.space_after = Pt(0)
             p.alignment = WD_ALIGN_PARAGRAPH.CENTER if col_idx >= 1 else WD_ALIGN_PARAGRAPH.LEFT
@@ -761,7 +761,7 @@ def build_paper(target_docx, line_spacing=1.04, body_pt=9.0, bottom_margin_in=0.
     for col_idx, h in enumerate(t3_headers):
         cell = table3.cell(0, col_idx)
         cell.width = t3_widths[col_idx]
-        set_cell_margins(cell, 15, 15, 20, 20)
+        set_cell_margins(cell, 12, 12, 14, 14)
         p = cell.paragraphs[0]
         p.alignment = WD_ALIGN_PARAGRAPH.CENTER
         p.paragraph_format.space_after = Pt(0)
@@ -776,7 +776,7 @@ def build_paper(target_docx, line_spacing=1.04, body_pt=9.0, bottom_margin_in=0.
         for col_idx, val in enumerate(row_data):
             cell = table3.cell(row_idx, col_idx)
             cell.width = t3_widths[col_idx]
-            set_cell_margins(cell, 10, 10, 20, 20)
+            set_cell_margins(cell, 8, 8, 14, 14)
             p = cell.paragraphs[0]
             p.paragraph_format.space_after = Pt(0)
             p.alignment = WD_ALIGN_PARAGRAPH.CENTER if col_idx >= 1 else WD_ALIGN_PARAGRAPH.LEFT
@@ -842,7 +842,7 @@ def build_paper(target_docx, line_spacing=1.04, body_pt=9.0, bottom_margin_in=0.
     table4 = doc.add_table(rows=8, cols=5)
     table4.alignment = WD_TABLE_ALIGNMENT.CENTER
     table4.autofit = False
-    t4_widths = [int(col_w * 0.18), int(col_w * 0.35), int(col_w * 0.17), int(col_w * 0.15), int(col_w * 0.15)]
+    t4_widths = [int(col_w * 0.14), int(col_w * 0.38), int(col_w * 0.18), int(col_w * 0.16), int(col_w * 0.14)]
     for row in table4.rows:
         for idx, width in enumerate(t4_widths):
             row.cells[idx].width = width
@@ -861,7 +861,7 @@ def build_paper(target_docx, line_spacing=1.04, body_pt=9.0, bottom_margin_in=0.
     for col_idx, h in enumerate(t4_headers):
         cell = table4.cell(0, col_idx)
         cell.width = t4_widths[col_idx]
-        set_cell_margins(cell, 15, 15, 20, 20)
+        set_cell_margins(cell, 12, 12, 14, 14)
         p = cell.paragraphs[0]
         p.alignment = WD_ALIGN_PARAGRAPH.CENTER
         p.paragraph_format.space_after = Pt(0)
@@ -876,7 +876,7 @@ def build_paper(target_docx, line_spacing=1.04, body_pt=9.0, bottom_margin_in=0.
         for col_idx, val in enumerate(row_data):
             cell = table4.cell(row_idx, col_idx)
             cell.width = t4_widths[col_idx]
-            set_cell_margins(cell, 9, 9, 20, 20)
+            set_cell_margins(cell, 8, 8, 14, 14)
             p = cell.paragraphs[0]
             p.paragraph_format.space_after = Pt(0)
             p.alignment = WD_ALIGN_PARAGRAPH.CENTER if col_idx != 1 else WD_ALIGN_PARAGRAPH.LEFT

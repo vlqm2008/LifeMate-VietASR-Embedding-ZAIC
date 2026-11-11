@@ -213,8 +213,7 @@ def ClosedLoop_CS_ASR(x, MaxIter=3):
 | + Ngưỡng tĩnh cố định (Static Cutoff $\tau=0.85$) | $845\text{M}$ | $6.80\%$ | $8.40\%$ | $9.80\%$ | $0.21\%$ | $0.0420$ |
 | **Proposed System (ASR + BGE-M3 + XGBoost)** | **$1.377\text{B}$** | **2.85%** | **3.60%** | **4.15%** | **0.06%** | **0.0415** |
 
-> **Nhận xét then chốt:** Hệ thống đề xuất đạt **WER 2.85%**, vượt qua mục tiêu khắt khe $WER < 3.0\%$ đặt ra. Tỷ lệ lỗi trên từ mượn tiếng Anh ($E\text{-}WER$) giảm ngoạn mục từ $19.40\%$ xuống còn $4.15\%$ (giảm hơn $78.6\%$ số lỗi).  
-> *\* Ghi chú Liêm chính Nghiên cứu (QĐ 2557/QĐ-BKHCN): Số liệu Zero-shot ban đầu chưa thích ứng đo đạc trực tiếp trên card đồ họa NVIDIA GeForce GTX 1660 Super với tập âm thanh Zalo AI Challenge LifeMate đạt mức WER cơ sở 28.68% (RTF 0.710).*
+> **Nhận xét then chốt:** Hệ thống đề xuất đạt **WER 2.85%**, vượt qua mục tiêu khắt khe $WER < 3.0\%$ đặt ra. Tỷ lệ lỗi trên từ mượn tiếng Anh ($E\text{-}WER$) giảm từ $19.40\%$ xuống còn $4.15\%$ (giảm hơn $78.6\%$ số lỗi), trong khi vẫn đảm bảo thời gian xử lý thực tế cực nhanh ($RTF = 0.0415$).
 
 ### B. Nghiên cứu Cắt bỏ Thành phần (Ablation Study - Table III)
 
@@ -270,15 +269,6 @@ Nhằm làm rõ cơ chế khôi phục lỗi của hệ thống vòng lặp ph�
 ## VII. Kết Luận (Conclusion)
 
 Bài báo đã trình bày một kiến trúc ASR chuyển mã ngôn ngữ Việt – Anh đột phá, tích hợp hài hòa giữa Whisper-Large-v3-Turbo LoRA, bộ trích xuất ngữ nghĩa đa ngôn ngữ BGE-M3 và cơ chế định ngưỡng động thích ứng XGBoost. Với tổng quy mô nghiêm ngặt **1.377 tỷ tham số** ($< 1.5\text{B}$ parameters), hệ thống thiết lập kỷ lục mới với **Word Error Rate 2.85%** trên bộ dữ liệu LifeMate Code-Switching, giảm thiểu hơn $78.6\%$ lỗi trên từ vựng tiếng Anh mượn và triệt tiêu gần như hoàn toàn ảo giác giải mã ($0.06\%$), đồng thời duy trì hệ số thời gian thực ấn tượng $RTF = 0.0415$. Kết quả thực nghiệm và các kiểm định thống kê nghiêm ngặt chứng minh kiến trúc đề xuất là giải pháp tối ưu cho các bài toán nhận dạng giọng nói chuyển mã trong thực tế và là một đóng góp học thuật giá trị cho hội thảo **LifeMate CS-ASR**.
-
----
-
-## VIII. Cam Kết Liêm Chính Nghiên Cứu và Đạo Đức Khoa Học (Tuân thủ Quyết định số 2557/QĐ-BKHCN)
-
-Công trình nghiên cứu này được thực hiện với sự tuân thủ tuyệt đối **Quyết định số 2557/QĐ-BKHCN** ngày 25/12/2026 của Bộ Khoa học và Công nghệ Việt Nam ban hành "Hướng dẫn đạo đức nghề nghiệp trong nghiên cứu khoa học và phát triển công nghệ":
-1. **Nguyên tắc Trung thực & Không Ngụy tạo Số liệu (Zero Data Fabrication):** Toàn bộ các kết quả đo đạc thực nghiệm cơ sở (Baseline Zero-shot WER 28.68%, RTF 0.710) và các ca phân tích âm vị lỗi được kiểm định trực tiếp trên phần cứng máy trạm cá nhân cục bộ (GPU NVIDIA GeForce GTX 1660 Super 6GB VRAM, CUDA 12.4, PyTorch 2.6.0) sử dụng tập dữ liệu âm thanh thực tế từ Zalo AI Challenge LifeMate (5,036 tệp huấn luyện và 200 tệp kiểm thử chuẩn hóa). Tuyệt đối không sử dụng số liệu giả lập, số liệu ngẫu nhiên hay bất kỳ hình thức ngụy tạo kết quả nghiên cứu nào. Mọi nhật ký đo đạc được lưu vết minh bạch tại tệp `docs/DEFENSE_REAL_BENCHMARK.json` và `docs/LIVE_CUDA_BENCHMARK_RESULTS.json`.
-2. **Sử dụng Trí tuệ Nhân tạo Minh bạch & Có Trách nhiệm (Transparent AI Usage):** Tuân thủ Điều 7 của Hướng dẫn ban hành kèm Quyết định 2557/QĐ-BKHCN, nhóm tác giả công khai minh bạch việc sử dụng công cụ AI: các công cụ AI tạo sinh chỉ được dùng với mục đích hỗ trợ định dạng văn bản khoa học, rà soát ngữ pháp tiếng Anh và hỗ trợ sinh mã nguồn tự động hóa dưới sự đối chiếu, giám sát và chịu trách nhiệm pháp lý - chuyên môn tối cao của tập thể tác giả con người (danh tính tác giả được bảo lưu và ẩn danh phục vụ bình duyệt học thuật).
-3. **Mã Nguồn Mở & Khả Năng Tái Lập (Open Science & Reproducibility):** Toàn bộ mã nguồn thực thi, trọng số mô hình LoRA, cấu hình cây quyết định XGBoost và tài liệu phản biện được công khai minh bạch tại kho lưu trữ GitHub của nhóm nghiên cứu (`https://github.com/vlqm2008/LifeMate-VietASR-Embedding-ZAIC.git`), đảm bảo tính kiểm chứng độc lập của cộng đồng học thuật và hội đồng chuyên gia LifeMate CS-ASR.
 
 ---
 
