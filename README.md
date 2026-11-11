@@ -2,18 +2,19 @@
 
 Official research repository and reproducibility package for the **LifeMate CS-ASR** submission (*IEEE Double-Column Camera-Ready Research Manuscript*).
 
-[![Format](https://img.shields.io/badge/Format-IEEE%202--Column-blue.svg)](#)
-[![Submission Status](https://img.shields.io/badge/Status-Camera%20Ready%20Draft-green.svg)](https://github.com/vlqm2008/LifeMate-VietASR-Embedding-ZAIC)
-[![WER](https://img.shields.io/badge/WER-2.85%25%20(%3C%203.0%25)-brightgreen.svg)]()
-[![Model Budget](https://img.shields.io/badge/Parameters-1.377B%20(%3C%201.5B)-orange.svg)]()
-[![RTF](https://img.shields.io/badge/RTF-0.0415%20(24.1x%20Realtime)-purple.svg)]()
-[![Graphics](https://img.shields.io/badge/Graphics-100%25%20Matplotlib%20(Zero--AI)-success.svg)]()
+[![Paper](https://img.shields.io/badge/Paper-IEEE%20PDF-blue.svg)](docs/paper/LifeMate_CS_ASR_EN.pdf)
+[![Format](https://img.shields.io/badge/Format-IEEE%202--Column-00629B.svg)](#)
+[![WER](https://img.shields.io/badge/WER-2.85%25-brightgreen.svg)]()
+[![Parameters](https://img.shields.io/badge/Parameters-1.377B%20(%3C%201.5B)-orange.svg)]()
+[![RTF](https://img.shields.io/badge/RTF-0.0415%20(24.1x)-purple.svg)]()
+[![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)]()
+[![PyTorch](https://img.shields.io/badge/PyTorch-2.6%2Bcu124-ee4c2c.svg)]()
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1G4VUXKbCRRMOAuQ85uUR-vEStk6qVSXC)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
 ---
 
-## 🌿 Repository Branching Architecture
+## Repository Branching Architecture
 
 To maintain a modular, reproducible, and production-ready scientific repository, the project is structured into dedicated branches:
 
@@ -27,7 +28,7 @@ To maintain a modular, reproducible, and production-ready scientific repository,
 
 ---
 
-## 📁 Repository Organization
+## Repository Structure
 
 This codebase is structured according to the scientific reproducible research standards of major AI conferences (IEEE, ACL, Interspeech, ICLR):
 
@@ -112,7 +113,7 @@ LifeMate-VietASR-Embedding-ZAIC/
 
 ---
 
-## 📌 Quick Access Deliverables
+## Manuscript Deliverables
 
 | Deliverable | Description | Format / Direct Link |
 | :--- | :--- | :--- |
@@ -131,7 +132,7 @@ LifeMate-VietASR-Embedding-ZAIC/
 
 ---
 
-## 🔬 Abstract
+## Abstract
 
 Vietnamese–English code-switching speech recognition is challenging because the acoustic mismatch between an isolating tonal language and a stress-timed language induces severe boundary ambiguity, leading to catastrophic phonological substitutions and autoregressive hallucination loops. While foundation models like Whisper-Large-v3-Turbo provide competitive multilingual representations, their step-wise autoregressive decoding lacks explicit cross-lingual semantic constraints, and static confidence thresholds cannot adapt to non-stationary noise and varying speech rates. 
 
@@ -141,7 +142,7 @@ Evaluations across SEA Code-Switching, ViMedCSS, and ZAIC 2026 LifeMate benchmar
 
 ---
 
-## 🏆 Three Core Scientific Findings
+## Core Scientific Findings
 
 1. **Phonetic Boundary Regularization via Cross-Lingual Bi-Encoders:** Dense multilingual embeddings ($1024$-dim from BGE-M3) provide sufficient global contextual constraints to resolve local phonetic confusion at code-switching junctures without ground-truth transcriptions, reducing English loanword errors (E-WER) by **78.6% relative** ($19.40\% \rightarrow 4.15\%$, Welch's $t = 19.86, p < 0.001$).
 2. **Superiority of Dynamic Meta-Judgment Over Static Cutoffs:** Gradient Boosted Decision Trees (XGBoost) operating on a 32-dimensional heterogeneous acoustic-semantic feature space achieve an $F_1$-score of **0.941** against hallucination loops (+0.296 F1 gain, +46% over static thresholds). This triggers re-decoding selectively on only **12.4%** of utterances with a **93.8%** error recovery success rate.
@@ -149,7 +150,7 @@ Evaluations across SEA Code-Switching, ViMedCSS, and ZAIC 2026 LifeMate benchmar
 
 ---
 
-## 🏗️ Closed-Loop System Architecture
+## System Architecture
 
 <p align="center">
   <img src="docs/figures/pipeline_architecture.png" alt="Closed-Loop CS-ASR System Architecture" width="100%">
@@ -166,7 +167,7 @@ Evaluations across SEA Code-Switching, ViMedCSS, and ZAIC 2026 LifeMate benchmar
 
 ---
 
-## 📊 Benchmark Evaluation Results
+## Benchmark Evaluation Results
 
 ### Table I: Recognition Performance on LifeMate CS Test Set (786 utterances, 1.07h)
 
@@ -193,7 +194,7 @@ Evaluations across SEA Code-Switching, ViMedCSS, and ZAIC 2026 LifeMate benchmar
 
 ---
 
-## 📸 Full 6-Page IEEE Visual Preview
+## Manuscript Preview (IEEE 6-Page Format)
 
 <p align="center">
   <img src="docs/figures/page_1.png" width="32%" alt="Page 1: Title, Abstract, Intro"/>
@@ -208,7 +209,7 @@ Evaluations across SEA Code-Switching, ViMedCSS, and ZAIC 2026 LifeMate benchmar
 
 ---
 
-## ⚖️ Springer Nature / IEEE Zero-AI Graphics Guarantee
+## Reproducibility & Figure Generation
 
 In strict compliance with publisher policies prohibiting AI-generated imagery:
 - All figures in this repository and manuscript were generated **100% programmatically** via Python Matplotlib directly from empirical arrays.
@@ -219,7 +220,7 @@ In strict compliance with publisher policies prohibiting AI-generated imagery:
 
 ---
 
-## 🛠️ Quick Start & Reproduction Guide
+## Quickstart & CLI Evaluation
 
 ### 1. Environment Setup
 ```powershell
@@ -258,7 +259,7 @@ python scripts/run_pipeline.py
 
 ---
 
-## ⚖️ Scientific Integrity & Compliance with Decision No. 2557/QĐ-BKHCN
+## Research Integrity & Compliance (Decision 2557/QĐ-BKHCN)
 
 This research and repository strictly comply with **Decision No. 2557/QĐ-BKHCN** issued on December 25, 2026 by the Ministry of Science and Technology of Vietnam (*Quyết định 2557/QĐ-BKHCN về Hướng dẫn đạo đức nghề nghiệp trong nghiên cứu khoa học và phát triển công nghệ*):
 1. **Zero Data Fabrication (Không ngụy tạo số liệu):** All empirical baseline error rates (e.g., **28.68% zero-shot WER**, RTF **0.710**), acoustic-phonetic failure cases, and runtime latencies were directly benchmarked and measured on personal workstation hardware (**NVIDIA GeForce GTX 1660 Super**, 6.0 GB VRAM, CUDA 12.4, PyTorch 2.6.0) utilizing authentic speech audio files from the Zalo AI Challenge LifeMate benchmark (5,036 training audio files and standardized test utterances). Complete raw machine logs are transparently archived in [`docs/benchmarks/DEFENSE_REAL_BENCHMARK.json`](docs/benchmarks/DEFENSE_REAL_BENCHMARK.json) and [`docs/benchmarks/LIVE_CUDA_BENCHMARK_RESULTS.json`](docs/benchmarks/LIVE_CUDA_BENCHMARK_RESULTS.json).
@@ -267,7 +268,7 @@ This research and repository strictly comply with **Decision No. 2557/QĐ-BKHCN*
 
 ---
 
-## 📖 Citation
+## Citation
 
 If you use this codebase, dataset, or architecture in your research, please cite:
 
@@ -283,7 +284,7 @@ If you use this codebase, dataset, or architecture in your research, please cite
 
 ---
 
-## 📜 License & Acknowledgments
+## License & Acknowledgments
 
 This project is licensed under the [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).  
 We thank the VLSP consortium and the Zalo AI Challenge (ZAIC) organizing committee for benchmark corpora.

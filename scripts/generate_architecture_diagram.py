@@ -1,11 +1,12 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
-Script to generate the exact Publication-Ready Closed-Loop CS-ASR Architecture Diagram
-Corresponding directly to the user-specified ASCII layout:
-- Left: Audio Signal x -> Whisper-Large-Turbo (LoRA Adapted ASR)
-- Feedforward: N-best Hypotheses H_K = {y^(1)...y^(K)} -> BGE-M3 Multilingual Semantic Reranker
-- Right Downward: 32-dim Feature Vector z = [phi_ASR, phi_SEM] -> XGBoost Meta-Judge (T_dyn)
-- Output (Accept): Final Transcript y*
-- Feedback (Reject): Score < T_dyn -> Re-decode Loop (Logit Penalty) -> Whisper
+IEEE Publication-Grade System Architecture Diagram Generator
+LifeMate: Closed-Loop Bilingual Speech Recognition for Vietnamese-English Code-Switching
+Strict adherence to IEEE Transactions / ICASSP academic block diagram guidelines:
+- Zero AI-generated graphics or cartoonish art.
+- Minimalist, crisp, vector-grade engineering schematic.
+- Clean rectangular blocks, formal mathematical signal flows, and standard control-loop feedback.
 """
 
 import os
@@ -14,249 +15,220 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
-from matplotlib.patches import FancyBboxPatch, FancyArrowPatch
+from matplotlib.patches import Rectangle, FancyArrowPatch, Polygon
 
-def draw_publication_diagram(output_path):
-    fig, ax = plt.subplots(figsize=(13.5, 9.6), dpi=300)
+def build_ieee_architecture_diagram(output_path):
+    fig, ax = plt.subplots(figsize=(10.8, 5.8), dpi=300)
     fig.patch.set_facecolor('#FFFFFF')
     ax.set_facecolor('#FFFFFF')
-    ax.set_xlim(0, 13.5)
-    ax.set_ylim(0, 9.6)
+    ax.set_xlim(0, 10.8)
+    ax.set_ylim(0, 5.8)
     ax.axis('off')
 
-    # Color Palette (Publication Grade)
-    c_bg_container = '#F8FAFC'
-    c_border_container = '#94A3B8'
-    c_whisper_bg = '#EFF6FF'
-    c_whisper_border = '#1D4ED8'
-    c_bge_bg = '#ECFDF5'
-    c_bge_border = '#059669'
-    c_feat_bg = '#FEF3C7'
-    c_feat_border = '#D97706'
-    c_xgb_bg = '#FFF1F2'
-    c_xgb_border = '#E11D48'
-    c_out_bg = '#F0FDF4'
-    c_out_border = '#16A34A'
-    c_audio_bg = '#F1F5F9'
-    c_audio_border = '#475569'
-    c_loop = '#7C3AED' # Vibrant violet for re-decode loop
+    # Typography & Academic Palette
+    font_family = 'DejaVu Serif'
+    c_line = '#1E293B'      # Dark charcoal for primary block borders (1.2 pt)
+    c_fill_main = '#FFFFFF' # Pure white for primary processing units
+    c_fill_sub = '#F8FAFC'  # Subtle off-white for data representations
+    c_fill_lora = '#EFF6FF' # Subtle light blue tint for LoRA adaptation
+    c_text_title = '#0F172A'# Primary dark text
+    c_text_math = '#1E293B' # Mathematical notation text
+    c_text_sub = '#475569'  # Secondary descriptive annotations
+    c_arrow = '#0F172A'     # Crisp black/charcoal arrows
+    c_feedback = '#B91C1C'  # Subdued academic dark red for rejection feedback loop
 
-    # 1. Outer Container Box (Representing the ASCII outer box)
-    outer_box = FancyBboxPatch(
-        (0.5, 0.4), 12.5, 8.8,
-        boxstyle="round,pad=0.2,rounding_size=0.35",
-        edgecolor=c_border_container, facecolor=c_bg_container,
-        linewidth=1.8, linestyle='--'
-    )
-    ax.add_patch(outer_box)
-
-    # Outer Box Title
-    ax.text(6.75, 8.85, "CLOSED-LOOP CS-ASR PIPELINE",
-            ha='center', va='center', fontsize=14, weight='bold', color='#0F172A',
-            bbox=dict(boxstyle="round,pad=0.25", facecolor="#FFFFFF", edgecolor=c_border_container, lw=1.2))
-    ax.text(6.75, 8.48, "Bilingual Semantic Regularization & Dynamic Thresholding (< 1.5B Parameters)",
-            ha='center', va='center', fontsize=9.5, color='#64748B', style='italic')
-
-    # Helper function for card boxes
-    def draw_box(x, y, w, h, bg, border, title, sub="", detail="", badge="", badge_color=""):
-        card = FancyBboxPatch(
-            (x, y), w, h,
-            boxstyle="round,pad=0.1,rounding_size=0.22",
-            edgecolor=border, facecolor=bg, linewidth=1.8
-        )
-        ax.add_patch(card)
-        cx = x + w/2
+    # Helper: Draw Rectangular Functional Block
+    def draw_block(x, y, w, h, title, line2='', line3='', line4='', fill=c_fill_main, edge=c_line, lw=1.2, ls='-'):
+        rect = Rectangle((x, y), w, h, facecolor=fill, edgecolor=edge, linewidth=lw, linestyle=ls, zorder=2)
+        ax.add_patch(rect)
+        cx = x + w / 2.0
         
-        if badge:
-            # Title + Sub + Detail + Badge
-            ax.text(cx, y + h - 0.35, title, ha='center', va='center', fontsize=11.5, weight='bold', color='#0F172A')
-            if sub:
-                ax.text(cx, y + h - 0.72, sub, ha='center', va='center', fontsize=9.5, weight='semibold', color='#334155')
-            if detail:
-                ax.text(cx, y + h/2 - 0.25, detail, ha='center', va='center', fontsize=8.5, color='#64748B')
-            bw = len(badge) * 0.12 + 0.35
-            b_box = FancyBboxPatch((cx - bw/2, y + 0.16), bw, 0.36,
-                                   boxstyle="round,pad=0.04,rounding_size=0.12",
-                                   edgecolor=badge_color, facecolor=badge_color)
-            ax.add_patch(b_box)
-            ax.text(cx, y + 0.34, badge, ha='center', va='center', fontsize=8.2, weight='bold', color='#FFFFFF')
-        else:
-            # Simple box
-            if sub:
-                ax.text(cx, y + h/2 + 0.2, title, ha='center', va='center', fontsize=11, weight='bold', color='#0F172A')
-                ax.text(cx, y + h/2 - 0.2, sub, ha='center', va='center', fontsize=9.2, color='#334155')
-            else:
-                ax.text(cx, y + h/2, title, ha='center', va='center', fontsize=11, weight='bold', color='#0F172A')
+        lines = [l for l in [title, line2, line3, line4] if l]
+        n = len(lines)
+        if n == 1:
+            ax.text(cx, y + h*0.5, lines[0], ha='center', va='center', fontsize=9.0, fontweight='bold', color=c_text_title, family=font_family, zorder=4)
+        elif n == 2:
+            ax.text(cx, y + h*0.65, lines[0], ha='center', va='center', fontsize=9.0, fontweight='bold', color=c_text_title, family=font_family, zorder=4)
+            ax.text(cx, y + h*0.35, lines[1], ha='center', va='center', fontsize=8.0, color=c_text_math, family=font_family, zorder=4)
+        elif n == 3:
+            ax.text(cx, y + h*0.75, lines[0], ha='center', va='center', fontsize=9.0, fontweight='bold', color=c_text_title, family=font_family, zorder=4)
+            ax.text(cx, y + h*0.48, lines[1], ha='center', va='center', fontsize=8.0, color=c_text_math, family=font_family, zorder=4)
+            ax.text(cx, y + h*0.22, lines[2], ha='center', va='center', fontsize=7.5, style='italic', color=c_text_sub, family=font_family, zorder=4)
+        elif n == 4:
+            ax.text(cx, y + h*0.80, lines[0], ha='center', va='center', fontsize=9.0, fontweight='bold', color=c_text_title, family=font_family, zorder=4)
+            ax.text(cx, y + h*0.58, lines[1], ha='center', va='center', fontsize=8.0, color=c_text_math, family=font_family, zorder=4)
+            ax.text(cx, y + h*0.36, lines[2], ha='center', va='center', fontsize=7.5, color=c_text_sub, family=font_family, zorder=4)
+            ax.text(cx, y + h*0.16, lines[3], ha='center', va='center', fontsize=7.2, style='italic', color=c_text_sub, family=font_family, zorder=4)
 
-    # Helper for Arrows
-    def draw_arrow(x1, y1, x2, y2, label="", label_sub="", color='#2563EB', lw=2.0, rad=0.0, linestyle='-'):
-        conn = f"arc3,rad={rad}" if rad != 0.0 else "arc3,rad=0"
-        arrow = FancyArrowPatch(
-            (x1, y1), (x2, y2),
-            connectionstyle=conn,
-            arrowstyle='-|>,head_length=7,head_width=4.5',
-            color=color, linewidth=lw, linestyle=linestyle
-        )
+    # Helper: Draw Orthogonal Arrow
+    def draw_arrow(p1, p2, text='', text_pos='above', color=c_arrow, lw=1.2, ls='-'):
+        arrow = FancyArrowPatch(p1, p2, arrowstyle='-|>,head_length=5,head_width=3.5',
+                                color=color, linewidth=lw, linestyle=ls, zorder=3)
         ax.add_patch(arrow)
-        if label:
-            mx = (x1 + x2)/2
-            my = (y1 + y2)/2
-            box_props = dict(boxstyle="round,pad=0.25", facecolor="#FFFFFF", edgecolor=color, alpha=0.95, lw=1.0)
-            if label_sub:
-                full_text = f"{label}\n{label_sub}"
-            else:
-                full_text = label
-            ax.text(mx, my, full_text, ha='center', va='center', fontsize=8.5, weight='bold', color=color, bbox=box_props)
+        if text:
+            mx = (p1[0] + p2[0]) / 2.0
+            my = (p1[1] + p2[1]) / 2.0
+            offset_y = 0.15 if text_pos == 'above' else -0.18
+            offset_x = 0.12 if text_pos == 'right' else (-0.12 if text_pos == 'left' else 0.0)
+            ax.text(mx + offset_x, my + offset_y, text, ha='center', va='center',
+                    fontsize=7.8, color=color, family=font_family, zorder=5,
+                    bbox=dict(boxstyle='square,pad=0.15', facecolor='#FFFFFF', edgecolor='none'))
 
-    # -------------------------------------------------------------
-    # 1. TOP-LEFT: Audio Signal x
-    # -------------------------------------------------------------
-    # Center x = 3.2
-    draw_box(1.7, 7.45, 3.0, 0.75, c_audio_bg, c_audio_border,
-             "[ Audio Signal x ]", "16 kHz Mono Bilingual Speech")
+    # Helper: Draw Decision Diamond
+    def draw_diamond(cx, cy, w, h, text1, text2='', fill='#FFFFFF', edge=c_line):
+        half_w = w / 2.0
+        half_h = h / 2.0
+        pts = [[cx, cy + half_h], [cx + half_w, cy], [cx, cy - half_h], [cx - half_w, cy]]
+        poly = Polygon(pts, closed=True, facecolor=fill, edgecolor=edge, linewidth=1.2, zorder=2)
+        ax.add_patch(poly)
+        if text2:
+            ax.text(cx, cy + 0.1, text1, ha='center', va='center', fontsize=8.2, fontweight='bold', color=c_text_title, family=font_family, zorder=4)
+            ax.text(cx, cy - 0.15, text2, ha='center', va='center', fontsize=7.5, color=c_text_math, family=font_family, zorder=4)
+        else:
+            ax.text(cx, cy, text1, ha='center', va='center', fontsize=8.2, fontweight='bold', color=c_text_title, family=font_family, zorder=4)
+
+    # =========================================================================
+    # 1. INPUT LAYER: Audio -> Log-Mel Spectrogram Front-End
+    # =========================================================================
+    draw_block(0.4, 4.1, 1.7, 1.2,
+               'Input Speech', r'$x(t) \in \mathbb{R}^T$', '16 kHz Mono Audio', 'Conversational CS',
+               fill=c_fill_sub)
+
+    draw_arrow((2.1, 4.7), (2.7, 4.7), text='')
+
+    draw_block(2.7, 4.1, 1.7, 1.2,
+               'Acoustic Front-End', '80-channel Log-Mel', r'$\mathbf{X} \in \mathbb{R}^{T\' \times 80}$', 'STFT Filterbank',
+               fill=c_fill_sub)
+
+    draw_arrow((4.4, 4.7), (5.0, 4.7), text=r'$\mathbf{X}$')
+
+    # =========================================================================
+    # 2. ACOUSTIC BACKBONE: LoRA-adapted Whisper-Large-v3-Turbo
+    # =========================================================================
+    draw_block(5.0, 3.8, 2.7, 1.6,
+               'Whisper-Large-v3-Turbo',
+               r'LoRA: $\mathbf{W} = \mathbf{W}_0 + \frac{\alpha}{r}\mathbf{B}\mathbf{A}$',
+               r'Rank $r=16$, $\alpha=32$ (845.2M)',
+               'Beam Search ($B=5$)',
+               fill=c_fill_lora)
+
+    draw_arrow((7.7, 4.7), (8.4, 4.7), text=r'$\mathcal{H}_K$', text_pos='above')
+
+    # =========================================================================
+    # 3. SEMANTIC REGULARIZER: BGE-M3 Dense Verifier
+    # =========================================================================
+    draw_block(8.4, 3.8, 2.0, 1.6,
+               'BGE-M3 Verifier',
+               r'Dense Bi-Encoder (568M)',
+               r'$S_{\rm{sem}} = \frac{\mathbf{e}_y^\top \mathbf{e}_C}{\|\mathbf{e}_y\| \|\mathbf{e}_C\|}$',
+               r'Context Alignment $C$',
+               fill=c_fill_sub)
+
+    # Dialogue Context C input into BGE-M3 from top
+    draw_arrow((9.4, 5.7), (9.4, 5.4), text='')
+    ax.text(9.4, 5.75, r'Dialogue Context $C$', ha='center', va='bottom',
+            fontsize=8.0, fontweight='bold', color=c_text_title, family=font_family)
+
+    # =========================================================================
+    # 4. JOINT UNCERTAINTY FEATURE PROJECTION
+    # =========================================================================
+    # Paths from Whisper and BGE-M3 downward into Feature Vector z
+    p_whisper_down = (6.35, 3.8)
+    p_bge_down = (9.4, 3.8)
+
+    # Merge into Feature Extraction Vector Block
+    draw_block(6.0, 2.3, 4.4, 0.95,
+               r'Joint Uncertainty Representation $\mathbf{z} \in \mathbb{R}^{32}$',
+               r'$\mathbf{z} = [\mathbf{\phi}_{\rm{ASR}}, \mathbf{\phi}_{\rm{SEM}}, \mathbf{\phi}_{\rm{BND}}]^\top$',
+               r'Acoustic Likelihood $\cdot$ Semantic Consistency $\cdot$ Boundary Dynamics',
+               fill=c_fill_sub)
+
+    # Arrows into Feature Block
+    draw_arrow(p_bge_down, (9.4, 3.25), text=r'$S_{\rm{sem}}$', text_pos='right')
+    draw_arrow(p_whisper_down, (6.35, 3.25), text=r'$\mathbf{\phi}_{\rm{ASR}}$', text_pos='left')
+
+    # Arrow from Feature Block to Dynamic Meta-Judge
+    draw_arrow((8.2, 2.3), (8.2, 1.8), text=r'$\mathbf{z}$', text_pos='right')
+
+    # =========================================================================
+    # 5. DYNAMIC META-JUDGE (XGBoost Quantile Regressor)
+    # =========================================================================
+    draw_block(6.8, 0.85, 2.8, 0.95,
+               'Dynamic Meta-Judge',
+               r'XGBoost Regressor (0.15M)',
+               r'$T_{\rm{dyn}}(\mathbf{x}) = \sigma(\mathbf{w}^\top \mathbf{z} + b)$',
+               fill=c_fill_main)
+
+    # Arrow from Meta-Judge leftward to Decision Diamond
+    draw_arrow((6.8, 1.32), (5.6, 1.32), text=r'$T_{\rm{dyn}}$', text_pos='above')
+
+    # =========================================================================
+    # 6. DECISION GATE (Acceptance vs Closed-Loop Re-decoding)
+    # =========================================================================
+    draw_diamond(4.8, 1.32, 1.5, 0.95, r'Confidence', r'$J(\mathbf{z}) \geq T_{\rm{dyn}}?$')
+
+    # Branch 1: ACCEPT (Yes) -> Final Transcript
+    draw_arrow((4.05, 1.32), (2.8, 1.32), text='Yes (Accept)', text_pos='above', color='#16A34A', lw=1.5)
+
+    draw_block(0.4, 0.85, 2.4, 0.95,
+               r'Final Output $y^*$',
+               r'$y^* = \arg\max \mathcal{S}_{\rm{joint}}(y)$',
+               'WER: 2.85% | E-WER: 4.15%',
+               fill='#F0FDF4', edge='#16A34A', lw=1.4)
+
+    # Branch 2: REJECT (No: J < T_dyn) -> Re-decoding Feedback Loop
+    p_diam_bottom = (4.8, 0.845)
+    p_corner1 = (4.8, 0.35)
+    p_corner2 = (3.5, 0.35)
+    p_reg_in = (3.5, 1.95)
+
+    # Draw feedback path with orthogonal corners
+    ax.plot([p_diam_bottom[0], p_corner1[0]], [p_diam_bottom[1], p_corner1[1]],
+            color=c_feedback, linestyle='--', linewidth=1.4, zorder=3)
+    ax.plot([p_corner1[0], p_corner2[0]], [p_corner1[1], p_corner2[1]],
+            color=c_feedback, linestyle='--', linewidth=1.4, zorder=3)
+    draw_arrow((p_corner2[0], p_corner2[1]), (p_reg_in[0], p_reg_in[1]),
+               text='', color=c_feedback, lw=1.4, ls='--')
+
+    ax.text(4.8, 0.55, 'No (Reject)', ha='left', va='center',
+            fontsize=7.8, fontweight='bold', color=c_feedback, family=font_family)
+
+    # Regularization Block in Feedback Loop
+    draw_block(2.2, 1.95, 2.6, 1.15,
+               'Constrained Re-decoding',
+               r'$\Delta \ell_t = -\alpha (1 - S_{\rm{sem}}) \mathbb{I}(v \in \mathcal{V}_{\rm{susp}})$',
+               'Logit Penalty on Ambiguous Tokens',
+               fill='#FEF2F2', edge=c_feedback, lw=1.3, ls='--')
+
+    # Arrow from Regularization Block UP into Whisper Decoder
+    p_reg_out = (3.5, 3.1)
+    p_whisper_feedback = (5.3, 3.8)
     
-    # Arrow: Audio -> Whisper
-    draw_arrow(3.2, 7.45, 3.2, 6.7, color='#0284C7', lw=2.2)
+    # Path: UP to y=3.5, then RIGHT to x=5.3, then UP to (5.3, 3.8)
+    ax.plot([p_reg_out[0], p_reg_out[0]], [p_reg_out[1], 3.5],
+            color=c_feedback, linestyle='--', linewidth=1.4, zorder=3)
+    ax.plot([p_reg_out[0], p_whisper_feedback[0]], [3.5, 3.5],
+            color=c_feedback, linestyle='--', linewidth=1.4, zorder=3)
+    draw_arrow((p_whisper_feedback[0], 3.5), (p_whisper_feedback[0], p_whisper_feedback[1]),
+               text=r"Penalized Logits $\ell_t'$", text_pos='right', color=c_feedback, lw=1.4, ls='--')
 
-    # -------------------------------------------------------------
-    # 2. LEFT: Whisper-Large-Turbo (LoRA Adapted ASR)
-    # -------------------------------------------------------------
-    draw_box(1.2, 4.8, 4.0, 1.9, c_whisper_bg, c_whisper_border,
-             "Whisper-Large-Turbo",
-             "(LoRA Adapted ASR)",
-             "Backbone: 809M | LoRA: 36.2M (r=16, α=32)\nTarget: q_proj, v_proj in Attention Layers",
-             "845.2M Params (FP16)", '#1D4ED8')
-
-    # -------------------------------------------------------------
-    # 3. HORIZONTAL: N-best Hypotheses -> BGE-M3
-    # -------------------------------------------------------------
-    # From Whisper right edge (5.2, 5.75) to BGE-M3 left edge (8.0, 5.75)
-    draw_arrow(5.2, 5.75, 8.0, 5.75,
-               label="N-best Hypotheses",
-               label_sub="HK = {y^(1), ..., y^(K)}",
-               color='#2563EB', lw=2.2)
-
-    # -------------------------------------------------------------
-    # 4. TOP-RIGHT: BGE-M3 Multilingual Semantic Reranker
-    # -------------------------------------------------------------
-    # Center x = 10.0
-    draw_box(8.0, 4.8, 4.0, 1.9, c_bge_bg, c_bge_border,
-             "BGE-M3 Multilingual",
-             "Semantic Reranker",
-             "Dense Multilingual Embedding (1024-dim)\nCross-Lingual Cosine Score: S_sem(y, C)",
-             "568.0M Params (FP16)", '#047857')
-
-    # Arrow: BGE-M3 -> 32-dim Feature Vector
-    draw_arrow(10.0, 4.8, 10.0, 4.15, color='#059669', lw=2.2)
-
-    # -------------------------------------------------------------
-    # 5. RIGHT-MIDDLE: [ 32-dim Feature Vector ] z = [phi_ASR, phi_SEM]
-    # -------------------------------------------------------------
-    draw_box(8.2, 3.25, 3.6, 0.9, c_feat_bg, c_feat_border,
-             "[ 32-dim Feature Vector ]",
-             "z = [φ_ASR, φ_SEM]",
-             detail="")
-
-    # Arrow: Feature Vector -> XGBoost
-    draw_arrow(10.0, 3.25, 10.0, 2.5, color='#D97706', lw=2.2)
-
-    # -------------------------------------------------------------
-    # 6. RIGHT-LOWER: XGBoost Meta-Judge (T_dyn)
-    # -------------------------------------------------------------
-    draw_box(8.1, 1.3, 3.8, 1.2, c_xgb_bg, c_xgb_border,
-             "XGBoost Meta-Judge",
-             "Dynamic Thresholding: T_dyn(x)",
-             detail="",
-             badge="0.15M Params | 100 Trees", badge_color='#BE123C')
-
-    # -------------------------------------------------------------
-    # 7. ACCEPT FORK: XGBoost -> [ Final Transcript y* ]
-    # -------------------------------------------------------------
-    draw_arrow(10.0, 1.3, 10.0, 0.85,
-               label="Accept",
-               color='#16A34A', lw=2.2)
-
-    draw_box(8.2, 0.25, 3.6, 0.6, c_out_bg, c_out_border,
-             "[ Final Transcript y* ]",
-             "Optimal Disambiguated Output (WER: 2.85%)")
-
-    # -------------------------------------------------------------
-    # 8. REJECT & RE-DECODE LOOP (SCORE < T_dyn) -> WHISPER
-    # -------------------------------------------------------------
-    # Emerges from left of XGBoost (at x = 8.1, y = 1.9)
-    # Goes left to x = 3.2, then goes UP to bottom of Whisper (at x = 3.2, y = 4.8)
-    
-    # Horizontal segment: (8.1, 1.9) -> (3.2, 1.9)
-    p1 = (8.1, 1.9)
-    p_corner = (3.2, 1.9)
-    p_whisper_in = (3.2, 4.8)
-
-    # Draw custom path with 90-degree corner
-    # Segment 1: from XGBoost left to corner
-    arr_horiz = FancyArrowPatch(
-        p1, p_corner,
-        connectionstyle="arc3,rad=0",
-        arrowstyle='-',
-        color=c_loop, linewidth=2.4
+    # =========================================================================
+    # 7. METRIC ANNOTATION FOOTNOTE (ACADEMIC BENCHMARK LINE)
+    # =========================================================================
+    summary_text = (
+        "Parameter Budget: Whisper-Turbo LoRA (845.2M) + BGE-M3 (568.0M) + XGBoost (0.15M) = 1.377B (< 1.5B)  |  "
+        "Efficiency: RTF = 0.0415 (24.1x Real-time)  |  Peak VRAM: 4.5 GB FP16"
     )
-    ax.add_patch(arr_horiz)
+    ax.text(5.4, 0.1, summary_text, ha='center', va='center',
+            fontsize=7.8, fontweight='bold', color='#334155', family=font_family,
+            bbox=dict(boxstyle='square,pad=0.25', facecolor='#F8FAFC', edgecolor='#CBD5E1', lw=0.8))
 
-    # Reject Label on horizontal segment
-    ax.text(5.65, 1.9, "Reject (Score < T_dyn)", ha='center', va='center',
-            fontsize=9.0, weight='bold', color=c_loop,
-            bbox=dict(boxstyle="round,pad=0.25", facecolor="#FFFFFF", edgecolor=c_loop, lw=1.2))
-
-    # Segment 2: from corner UP into Whisper
-    arr_up = FancyArrowPatch(
-        p_corner, p_whisper_in,
-        connectionstyle="arc3,rad=0",
-        arrowstyle='-|>,head_length=8,head_width=5.5',
-        color=c_loop, linewidth=2.4
-    )
-    ax.add_patch(arr_up)
-
-    # Re-decode Loop Box on vertical segment
-    redec_box = FancyBboxPatch(
-        (1.5, 2.7), 3.4, 0.95,
-        boxstyle="round,pad=0.08,rounding_size=0.15",
-        edgecolor=c_loop, facecolor='#FAF5FF', linewidth=1.5
-    )
-    ax.add_patch(redec_box)
-    ax.text(3.2, 3.32, "Re-decode Loop", ha='center', va='center',
-            fontsize=10, weight='bold', color=c_loop)
-    ax.text(3.2, 3.02, "(Logit Penalty on Suspicious Tokens)\nΔℓ = -α · (1 - S_sem)",
-            ha='center', va='center', fontsize=8.2, color='#581C87')
-
-    # -------------------------------------------------------------
-    # 9. CORNER BADGES (BUDGET & PERFORMANCE SUMMARY)
-    # -------------------------------------------------------------
-    # Left Bottom Badge: Budget Allocation
-    b1 = FancyBboxPatch((0.8, 0.6), 4.8, 0.85,
-                        boxstyle="round,pad=0.1,rounding_size=0.18",
-                        edgecolor='#334155', facecolor='#0F172A')
-    ax.add_patch(b1)
-    ax.text(3.2, 1.15, "TOTAL PARAMETER BUDGET ALLOCATION", ha='center', va='center',
-            fontsize=8.0, weight='bold', color='#94A3B8')
-    ax.text(3.2, 0.85, "Whisper (845M) + BGE-M3 (568M) + XGB (0.15M) = 1.377B < 1.5B",
-            ha='center', va='center', fontsize=8.2, weight='bold', color='#38BDF8')
-
-    # Efficiency Badge at top
-    b2 = FancyBboxPatch((10.0, 7.85), 2.7, 0.6,
-                        boxstyle="round,pad=0.08,rounding_size=0.14",
-                        edgecolor='#0284C7', facecolor='#F0F9FF')
-    ax.add_patch(b2)
-    ax.text(11.35, 8.25, "REAL-TIME EFFICIENCY", ha='center', va='center',
-            fontsize=7.5, weight='bold', color='#0284C7')
-    ax.text(11.35, 8.0, "RTF = 0.0415 (24.1x Realtime)", ha='center', va='center',
-            fontsize=8.8, weight='bold', color='#0369A1')
-
-    plt.tight_layout()
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
-    plt.savefig(output_path, dpi=300, bbox_inches='tight', facecolor=fig.get_facecolor(), edgecolor='none')
-    plt.close()
-    print(f"[OK] Rendered exact ASCII-matching architecture diagram to: {output_path}")
+    Path(output_path).parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(output_path, dpi=300, bbox_inches='tight', facecolor='#FFFFFF')
+    plt.close(fig)
+    print(f"[SUCCESS] Generated IEEE Standard System Architecture Diagram: {output_path}")
 
 if __name__ == '__main__':
     project_root = Path(__file__).resolve().parent.parent
-    target = str(project_root / "docs" / "figures" / "pipeline_architecture.png")
-    draw_publication_diagram(target)
+    target_png = project_root / "docs" / "figures" / "pipeline_architecture.png"
+    build_ieee_architecture_diagram(str(target_png))
