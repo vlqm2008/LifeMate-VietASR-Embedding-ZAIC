@@ -130,7 +130,7 @@ python cs_asr.py transcribe --audio path/to/audio.wav --output transcript.txt
 ```
 LifeMate-VietASR-Embedding-ZAIC/
 ├── docs/
-│   ├── FJCAI_2027_LifeMate_CS_ASR.tex     # Bản thảo LaTeX chuẩn IEEE 8 trang
+│   ├── FJCAI_2027_LifeMate_CS_ASR_EN.tex  # Bản thảo LaTeX chuẩn IEEEtran 6 trang (Đồng bộ Official Template FJCAI 2027)
 │   ├── FJCAI_2027_LifeMate_CS_ASR.md      # Bài báo khoa học toàn văn định dạng Markdown
 │   ├── PEER_REVIEW_REBUTTAL_GUIDE.md      # Cẩm nang phản biện bảo vệ bài báo
 │   ├── FJCAI_2027_PRESENTATION_SLIDES.md  # Slide thuyết trình 15 phút tại hội thảo
