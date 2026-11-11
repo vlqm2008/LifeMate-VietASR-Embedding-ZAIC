@@ -95,7 +95,7 @@ Dưới đây là 2 mẫu văn bản mẫu bạn có thể sao chép và gửi n
 > 📌 **Các tài liệu chính:**
 > 1. **Bản nộp chính thức (6 trang IEEE):** `FJCAI_2027_LifeMate_CS_ASR_EN.pdf` và file `.docx`.
 > 2. **Bản tiếng Việt đầy đủ:** `Bai_Bao_Tieng_Viet_FJCAI_2027.docx` (dành cho thầy cô/cố vấn đọc duyệt).
-> 3. **GitHub Code & Demo:** https://github.com/AIVIETNAM-AIO-MinhHocAyAi/LifeMate-VietASR-Embedding-ZAIC
+> 3. **GitHub Code & Demo:** https://github.com/vlqm2008/LifeMate-VietASR-Embedding-ZAIC
 >
 > 📌 **Phân vai rà soát:**
 > - **Chuyên gia ASR & Embedding:** Check lại các công thức toán Whisper LoRA và BGE-M3 ở Mục IV.

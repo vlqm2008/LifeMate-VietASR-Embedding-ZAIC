@@ -207,7 +207,7 @@ In strict compliance with publisher policies prohibiting AI-generated imagery:
 
 ### 1. Environment Setup
 ```powershell
-git clone https://github.com/AIVIETNAM-AIO-MinhHocAyAi/LifeMate-VietASR-Embedding-ZAIC.git
+git clone https://github.com/vlqm2008/LifeMate-VietASR-Embedding-ZAIC.git
 cd LifeMate-VietASR-Embedding-ZAIC
 pip install -r requirements.txt
 ```

@@ -51,7 +51,7 @@ Kính nhờ quý Thầy Cô và các tác giả kiểm tra giúp em các thông 
 - [ ] **Phê duyệt bản nộp:** Xác nhận đồng thuận nội dung bài báo và cam kết liêm chính khoa học theo Quyết định 2557/QĐ-BKHCN để tiến hành nộp bài.
 
 *Kho lưu trữ mã nguồn mở:*  
-https://github.com/AIVIETNAM-AIO-MinhHocAyAi/LifeMate-VietASR-Embedding-ZAIC.git
+https://github.com/vlqm2008/LifeMate-VietASR-Embedding-ZAIC.git
 
 Kính chúc quý Thầy Cô sức khỏe và công tác tốt!  
 Trân trọng,  
