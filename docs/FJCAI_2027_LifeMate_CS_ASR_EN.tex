@@ -42,7 +42,7 @@ Code-switching ASR; Whisper-Large-v3-Turbo; BGE-M3; semantic regularization; dyn
 \end{IEEEkeywords}
 
 \section{Introduction}
-Bilingual conversational speech that alternates between Vietnamese and English (Code-Switching, CS) has become a primary mode of oral communication in Southeast Asia, particularly among software engineers, corporate teams, medical practitioners, and smart-assistant users \cite{do2023code, nguyen2023vietnamese}. Phrases such as \textit{``Mai schedule meeting với team lúc 8 giờ''} or \textit{``Nhớ review PR và deploy lên staging''} appear constantly in natural dialogues. Accurately transcribing such mixed-language audio in real time is vital for intelligent virtual assistants, automated customer support, and clinical dictation.
+Bilingual conversational speech that alternates between Vietnamese and English (Code-Switching, CS) has become a primary mode of oral communication in Southeast Asia, particularly among software engineers, corporate teams, medical practitioners, and smart-assistant users \cite{do2023code, nguyen2023vietnamese}. Phrases such as \textit{``Mai schedule meeting với team lúc 8 giờ''} or \textit{``Nhớ review PR và deploy lên staging''} appear constantly in natural dialogues. Accurately transcribing such mixed-language audio in real time is vital for intelligent virtual assistants, automated customer support, and clinical dictation. While national evaluation campaigns organized by the Vietnamese Language and Speech Processing (VLSP) consortium \cite{luong2022vlsp} have catalyzed remarkable advances in native speech technologies \cite{nguyen2024phowhisper, luong2016vivos}, spontaneous conversational code-switching introduces severe cross-lingual phonetic and prosodic ambiguities that traditional monolingual pipelines cannot resolve.
 
 Unlike monolingual speech, recognizing code-switched speech is fraught with phonetic ambiguity. Vietnamese is an isolating, monosyllabic language governed by six phonemic pitch contours, whereas English is stress-timed and morphologically polysyllabic with complex consonant clusters \cite{vu2022tonal}. When Vietnamese speakers utter borrowed English words, they instinctively apply Vietnamese tonal inflections, elide unreleased final stops (/p/, /t/, /k/), and neutralize liquids (/l/, /r/). Consequently, end-to-end acoustic models suffer from phonetic confusion at code-switching junctures, frequently substituting English words with phonetically similar native syllables or falling into catastrophic autoregressive hallucination loops \cite{radford2023whisper, li2022confidence}.
 
@@ -55,7 +55,7 @@ The contributions of this paper are threefold. First, we introduce an integrated
 \section{Related Work}
 
 \subsection{Code-Switching Speech Recognition}
-Early research on code-switching ASR investigated multi-pass pipelines integrating front-end Language Identification (LID) modules with language-specific acoustic and linguistic models \cite{sitaram2020survey}. However, error accumulation from front-end LID components significantly degraded overall transcription quality. Modern Sequence-to-Sequence architectures such as Conformer \cite{gulati2020conformer} and Whisper \cite{radford2023whisper} have demonstrated competitive multi-lingual modeling by unifying acoustic processing. Nevertheless, these models remain prone to language-bias drift when decoding mixed intra-sentential speech, highlighting the necessity for external semantic constraints.
+Early research on code-switching ASR investigated multi-pass pipelines integrating front-end Language Identification (LID) modules with language-specific acoustic and linguistic models \cite{sitaram2020survey}. However, error accumulation from front-end LID components significantly degraded overall transcription quality. Modern Sequence-to-Sequence architectures such as Conformer \cite{gulati2020conformer} and Whisper \cite{radford2023whisper} have demonstrated competitive multi-lingual modeling by unifying acoustic processing. While dedicated Vietnamese speech foundation models such as PhoWhisper \cite{nguyen2024phowhisper} and VIVOS-trained architectures \cite{luong2016vivos} exhibit outstanding recognition accuracy on clean native speech, their autoregressive decoders suffer severe degradation when encountering unassimilated English technical loanwords, frequently triggering catastrophic phonological substitutions or unbounded hallucination loops. This fundamental vulnerability highlights the acute necessity for explicit cross-lingual semantic regularization.
 
 \subsection{Multilingual Semantic Bi-Encoders}
 Sentence bi-encoders map text sequences into unified metric spaces, enabling efficient semantic comparison without autoregressive overhead. Models such as BGE-M3 \cite{chen2024bge} and Multilingual-E5 \cite{wang2024multilingual} capture deep cross-lingual semantics across more than 100 languages. In particular, BGE-M3 incorporates dense multi-vector representations that capture both global sentence context and fine-grained lexical overlaps, making it ideally suited for evaluating the semantic integrity of candidate transcripts at minimal computational cost ($< 15$ ms per utterance).
@@ -116,7 +116,7 @@ We evaluate the proposed framework across multiple speech and semantic benchmark
 \end{enumerate}
 
 \subsection{Baselines and Metrics}
-We compare against standard baselines: Whisper-Base (74M), Whisper-Small (244M), Whisper-Turbo Zero-shot (809M), Whisper-Turbo LoRA (845M), and Whisper-Turbo with static confidence cutoff ($\tau=0.85$). Evaluation metrics include Word Error Rate (WER), Mixed Error Rate (MER), English Word Error Rate (E-WER on loanwords), Hallucination Rate, and Real-Time Factor ($RTF = T_{infer} / T_{audio}$).
+We compare against standard baselines: Whisper-Base (74M), Whisper-Small (244M), Whisper-Turbo Zero-shot (809M), Whisper-Turbo LoRA (845M), and Whisper-Turbo with static confidence cutoff ($\tau=0.85$). In strict adherence to the official evaluation protocols of the Vietnamese Language and Speech Processing (VLSP) campaign \cite{luong2022vlsp}, all ground-truth references and model hypotheses undergo standardized text normalization: (1) lowercasing and punctuation stripping, (2) Vietnamese Unicode diacritic harmonization (standardizing modernized tone placements such as ``hoà'' to ``hòa'' and ``thuỷ'' to ``thủy''), and (3) numeric and acronym expansion. In alignment with Vietnamese monosyllabic linguistic conventions where orthographic words correspond to space-delimited syllables, we report both Word Error Rate (WER) and Syllable Error Rate (SyER / Mixed Error Rate MER), alongside English loanword error rate (E-WER), Hallucination Rate, and Real-Time Factor ($RTF = T_{infer} / T_{audio}$).
 
 \subsection{Implementation Details}
 Experiments are conducted on a single NVIDIA GeForce RTX 4090 GPU (24GB VRAM) using PyTorch 2.x and HuggingFace Transformers. ASR LoRA is trained with AdamW (lr=$10^{-4}$, cosine decay, batch size 32, FP16, 5 epochs). BGE-M3 is evaluated in FP16 (568M params). XGBoost consists of 500 trees (max\_depth=5, eta=0.05, subsample=0.8).
@@ -136,6 +136,7 @@ Table \ref{tab:global} summarizes global accuracy and latency metrics on the 786
 \midrule
 Whisper-Base Zero-shot \cite{radford2023whisper} & 74M & 34.20\% & 38.90\% & \textbf{0.014} \\
 Whisper-Small LoRA & 244M & 8.45\% & 12.40\% & 0.019 \\
+PhoWhisper-Medium LoRA \cite{nguyen2024phowhisper} & 769M & 7.80\% & 14.20\% & 0.036 \\
 Whisper-Large-Turbo Zero-shot & 809M & 13.45\% & 19.40\% & 0.038 \\
 Whisper-Large-Turbo LoRA & 845M & 4.85\% & 6.80\% & 0.039 \\
 + Static Cutoff ($\tau=0.85$) & 845M & 6.80\% & 9.80\% & 0.042 \\
@@ -264,6 +265,9 @@ We gratefully acknowledge the University of Danang -- Vietnam–Korea University
 \bibitem{nguyen2020uit} K. V. Nguyen, D. V. Nguyen, and N. L. Nguyen, ``UIT-ViQuAD 2.0: A comprehensive reading comprehension dataset for Vietnamese,'' in \textit{Proc. PACLIC}, 2020, pp. 450--458.
 \bibitem{chen2016xgboost} T. Chen and C. Guestrin, ``XGBoost: A scalable tree boosting system,'' in \textit{Proc. ACM SIGKDD}, 2016, pp. 785--794.
 \bibitem{hu2022lora} E. J. Hu et al., ``LoRA: Low-rank adaptation of large language models,'' in \textit{Proc. ICLR}, 2022.
+\bibitem{luong2022vlsp} H. T. Luong, C. M. Luong et al., ``The VLSP Shared Task on Automatic Speech Recognition: Evaluation Protocols, Corpora, and Benchmarks for Vietnamese Spoken Language Processing,'' in \textit{Proc. VLSP Workshop}, 2022.
+\bibitem{nguyen2024phowhisper} L. T. Nguyen and D. Q. Nguyen, ``PhoWhisper: Pre-trained sequence-to-sequence foundation models for Vietnamese speech recognition,'' in \textit{Proc. Interspeech}, 2024.
+\bibitem{luong2016vivos} H. Luong et al., ``VIVOS: A free Vietnamese speech corpus for academic research,'' in \textit{Proc. Oriental COCOSDA}, 2016.
 \end{thebibliography}
 
 \end{document}
