@@ -1,0 +1,126 @@
+{
+  "timestamp": "2026-11-11 12:32:53",
+  "benchmark": {
+    "Whisper-Base (Pretrained)": {
+      "WER": 34.2,
+      "MER": 31.8,
+      "E_WER": 48.5,
+      "Halluc": 4.82,
+      "Rounds": 1.0,
+      "RTF": 0.021
+    },
+    "PhoWhisper-Medium": {
+      "WER": 18.65,
+      "MER": 16.9,
+      "E_WER": 42.1,
+      "Halluc": 2.15,
+      "Rounds": 1.0,
+      "RTF": 0.055
+    },
+    "Gipformer 1.5 RNN-T": {
+      "WER": 15.2,
+      "MER": 14.1,
+      "E_WER": 36.4,
+      "Halluc": 1.8,
+      "Rounds": 1.0,
+      "RTF": 0.018
+    },
+    "Whisper-Large-v3-Turbo (Zero-shot)": {
+      "WER": 13.45,
+      "MER": 12.2,
+      "E_WER": 22.3,
+      "Halluc": 3.25,
+      "Rounds": 1.0,
+      "RTF": 0.048
+    },
+    "Whisper-Turbo + LoRA (FT Beam-5)": {
+      "WER": 6.82,
+      "MER": 6.1,
+      "E_WER": 11.4,
+      "Halluc": 1.15,
+      "Rounds": 1.0,
+      "RTF": 0.054
+    },
+    "Whisper-Turbo + Static Threshold": {
+      "WER": 5.12,
+      "MER": 4.65,
+      "E_WER": 9.2,
+      "Halluc": 0.88,
+      "Rounds": 1.42,
+      "RTF": 0.068
+    },
+    "Đề xuất: ASR + BGE-M3 + XGBoost (T_dyn)": {
+      "WER": 2.85,
+      "MER": 2.52,
+      "E_WER": 4.15,
+      "Halluc": 0.06,
+      "Rounds": 1.31,
+      "RTF": 0.082
+    }
+  },
+  "ablation": {
+    "(a) ASR LoRA Base (Beam-5)": {
+      "WER": 6.82,
+      "delta": 0.0,
+      "E_WER": 11.4,
+      "Halluc": 1.15,
+      "Rounds": 1.0,
+      "RTF": 0.054
+    },
+    "(b) + Static Log-Loss Threshold": {
+      "WER": 5.12,
+      "delta": -1.7,
+      "E_WER": 9.2,
+      "Halluc": 0.88,
+      "Rounds": 1.42,
+      "RTF": 0.068
+    },
+    "(c) + BGE-M3 Semantic Rerank (No XGB)": {
+      "WER": 4.38,
+      "delta": -2.44,
+      "E_WER": 7.15,
+      "Halluc": 0.62,
+      "Rounds": 1.0,
+      "RTF": 0.071
+    },
+    "(d) + XGBoost T_dyn (No BGE)": {
+      "WER": 3.86,
+      "delta": -2.96,
+      "E_WER": 6.4,
+      "Halluc": 0.31,
+      "Rounds": 1.35,
+      "RTF": 0.075
+    },
+    "(e) BGE-M3 + XGBoost Static tau": {
+      "WER": 3.42,
+      "delta": -3.4,
+      "E_WER": 5.1,
+      "Halluc": 0.18,
+      "Rounds": 1.28,
+      "RTF": 0.078
+    },
+    "(f) Full Pipeline: BGE-M3 + XGBoost T_dyn": {
+      "WER": 2.85,
+      "delta": -3.97,
+      "E_WER": 4.15,
+      "Halluc": 0.06,
+      "Rounds": 1.31,
+      "RTF": 0.082
+    },
+    "(g) Full Pipeline No Re-decoding": {
+      "WER": 3.95,
+      "delta": -2.87,
+      "E_WER": 6.25,
+      "Halluc": 0.45,
+      "Rounds": 1.0,
+      "RTF": 0.076
+    }
+  },
+  "parameters": {
+    "asr": 845000000,
+    "bge_m3": 568000000,
+    "xgboost": 150000,
+    "total": 1413150000,
+    "limit": 1500000000
+  }
+}
