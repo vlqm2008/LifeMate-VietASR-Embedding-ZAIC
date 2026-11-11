@@ -1,4 +1,4 @@
-# Python
+# Python & Virtual Environments
 __pycache__/
 *.py[cod]
 *$py.class
@@ -7,24 +7,38 @@ __pycache__/
 env/
 venv/
 .env
+.venv/
 
-# Data and large binary files (Tuân thủ bản quyền ZAIC)
-*.wav
+# Large Datasets & Audio (Keep samples intact)
 *.mp3
 *.flac
 *.m4a
 *.ogg
-data/
 raw_data/
 *.parquet
 *.csv
+!docs/benchmarks/*.csv
 
-# Model Checkpoints and Weights
+# Audio Files (Allow benchmark samples)
+*.wav
+!samples/*.wav
+
+# Allow documentation and configs in data
+data/*
+!data/README.md
+!data/.gitkeep
+
+# Model Checkpoints & Large Weights
 checkpoints/
 *.pt
 *.bin
 *.safetensors
 *.ckpt
+
+# Temporary Office and Lock files
+~$*.docx
+~$*.doc
+*.tmp
 
 # Logs and Tensorboard
 runs/
@@ -32,3 +46,8 @@ events.out.tfevents.*
 
 # Jupyter
 .ipynb_checkpoints
+
+# OS Specific
+.DS_Store
+Thumbs.db
+desktop.ini

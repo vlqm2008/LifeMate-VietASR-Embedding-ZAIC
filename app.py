@@ -1,7 +1,7 @@
 """
 LifeMate CS-ASR: Interactive Gradio Web Application
 FJCAI 2027: Bilingual Semantic Regularization & Dynamic Thresholding Under 1.5B Parameters
-Authors: Phung-Nguyen-Nhu Bach (QNU), Do-Phu Hung (USTH), Vo-Le-Quang Minh (VKU)
+Double-Blind Review Copy (Author details omitted)
 """
 
 import os
@@ -136,7 +136,7 @@ def build_gradio_app():
             gr.Markdown("""
             # 🎙️ Bilingual Semantic Regularization & Dynamic Thresholding for Vietnamese–English Code-Switching ASR
             ### **National Conference on Artificial Intelligence (FJCAI 2027)**
-            **Authors:** Phung-Nguyen-Nhu Bach (QNU), Do-Phu Hung (USTH), Vo-Le-Quang Minh (VKU)
+            **Authors:** Anonymous Authors *(Omitted for Double-Blind Review)*
             """)
             gr.Markdown("""
             <span class='metric-badge'>🏆 Total Parameters: <b>1.377B &lt; 1.5B</b></span>
@@ -228,17 +228,17 @@ def build_gradio_app():
             with gr.Tab("📄 IEEE Publication Artifacts & Downloads"):
                 gr.Markdown("### Official Conference Deliverables for FJCAI 2027")
                 gr.Markdown("""
-                - **Microsoft Word Document (Required Submission Format):** [`docs/FJCAI_2027_LifeMate_CS_ASR_EN.doc`](docs/FJCAI_2027_LifeMate_CS_ASR_EN.doc) (Word 97-2003, exactly 6 pages, IEEE 2-column format).
-                - **Modern Word Document:** [`docs/FJCAI_2027_LifeMate_CS_ASR_EN.docx`](docs/FJCAI_2027_LifeMate_CS_ASR_EN.docx).
-                - **Compiled Camera-Ready PDF:** [`docs/FJCAI_2027_LifeMate_CS_ASR_EN.pdf`](docs/FJCAI_2027_LifeMate_CS_ASR_EN.pdf) (Compiled via Word COM).
-                - **LaTeX Source Code:** [`docs/FJCAI_2027_LifeMate_CS_ASR_EN.tex`](docs/FJCAI_2027_LifeMate_CS_ASR_EN.tex) (IEEEtran format).
-                - **Peer-Review Rebuttal Guide:** [`docs/PEER_REVIEW_REBUTTAL_GUIDE.md`](docs/PEER_REVIEW_REBUTTAL_GUIDE.md) (Top 8 reviewer questions & formal answers).
-                - **Presentation Slides:** [`docs/FJCAI_2027_PRESENTATION_SLIDES.md`](docs/FJCAI_2027_PRESENTATION_SLIDES.md) (15-slide Marp deck for Oral presentation).
+                - **Microsoft Word Document (Required Submission Format):** [`docs/paper/FJCAI_2027_LifeMate_CS_ASR_EN.doc`](docs/paper/FJCAI_2027_LifeMate_CS_ASR_EN.doc) (Word 97-2003, exactly 6 pages, IEEE 2-column format).
+                - **Modern Word Document:** [`docs/paper/FJCAI_2027_LifeMate_CS_ASR_EN.docx`](docs/paper/FJCAI_2027_LifeMate_CS_ASR_EN.docx).
+                - **Compiled Camera-Ready PDF:** [`docs/paper/FJCAI_2027_LifeMate_CS_ASR_EN.pdf`](docs/paper/FJCAI_2027_LifeMate_CS_ASR_EN.pdf) (Compiled via Word COM).
+                - **LaTeX Source Code:** [`docs/paper/FJCAI_2027_LifeMate_CS_ASR_EN.tex`](docs/paper/FJCAI_2027_LifeMate_CS_ASR_EN.tex) (IEEEtran format).
+                - **Peer-Review Rebuttal Guide:** [`docs/reviews/PEER_REVIEW_REBUTTAL_GUIDE.md`](docs/reviews/PEER_REVIEW_REBUTTAL_GUIDE.md) (Top 8 reviewer questions & formal answers).
+                - **Presentation Slides:** [`docs/slides/FJCAI_2027_PRESENTATION_SLIDES.md`](docs/slides/FJCAI_2027_PRESENTATION_SLIDES.md) (15-slide Marp deck for Oral presentation).
                 """)
 
         gr.Markdown("""
         ---
-        *LifeMate CS-ASR Research Project © 2026. Faculty of IT (QNU), Dept. of ICT (USTH), Faculty of Computer Science (VKU, University of Danang).*
+        *LifeMate CS-ASR Research Project © 2026. Codebase and Artifacts prepared for Double-Blind Review at FJCAI 2027.*
         """)
 
     return demo

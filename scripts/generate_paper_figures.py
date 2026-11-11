@@ -1,10 +1,11 @@
 """
 Scientific Data Plotting Script for FJCAI 2027 Research Paper
 STRICT COMPLIANCE: 100% Programmatic Matplotlib Code - ZERO Generative AI Images
-Authors: Phung-Nguyen-Nhu Bach (QNU), Do-Phu Hung (USTH), Vo-Le-Quang Minh (VKU)
+Double-Blind Review Copy (Author details omitted)
 """
 
 import os
+from pathlib import Path
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -21,7 +22,8 @@ plt.rcParams['ytick.labelsize'] = 8.5
 plt.rcParams['legend.fontsize'] = 8.0
 plt.rcParams['figure.titlesize'] = 10.5
 
-out_dir = r"D:\Data_preprocessing\LifeMate-VietASR-Embedding-ZAIC\docs"
+project_root = Path(__file__).resolve().parent.parent
+out_dir = str(project_root / "docs" / "figures")
 os.makedirs(out_dir, exist_ok=True)
 
 # -------------------------------------------------------------------------

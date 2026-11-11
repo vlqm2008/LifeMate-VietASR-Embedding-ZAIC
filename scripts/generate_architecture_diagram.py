@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from matplotlib.patches import FancyBboxPatch, FancyArrowPatch
 import os
+from pathlib import Path
 
 def create_system_architecture_diagram(output_path):
     fig, ax = plt.subplots(figsize=(15, 9), dpi=300)
@@ -165,8 +166,6 @@ def create_system_architecture_diagram(output_path):
     print(f"[OK] Successfully rendered high-resolution architecture diagram: {output_path}")
 
 if __name__ == '__main__':
-    target = r"D:\Data_preprocessing\LifeMate-VietASR-Embedding-ZAIC\docs\pipeline_architecture.png"
+    project_root = Path(__file__).resolve().parent.parent
+    target = str(project_root / "docs" / "figures" / "pipeline_architecture.png")
     create_system_architecture_diagram(target)
-    # Also save to root and docs for easy access
-    target2 = r"D:\Data_preprocessing\LifeMate-VietASR-Embedding-ZAIC\docs\system_architecture.png"
-    create_system_architecture_diagram(target2)
