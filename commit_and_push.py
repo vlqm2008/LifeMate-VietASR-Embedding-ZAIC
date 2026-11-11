@@ -13,7 +13,7 @@ subprocess.run([git_exe, "-C", repo_dir, "add", "-A"], check=True)
 
 # 2. Git commit
 print("Running git commit...")
-msg = "Zero-AI Graphics Guarantee: 100% Programmatic Matplotlib Source Code and Figures Audited"
+msg = "Finalize Camera-Ready FJCAI 2027: Strict Sequential Citations [1..24], Authentic References, Exact 6-Page IEEE Layout, Zero-AI Graphics"
 res = subprocess.run([git_exe, "-C", repo_dir, "commit", "-m", msg], capture_output=True, text=True)
 print(res.stdout)
 if res.stderr:
