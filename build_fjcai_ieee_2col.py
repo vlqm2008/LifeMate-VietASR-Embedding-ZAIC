@@ -853,7 +853,9 @@ def build_perfect_paper(target_docx, line_spacing=1.05, body_pt=9.5, bottom_marg
     )
     add_para(
         "To ensure complete scientific transparency and foster collaborative community research, all LoRA adapter checkpoints, XGBoost decision forest weights, "
-        "feature extraction pipelines, and an interactive demonstration interface are publicly released under an open academic license at our project repository."
+        "feature extraction pipelines, and an interactive demonstration interface are publicly released under an open academic license at our project repository. "
+        "Furthermore, in strict adherence to publisher research integrity guidelines (including Springer Nature and IEEE AI-generated images policies), "
+        "all figures and diagrams in this paper were programmatically generated from empirical data via Python Matplotlib; no generative AI image creation tools were employed."
     )
 
     # --- APPENDIX A: STATISTICAL HYPOTHESIS TESTING ---
