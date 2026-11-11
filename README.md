@@ -157,6 +157,48 @@ LifeMate-VietASR-Embedding-ZAIC/
 
 ---
 
+
+---
+
+## 📄 Bản Thảo Camera-Ready Hoàn Chỉnh (Exactly 6 Pages IEEE Double-Column)
+
+Bản thảo bài báo chính thức nộp hội thảo **FJCAI 2027** đã được biên soạn và định dạng chuẩn xác theo khuôn mẫu **IEEE Double-Column (2 cột)** đạt chuẩn mật độ học thuật cao nhất của các bài báo accepted tại FJCAI:
+
+| Định dạng tệp | Đường dẫn tệp tin | Kích thước | Trạng thái |
+|---|---|---|---|
+| **Microsoft Word (.doc)** | [`docs/FJCAI_2027_LifeMate_CS_ASR_EN.doc`](docs/FJCAI_2027_LifeMate_CS_ASR_EN.doc) | 528.0 KB | ✅ Hoàn thiện chuẩn nộp ban tổ chức |
+| **Microsoft Word (.docx)** | [`docs/FJCAI_2027_LifeMate_CS_ASR_EN.docx`](docs/FJCAI_2027_LifeMate_CS_ASR_EN.docx) | 408.1 KB | ✅ Bản gốc OpenXML 6 trang |
+| **Compiled PDF (.pdf)** | [`docs/FJCAI_2027_LifeMate_CS_ASR_EN.pdf`](docs/FJCAI_2027_LifeMate_CS_ASR_EN.pdf) | 413.4 KB | ✅ Xuất trực tiếp từ Word COM Engine |
+| **LaTeX Source (.tex)** | [`docs/FJCAI_2027_LifeMate_CS_ASR_EN.tex`](docs/FJCAI_2027_LifeMate_CS_ASR_EN.tex) | 30.2 KB | ✅ IEEEtran template 6 trang |
+
+### 📸 Ảnh Chụp Toàn Bộ 6 Trang Bài Báo (Visual Page Previews)
+
+<p align="center">
+  <img src="docs/page_1.png" width="31%" alt="Page 1: Title, Abstract, Intro"/>
+  <img src="docs/page_2.png" width="31%" alt="Page 2: Related Work, Hypotheses, Methodology"/>
+  <img src="docs/page_3.png" width="31%" alt="Page 3: Algorithm 1, 32-dim Features, Setup"/>
+</p>
+<p align="center">
+  <img src="docs/page_4.png" width="31%" alt="Page 4: Benchmark Table I, Ablation Table II, Figures"/>
+  <img src="docs/page_5.png" width="31%" alt="Page 5: Generalization Table III, Case Studies, Latency Table V"/>
+  <img src="docs/page_6.png" width="31%" alt="Page 6: Conclusion, Ethical, Appendix A Table VI, References"/>
+</p>
+
+---
+
+## 🚀 Trải Nghiệm Ứng Dụng Web Tương Tác (Gradio Web UI)
+
+Dự án cung cấp giao diện Web UI tương tác bằng **Gradio** cho phép thử nghiệm trực quan:
+- **Tab 1: Live Inference & Closed-Loop Re-decoding:** Tải lên file âm thanh `.wav` hoặc chọn các mẫu thoại thực tế (`samples/sample1_meeting.wav`, `sample2_deploy.wav`, v.v.), hệ thống sẽ hiển thị bản dịch Whisper gốc, phân tích điểm ngữ nghĩa BGE-M3, ngưỡng động XGBoost $T_{dynamic}$, và tự động kích hoạt Re-decoding nếu phát hiện nhập nhằng âm vị.
+- **Tab 2: Multi-Model Benchmark Comparison:** Bảng đối sánh trực tiếp 7 kiến trúc mô hình (WER, SyER, E-WER, Hallucination, RTF, Tham số).
+- **Tab 3: Architecture & Parameter Budget Inspector:** Bảng phân bổ chi tiết tham số và bộ nhớ VRAM cho từng module (Tổng cộng $1.377\text{B} < 1.5\text{B}$).
+- **Tab 4: Paper Artifacts & Downloads:** Tải trực tiếp các tệp `.doc`, `.docx`, `.pdf`, `.tex`.
+
+```bash
+# Khởi chạy ứng dụng Web trên cổng localhost:7860
+python app.py
+```
+
 ## 📖 Trích Dẫn Bài Báo (Citation)
 
 Nếu bạn sử dụng mã nguồn, dữ liệu hoặc kiến trúc này trong nghiên cứu, vui lòng trích dẫn theo định dạng IEEE:
