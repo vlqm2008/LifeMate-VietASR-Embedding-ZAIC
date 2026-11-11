@@ -51,10 +51,11 @@ Nhóm nghiên cứu đã hoàn tất việc tinh chỉnh toàn diện bài báo 
 ### 3. Nhờ Các Anh Rà Soát & Xác Nhận (Checklist Cần Phản Hồi)
 
 Kính nhờ anh Bách và anh Hưng kiểm tra giúp em các thông tin sau:
-- [ ] **Thứ tự và thông tin tác giả:**
-  - 1. Phung-Nguyen-Nhu Bach (QNU - `bachpnn@qnu.edu.vn`)
-  - 2. Do-Phu Hung (USTH - `hung.dp@usth.edu.vn`)
-  - 3. Vo-Le-Quang Minh (VKU - `minhvlq.26itb@vku.udn.vn` / `minhvlq@vku.udn.vn`, ORCID: `0009-0007-5744-6790`)
+- [ ] **Thứ tự và định dạng đồng tác giả:**
+  - 1. Phung-Nguyen-Nhu Bach
+  - 2. Do-Phu Hung
+  - 3. Vo-Le-Quang Minh (Tác giả liên hệ)
+  *(Các chi tiết email và đơn vị công tác cá nhân đã được ẩn trên bản thảo công khai để bảo vệ tính ẩn danh phản biện)*
 - [ ] **Mục Lời cảm ơn (Acknowledgment):** Các đơn vị tài trợ tính toán (PTN Điện toán hiệu năng cao QNU, Khoa CNTT&TT USTH, Khoa KHMT VKU).
 - [ ] **Phê duyệt bản nộp:** Xác nhận đồng thuận nội dung bài báo và cam kết liêm chính khoa học theo Quyết định 2557/QĐ-BKHCN để tiến hành nộp bài.
 

@@ -143,7 +143,7 @@ def create_vietnamese_docx():
     p_title.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p_title.paragraph_format.space_before = Pt(12)
     p_title.paragraph_format.space_after = Pt(6)
-    r_title = p_title.add_run("KIẾN TRÚC NHẬN DẠNG TIẾNG NÓI CHUYỂN MÃ VIỆT – ANH DƯỚI 1.5 TỶ THAM SỐ KẾT HỢP TÁI XẾP HẠNG NGỮ NGHĨA BGE-M3 VÀ THIẾT LẬP NGƯỠNG ĐỘNG XGBOOST")
+    r_title = p_title.add_run("KIẾN TRÚC NHẬN DẠNG TIẾNG NÓI CHUYỂN MÃ VIỆT – ANH HỘI THOẠI QUA CƠ CHẾ PHẢN HỒI NGỮ NGHĨA SONG NGỮ VÀ ĐỊNH NGƯỠNG ĐỘNG")
     r_title.font.name = "Times New Roman"
     r_title.font.size = Pt(14)
     r_title.font.bold = True
@@ -171,13 +171,13 @@ def create_vietnamese_docx():
     p_aff.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p_aff.paragraph_format.space_after = Pt(14)
     r_aff = p_aff.add_run(
-        "¹ Khoa Công nghệ Thông tin, Trường Đại học Sư phạm Quy Nhơn (QNU)\n"
-        "² Khoa Công nghệ Thông tin & Truyền thông, Trường ĐH Khoa học và Công nghệ Hà Nội (USTH)\n"
-        "³ Khoa Khoa học Máy tính, Trường ĐH CNTT & TT Việt – Hàn (VKU), Đại học Đà Nẵng\n"
-        "Email: bachpnn@qnu.edu.vn, hung.dp@usth.edu.vn, minhvlq.26itb@vku.udn.vn"
+        "Liên minh Nghiên cứu Trí tuệ Nhân tạo Việt Nam (Vietnam AI Research Consortium)\n"
+        "(Thông tin chi tiết đơn vị công tác và email liên hệ được ẩn phục vụ phản biện học thuật ẩn danh)"
     )
     r_aff.font.name = "Times New Roman"
     r_aff.font.size = Pt(9.5)
+    r_aff.font.italic = True
+    r_aff.font.color.rgb = RGBColor(90, 90, 90)
 
     # Process markdown lines
     raw_lines = md_text.splitlines()

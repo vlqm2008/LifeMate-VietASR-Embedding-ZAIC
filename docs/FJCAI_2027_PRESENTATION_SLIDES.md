@@ -7,11 +7,12 @@ backgroundColor: #f8fafc
 color: #0f172a
 ---
 
-# Kiến Trúc Nhận Dạng Tiếng Nói Chuyển Mã Việt – Anh Dưới 1.5 Tỷ Tham Số
-## Tái Xếp Hạng Ngữ Nghĩa BGE-M3 & Ngưỡng Động XGBoost
+# Nhận Dạng Tiếng Nói Chuyển Mã Việt – Anh Hội Thoại
+## Phản Hồi Ngữ Nghĩa Song Ngữ & Ngưỡng Động XGBoost
 
-**Tác giả:** Phùng Nguyễn Như Bách (QNU), Đỗ Phú Hưng (USTH), Võ Lê Quang Minh (VKU)  
-**Hội thảo:** Hội thảo Quốc gia về Trí tuệ Nhân tạo (FJCAI 2027)  
+**Nhóm tác giả:** Phùng Nguyễn Như Bách, Đỗ Phú Hưng, Võ Lê Quang Minh  
+*(Vietnam AI Research Consortium)*  
+**Hội thảo:** Hội thảo Quốc gia về Trí tuệ Nhân tạo 2027 (FJCAI 2027)  
 **Track:** Xử lý ngôn ngữ & Tiếng Việt / Học máy & Học sâu  
 
 ---
@@ -239,8 +240,7 @@ color: #0f172a
 ### Trân trọng cảm ơn Hội đồng Phản biện và Quý Thầy Cô!
 
 **Nhóm tác giả:**
-* **Phùng Nguyễn Như Bách** (bachpnn@qnu.edu.vn) - Trường ĐH Sư phạm Quy Nhơn
-* **Đỗ Phú Hưng** (hung.dp@usth.edu.vn) - Trường ĐH Khoa học và Công nghệ Hà Nội
-* **Võ Lê Quang Minh** (minhvlq@vku.udn.vn) - Trường ĐH CNTT & TT Việt – Hàn (VKU)
+* **Phùng Nguyễn Như Bách**, **Đỗ Phú Hưng**, **Võ Lê Quang Minh**
+*(Thông tin đơn vị công tác và email liên hệ được ẩn phục vụ phản biện học thuật)*
 
 **GitHub Repository:** [LifeMate-VietASR-Embedding-ZAIC](https://github.com/AIVIETNAM-AIO-MinhHocAyAi/LifeMate-VietASR-Embedding-ZAIC)

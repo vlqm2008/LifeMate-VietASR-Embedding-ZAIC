@@ -1,4 +1,4 @@
-# Bilingual Semantic Regularization and Dynamic Thresholding for Vietnamese–English Code-Switching Speech Recognition Under 1.5B Parameters
+# Closed-Loop Bilingual Semantic Regularization and Dynamic Thresholding for Conversational Vietnamese–English Code-Switching Speech Recognition
 
 Official research repository and reproducibility package for the **FJCAI 2027** submission (*National Conference on Artificial Intelligence 2027 - Danang, April 8–9, 2027*).
 
@@ -30,17 +30,10 @@ Official research repository and reproducibility package for the **FJCAI 2027** 
 
 ---
 
-## 👥 Authors & Affiliations
+## 👥 Authors
 
-1. **Phung-Nguyen-Nhu Bach**¹  
-   *Faculty of Information Technology, Quy Nhon University (QNU), Quy Nhon, Vietnam.*  
-   Email: `bachpnn@qnu.edu.vn`
-2. **Do-Phu Hung**²  
-   *Department of ICT, University of Science and Technology of Hanoi (USTH), Hanoi, Vietnam.*  
-   Email: `hung.dp@usth.edu.vn`
-3. **Vo-Le-Quang Minh**³ (ORCID: [0009-0007-5744-6790](https://orcid.org/0009-0007-5744-6790))  
-   *Faculty of Computer Science, Vietnam–Korea University of Information and Communication Technology (VKU), The University of Danang, Danang, Vietnam.*  
-   Email: `minhvlq.26itb@vku.udn.vn` / `minhvlq@vku.udn.vn`
+- **Phung-Nguyen-Nhu Bach**¹*, **Do-Phu Hung**²*, **Vo-Le-Quang Minh**³* (*Equal Contribution)  
+*(Institutional affiliations and contact emails omitted for peer-review anonymity)*
 
 ---
 
@@ -64,32 +57,9 @@ Evaluations across SEA Code-Switching, ViMedCSS, and ZAIC 2026 LifeMate benchmar
 
 ## 🏗️ Closed-Loop System Architecture
 
-```
-+----------------------------------------------------------------------------------+
-|                            CLOSED-LOOP CS-ASR PIPELINE                           |
-|                                                                                  |
-|   [ Audio Signal x ]                                                             |
-|           |                                                                      |
-|           v                                                                      |
-|   +-----------------------+     N-best Hypotheses     +----------------------+   |
-|   |  Whisper-Large-Turbo  | ------------------------> | BGE-M3 Multilingual  |   |
-|   |  (LoRA Adapted ASR)   |   H_K = {y^(1)...y^(K)}   |  Semantic Reranker   |   |
-|   +-----------------------+                           +----------------------+   |
-|           ^                                                      |               |
-|           |                                                      v               |
-|    Re-decode Loop                                     [ 32-dim Feature Vector ]  |
-|    (Logit Penalty)                                    z = [phi_ASR, phi_SEM]     |
-|           |                                                      |               |
-|           +----------------- Reject (Score < T_dyn) <----+       v               |
-|                                                          |  +----------------+   |
-|                                                          +--| XGBoost Meta-  |   |
-|                                                             | Judge (T_dyn)  |   |
-|                                                             +----------------+   |
-|                                                                  |               |
-|                                                                  v Accept        |
-|                                                       [ Final Transcript y* ]    |
-+----------------------------------------------------------------------------------+
-```
+<p align="center">
+  <img src="docs/pipeline_architecture.png" alt="Closed-Loop CS-ASR System Architecture" width="100%">
+</p>
 
 ### Parameter Budget Allocation
 
@@ -198,7 +168,7 @@ If you use this codebase, dataset, or architecture in your research, please cite
 ```bibtex
 @inproceedings{bach2027lifemate,
   author    = {Phung-Nguyen-Nhu Bach and Do-Phu Hung and Vo-Le-Quang Minh},
-  title     = {Bilingual Semantic Regularization and Dynamic Thresholding for Vietnamese–English Code-Switching Speech Recognition Under 1.5B Parameters},
+  title     = {Closed-Loop Bilingual Semantic Regularization and Dynamic Thresholding for Conversational Vietnamese–English Code-Switching Speech Recognition},
   booktitle = {Proceedings of the National Conference on Artificial Intelligence (FJCAI)},
   year      = {2027},
   address   = {Danang, Vietnam},

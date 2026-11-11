@@ -1,15 +1,13 @@
-# Kiến Trúc Nhận Dạng Tiếng Nói Chuyển Mã Việt – Anh Dưới 1.5 Tỷ Tham Số Kết Hợp Tái Xếp Hạng Ngữ Nghĩa BGE-M3 và Thiết Lập Ngưỡng Động XGBoost
+# Kiến Trúc Nhận Dạng Tiếng Nói Chuyển Mã Việt – Anh Hội Thoại Qua Cơ Chế Phản Hồi Ngữ Nghĩa Song Ngữ và Định Ngưỡng Động
 
 **Tác giả:**  
-**Phùng Nguyễn Như Bách**$^1$, **Đỗ Phú Hưng**$^2$, **Võ Lê Quang Minh**$^3$  
-$^1$ Khoa Công nghệ Thông tin, Trường Đại học Sư phạm Quy Nhơn (QNU)  
-$^2$ Khoa Công nghệ Thông tin và Truyền thông, Trường Đại học Khoa học và Công nghệ Hà Nội (USTH)  
-$^3$ Khoa Khoa học Máy tính, Trường Đại học Công nghệ Thông tin và Truyền thông Việt – Hàn (VKU), Đại học Đà Nẵng  
-*Email liên hệ:* bachpnn@qnu.edu.vn, hung.dp@usth.edu.vn, minhvlq@vku.udn.vn  
+**Phùng Nguyễn Như Bách**¹*, **Đỗ Phú Hưng**²*, **Võ Lê Quang Minh**³*  
+*Liên minh Nghiên cứu Trí tuệ Nhân tạo Việt Nam (Vietnam AI Research Consortium)*  
+*(Thông tin chi tiết đơn vị công tác và email liên hệ được ẩn phục vụ phản biện học thuật ẩn danh)*  
 
-**Hội thảo:** Hội thảo Quốc gia về Trí tuệ Nhân tạo (FJCAI 2027)  
+**Hội thảo:** Hội thảo Quốc gia về Trí tuệ Nhân tạo 2027 (FJCAI 2027)  
 **Chuyên đề (Track):** Xử lý ngôn ngữ & Tiếng Việt / Học máy & Học sâu  
-**Hình thức bài báo:** Bài toàn văn chuẩn IEEE (Full Research Paper, 8 trang)  
+**Hình thức bài báo:** Bài toàn văn chuẩn IEEE Camera-Ready (Full Research Paper)  
 
 ---
 

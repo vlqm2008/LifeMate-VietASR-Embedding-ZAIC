@@ -119,20 +119,20 @@ def build_perfect_paper(target_docx, line_spacing=1.05, body_pt=9.5, bottom_marg
     p_title.paragraph_format.space_before = Pt(0)
     p_title.paragraph_format.space_after = Pt(6)
     r_title = p_title.add_run(
-        "Bilingual Semantic Regularization and Dynamic Thresholding for\n"
-        "Vietnamese–English Code-Switching Speech Recognition Under 1.5B Parameters"
+        "Closed-Loop Bilingual Semantic Regularization and Dynamic Thresholding for\n"
+        "Conversational Vietnamese–English Code-Switching Speech Recognition"
     )
     r_title.font.name = 'Times New Roman'
     r_title.font.size = Pt(15.5)
     r_title.bold = True
 
-    # 2. Authors - Centered Text Block (NO TABLE, matching ELCameraSpectralTFT1.pdf)
+    # 2. Authors - Centered Text Block
     p_auth = doc.add_paragraph()
     p_auth.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p_auth.paragraph_format.space_before = Pt(2)
     p_auth.paragraph_format.space_after = Pt(2)
     p_auth.paragraph_format.line_spacing = 1.05
-    r_auth = p_auth.add_run("Phung-Nguyen-Nhu Bach*, Do-Phu Hung†, Vo-Le-Quang Minh‡")
+    r_auth = p_auth.add_run("Phung-Nguyen-Nhu Bach*, Do-Phu Hung*, Vo-Le-Quang Minh*")
     r_auth.font.name = 'Times New Roman'
     r_auth.font.size = Pt(10.0)
     r_auth.bold = True
@@ -143,20 +143,11 @@ def build_perfect_paper(target_docx, line_spacing=1.05, body_pt=9.5, bottom_marg
     p_aff.paragraph_format.space_after = Pt(6)
     p_aff.paragraph_format.line_spacing = 1.02
     
-    r_aff1 = p_aff.add_run("*Faculty of Information Technology, Quy Nhon University (QNU), Quy Nhon, Vietnam\nEmail: bachpnn@qnu.edu.vn\n")
-    r_aff1.font.name = 'Times New Roman'
-    r_aff1.font.size = Pt(8.5)
-    r_aff1.font.color.rgb = RGBColor(60, 60, 60)
-    
-    r_aff2 = p_aff.add_run("†Department of ICT, University of Science and Technology of Hanoi (USTH), Hanoi, Vietnam\nEmail: hung.dp@usth.edu.vn\n")
-    r_aff2.font.name = 'Times New Roman'
-    r_aff2.font.size = Pt(8.5)
-    r_aff2.font.color.rgb = RGBColor(60, 60, 60)
-    
-    r_aff3 = p_aff.add_run("‡Faculty of Computer Science, Vietnam–Korea University of Info. & Comm. Tech. (VKU), The University of Danang, Vietnam\nEmail: minhvlq@vku.udn.vn")
-    r_aff3.font.name = 'Times New Roman'
-    r_aff3.font.size = Pt(8.5)
-    r_aff3.font.color.rgb = RGBColor(60, 60, 60)
+    r_aff = p_aff.add_run("*Vietnam AI Research Consortium\n(Institutional affiliations and author contact emails omitted for peer-review anonymity)")
+    r_aff.font.name = 'Times New Roman'
+    r_aff.font.size = Pt(8.5)
+    r_aff.font.italic = True
+    r_aff.font.color.rgb = RGBColor(90, 90, 90)
 
     # =========================================================================
     # SECTION 1: TWO-COLUMN BODY SECTION (Continuous Break immediately after author block!)
