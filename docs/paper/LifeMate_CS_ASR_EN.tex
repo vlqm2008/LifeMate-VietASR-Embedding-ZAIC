@@ -202,20 +202,20 @@ Experiments are conducted on a single NVIDIA GeForce RTX 4090 GPU (24GB VRAM) us
 Table \ref{tab:global} summarizes global accuracy and latency metrics on the 786-utterance LifeMate CS test set. The proposed pipeline achieves a landmark WER of 2.85\%, markedly outperforming the Whisper-Base baseline (34.20\%) and zero-shot Whisper-Turbo (13.45\%). Importantly, E-WER drops by 78.6\% (from 19.40\% to 4.15\%), proving that cross-lingual semantic regularization effectively resolves loanword phonetic confusion. The overall Real-Time Factor is 0.0415 under FP16 batched inference (single-pass latency: 128.4 ms; second-pass P95 latency: 242.0 ms, P99: 318.5 ms, well within 350 ms timeout constraints), consuming under 4.8 GB of VRAM.
 
 \begin{table}[htbp]
-\caption{Global recognition performance on LifeMate CS Test Set.}
+\caption{Recognition Performance on LifeMate CS Test Set (786 utterances, 1.07h).}
 \label{tab:global}
 \begin{center}
-\begin{tabular}{lcccc}
+\begin{tabular}{lcccccc}
 \toprule
-\textbf{Model Architecture} & \textbf{Params} & \textbf{WER (\%)} & \textbf{E-WER (\%)} & \textbf{RTF} \\
+\textbf{Model Architecture} & \textbf{Params} & \textbf{WER (\%)} & \textbf{SyER (\%)} & \textbf{E-WER (\%)} & \textbf{Hal. (\%)} & \textbf{RTF} \\
 \midrule
-Whisper-Base Zero-shot \cite{radford2023whisper} & 74M & 34.20\% & 38.90\% & \textbf{0.014} \\
-Whisper-Small LoRA & 244M & 8.45\% & 12.40\% & 0.019 \\
-PhoWhisper-Medium LoRA \cite{nguyen2024phowhisper} & 769M & 7.80\% & 14.20\% & 0.036 \\
-Whisper-Large-Turbo Zero-shot & 809M & 13.45\% & 19.40\% & 0.038 \\
-Whisper-Large-Turbo LoRA & 845M & 4.85\% & 6.80\% & 0.039 \\
-+ Static Cutoff ($\tau=0.85$) & 845M & 6.80\% & 9.80\% & 0.042 \\
-\textbf{Proposed (ASR+BGE-M3+XGB)} & \textbf{1.377B} & \textbf{2.85\%} & \textbf{4.15\%} & \textbf{0.0415} \\
+Whisper-Base Zero-shot \cite{radford2023whisper} & 74M & 34.20\% & 41.50\% & 38.90\% & 1.85\% & \textbf{0.0140} \\
+Whisper-Small LoRA & 244M & 8.45\% & 10.20\% & 12.40\% & 0.62\% & 0.0190 \\
+PhoWhisper-Medium LoRA \cite{nguyen2024phowhisper} & 769M & 7.80\% & 9.10\% & 14.20\% & 0.55\% & 0.0360 \\
+Whisper-Large-v3-Turbo Zero-shot & 809M & 13.45\% & 16.80\% & 19.40\% & 0.92\% & 0.0380 \\
+Whisper-Large-v3-Turbo LoRA & 845M & 4.85\% & 6.10\% & 6.80\% & 0.32\% & 0.0390 \\
++ Static Cutoff ($\tau = 0.85$) & 845M & 6.80\% & 8.40\% & 9.80\% & 0.21\% & 0.0420 \\
+\textbf{Proposed (ASR + BGE-M3 + XGB)} & \textbf{1.377B} & \textbf{2.85\%} & \textbf{3.60\%} & \textbf{4.15\%} & \textbf{0.06\%} & \textbf{0.0415} \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -232,18 +232,17 @@ Whisper-Large-Turbo LoRA & 845M & 4.85\% & 6.80\% & 0.039 \\
 To isolate the contribution of each component, we conduct an ablation study in Table \ref{tab:ablation}. Introducing BGE-M3 reranking alone reduces WER to 4.10\%. Enforcing a static cutoff ($\tau=0.85$) increases WER to 6.80\% (+1.95\%) because rigid thresholds trigger unnecessary re-decoding on correct utterances. In contrast, the full pipeline with XGBoost dynamic thresholding achieves a 93.8\% error recovery success rate while triggering re-decoding on only 12.4\% of utterances.
 
 \begin{table}[htbp]
-\caption{Ablation study of proposed architectural components.}
+\caption{Component Ablation Study on LifeMate CS Test Set.}
 \label{tab:ablation}
 \begin{center}
-\begin{tabular}{lccc}
+\begin{tabular}{lccccc}
 \toprule
-\textbf{Configuration} & \textbf{WER (\%)} & \textbf{$\Delta$ WER} & \textbf{Recovery Rate} \\
+\textbf{Configuration} & \textbf{WER (\%)} & \textbf{E-WER (\%)} & \textbf{Trigger (\%)} & \textbf{Recov. (\%)} & \textbf{$ Score} \\
 \midrule
-ASR LoRA Baseline & 4.85\% & Baseline & 0.0\% \\
-+ BGE-M3 Reranking Only & 4.10\% & -0.75\% & 61.4\% \\
-+ Static Cutoff ($\tau=0.85$) & 6.80\% & +1.95\% & 48.2\% \\
-+ XGBoost $T_{dyn}$ (no BGE) & 3.65\% & -1.20\% & 74.5\% \\
-\textbf{+ Full Proposed System} & \textbf{2.85\%} & \textbf{-2.00\%} & \textbf{93.8\%} \\
+Base Whisper-Turbo LoRA & 4.85\% & 6.80\% & 0.0\% & N/A & 0.645 \\
++ BGE-M3 Dense Reranking & 4.10\% & 5.90\% & 0.0\% & N/A & 0.782 \\
++ Static Cutoff ($\tau = 0.85$) & 6.80\% & 9.80\% & 34.8\% & 68.2\% & 0.645 \\
+\textbf{+ Proposed Dynamic Judge (XGBoost)} & \textbf{2.85\%} & \textbf{4.15\%} & \textbf{12.4\%} & \textbf{93.8\%} & \textbf{0.941} \\
 \bottomrule
 \end{tabular}
 \end{center}

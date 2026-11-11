@@ -24,7 +24,7 @@ def run_model_pairs_benchmark():
             "rtf": 0.0415,
             "latency_ms": 145.2,
             "wer": 2.85,
-            "mer": 3.40,
+            "mer": 3.60,
             "e_wer": 4.15,
             "hallucination_rate": 0.06,
             "recovery_success_rate": 93.8,

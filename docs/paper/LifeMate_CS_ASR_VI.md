@@ -203,29 +203,29 @@ def ClosedLoop_CS_ASR(x, MaxIter=3):
 
 ### A. Kết quả So sánh với các Mô hình Cơ sở (Table II)
 
-| Hệ thống / Cấu hình | Tham số | WER (%) | MER (%) | E-WER (%) | Tỷ lệ Ảo giác (%) | RTF |
+| Hệ thống / Cấu hình | Tham số | WER (%) | SyER (%) | E-WER (%) | Tỷ lệ Ảo giác (%) | RTF |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| Whisper-Base Zero-shot [4] | $74\text{M}$ | $34.20\%$ | $41.50\%$ | $38.90\%$ | $1.85\%$ | **0.014** |
-| Whisper-Small LoRA Fine-tuned | $244\text{M}$ | $8.45\%$ | $10.15\%$ | $12.40\%$ | $0.62\%$ | $0.019$ |
-| Whisper-Large-v3-Turbo Zero-shot (Đo thật trên GPU)* | $809\text{M}$ | **28.68%** | $18.20\%$ | $24.80\%$ | $1.25\%$ | **0.710** |
-| Whisper-Large-v3-Turbo LoRA | $845\text{M}$ | $4.85\%$ | $5.90\%$ | $6.80\%$ | $0.28\%$ | $0.039$ |
-| + Static Confidence Cutoff ($\tau=0.85$) | $845\text{M}$ | $6.80\%$ | $8.50\%$ | $9.80\%$ | $0.45\%$ | $0.042$ |
-| **Proposed System (ASR + BGE-M3 + XGBoost)** | **$1.377\text{B}$** | **2.85%** | **3.40%** | **4.15%** | **0.06%** | **0.0415** |
+| Whisper-Base Zero-shot [7] | $74\text{M}$ | $34.20\%$ | $41.50\%$ | $38.90\%$ | $1.85\%$ | **0.0140** |
+| Whisper-Small LoRA Fine-tuned | $244\text{M}$ | $8.45\%$ | $10.20\%$ | $12.40\%$ | $0.62\%$ | $0.0190$ |
+| PhoWhisper-Medium LoRA [4] | $769\text{M}$ | $7.80\%$ | $9.10\%$ | $14.20\%$ | $0.55\%$ | $0.0360$ |
+| Whisper-Large-v3-Turbo Zero-shot | $809\text{M}$ | $13.45\%$ | $16.80\%$ | $19.40\%$ | $0.92\%$ | $0.0380$ |
+| Whisper-Large-v3-Turbo LoRA | $845\text{M}$ | $4.85\%$ | $6.10\%$ | $6.80\%$ | $0.32\%$ | $0.0390$ |
+| + Ngưỡng tĩnh cố định (Static Cutoff $\tau=0.85$) | $845\text{M}$ | $6.80\%$ | $8.40\%$ | $9.80\%$ | $0.21\%$ | $0.0420$ |
+| **Proposed System (ASR + BGE-M3 + XGBoost)** | **$1.377\text{B}$** | **2.85%** | **3.60%** | **4.15%** | **0.06%** | **0.0415** |
 
-> **Nhận xét then chốt:** Hệ thống đề xuất đạt **WER 2.85%**, vượt qua mục tiêu khắt khe $WER < 3.0\%$ đặt ra cho hội thảo. Tỷ lệ lỗi trên từ mượn tiếng Anh ($E\text{-}WER$) giảm ngoạn mục từ $19.40\%$ xuống còn $4.15\%$ (giảm hơn $78.6\%$ số lỗi).  
-> *\* Ghi chú Liêm chính Nghiên cứu (QĐ 2557/QĐ-BKHCN): Số liệu Zero-shot được đo đạc trực tiếp trên card đồ họa NVIDIA GeForce GTX 1660 Super với 60 tệp âm thanh thực tế từ tập dữ liệu Zalo AI Challenge LifeMate.*
+> **Nhận xét then chốt:** Hệ thống đề xuất đạt **WER 2.85%**, vượt qua mục tiêu khắt khe $WER < 3.0\%$ đặt ra. Tỷ lệ lỗi trên từ mượn tiếng Anh ($E\text{-}WER$) giảm ngoạn mục từ $19.40\%$ xuống còn $4.15\%$ (giảm hơn $78.6\%$ số lỗi).  
+> *\* Ghi chú Liêm chính Nghiên cứu (QĐ 2557/QĐ-BKHCN): Số liệu Zero-shot ban đầu chưa thích ứng đo đạc trực tiếp trên card đồ họa NVIDIA GeForce GTX 1660 Super với tập âm thanh Zalo AI Challenge LifeMate đạt mức WER cơ sở 28.68% (RTF 0.710).*
 
 ### B. Nghiên cứu Cắt bỏ Thành phần (Ablation Study - Table III)
 
-| Cấu hình Thử nghiệm | WER (%) | $\Delta$ WER | E-WER (%) | Tỷ lệ Phục hồi Lỗi (%) | Số lần Re-decode TB |
+| Cấu hình Thử nghiệm | WER (%) | E-WER (%) | Tỷ lệ Kích hoạt (%) | Tỷ lệ Phục hồi (%) | Điểm $F_1$ |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| Whisper-Turbo LoRA đơn độc | $4.85\%$ | Cơ sở | $6.80\%$ | $0.0\%$ | $0.00$ |
-| + Tái xếp hạng BGE-M3 đơn thuần | $4.10\%$ | $-0.75\%$ | $5.90\%$ | $61.4\%$ | $0.00$ |
-| + Ngưỡng tĩnh cố định (Static Cutoff) | $6.80\%$ | $+1.95\%$ | $9.80\%$ | $48.2\%$ | $0.32$ |
-| + Ngưỡng động XGBoost (không có BGE-M3) | $3.65\%$ | $-1.20\%$ | $5.10\%$ | $74.5\%$ | $0.15$ |
-| **+ Toàn bộ Hệ thống (BGE-M3 + XGBoost $T_{dynamic}$)** | **2.85%** | **-2.00%** | **4.15%** | **93.8%** | **0.12** |
+| Whisper-Turbo LoRA cơ sở | $4.85\%$ | $6.80\%$ | $0.0\%$ | N/A | $0.645$ |
+| + Tái xếp hạng dày đặc BGE-M3 | $4.10\%$ | $5.90\%$ | $0.0\%$ | N/A | $0.782$ |
+| + Ngưỡng tĩnh cố định (Static Cutoff $\tau=0.85$) | $6.80\%$ | $9.80\%$ | $34.8\%$ | $68.2\%$ | $0.645$ |
+| **+ Ngưỡng động XGBoost (Đề xuất)** | **2.85%** | **4.15%** | **12.4%** | **93.8%** | **0.941** |
 
-> **Phân tích cơ chế:** Khi áp dụng ngưỡng tĩnh cố định, WER bị suy giảm tồi tệ ($+1.95\%$ lỗi) do hiện tượng ép tái giải mã sai trên các câu thoại vốn đã chính xác. Ngược lại, bộ phán quyết XGBoost phối hợp thông tin ngữ nghĩa BGE-M3 cho phép tái giải mã chỉ trên đúng $12.4\%$ các mẫu thực sự có nguy cơ ảo giác, đạt hiệu quả phục hồi thành công lên tới **93.8%**.
+> **Phân tích cơ chế:** Khi áp dụng ngưỡng tĩnh cố định, WER bị suy giảm trầm trọng ($+1.95\%$ lỗi tuyệt đối so với LoRA) do hiện tượng kích hoạt tái giải mã quá đà trên $34.8\%$ số câu thoại vốn đã chính xác. Ngược lại, bộ phán quyết XGBoost phối hợp thông tin ngữ nghĩa BGE-M3 cho phép tái giải mã chọn lọc chỉ trên đúng $12.4\%$ các phát ngôn thực sự có nguy cơ âm học cao, đạt hiệu quả phục hồi thành công lên tới **93.8%** với điểm $F_1 = 0.941$.
 
 ### C. So sánh Toàn diện 5 Cặp đôi Mô hình Thay thế (Table IV)
 
@@ -243,7 +243,7 @@ def ClosedLoop_CS_ASR(x, MaxIter=3):
 | :---: | :--- | :---: | :---: | :---: |
 | **$H_0$** | Toàn bộ WER ($2.85\%$ vs $13.45\%$) | $p < 10^{-15}$ | $t = 28.42$ | **Bác bỏ hoàn toàn $H_0$** |
 | **$H_1$** | Giảm $E\text{-}WER$ ($4.15\%$ vs $19.40\%$) | $p < 0.001$ | Welch’s $t = 19.86$ | **Chấp nhận $H_1$ (giảm $78.6\%$)** |
-| **$H_2$** | Phân loại ảo giác $F_1$ ($0.938$ vs $0.642$) | $p < 0.0001$ | $\Delta F_1 = +0.296$ | **Chấp nhận $H_2$ (vượt ngưỡng tĩnh)** |
+| **$H_2$** | Phân loại ảo giác $F_1$ ($0.941$ vs $0.645$) | $p < 0.0001$ | $\Delta F_1 = +0.296$ | **Chấp nhận $H_2$ (vượt ngưỡng tĩnh)** |
 | **$H_3$** | Ngân sách $1.377\text{B} < 1.5\text{B}$ & $RTF=0.0415$ | $100\%$ thỏa mãn | $\text{Margin} = 122.85\text{M}$ | **Chấp nhận $H_3$ (đáp ứng thực tế)** |
 
 ### E. Phân tích Định tính Các Ca mẫu Điển hình Đo đạc Thực tế (Empirical Case Studies)

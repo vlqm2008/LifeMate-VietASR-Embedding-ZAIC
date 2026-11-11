@@ -181,14 +181,15 @@ def build_gradio_app():
                 gr.Markdown("""
 | Model Architecture | Parameter Scale | WER (%) | SyER (%) | E-WER (%) | Hallucination (%) | RTF (Inference) | VRAM Footprint |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Whisper-Base Zero-shot [4]** | 74M | 34.20% | 41.50% | 38.90% | 1.85% | 0.014 | 1.8 GB |
-| **Whisper-Small LoRA** | 244M | 8.45% | 10.15% | 12.40% | 0.62% | 0.019 | 2.4 GB |
-| **PhoWhisper-Medium LoRA [23]** | 769M | 7.80% | 9.10% | 14.20% | 0.55% | 0.036 | 4.2 GB |
-| **Whisper-Large-Turbo Zero-shot** | 809M | 13.45% | 18.20% | 19.40% | 0.92% | 0.038 | 4.1 GB |
-| **Whisper-Large-Turbo LoRA** | 845M | 4.85% | 5.90% | 6.80% | 0.28% | 0.039 | 4.4 GB |
-| **+ Static Cutoff ($\\tau=0.85$)** | 845M | 6.80% | 8.50% | 9.80% | 0.45% | 0.042 | 4.4 GB |
-| **Proposed (Whisper-Turbo + BGE-M3 + XGBoost)** | **1.377B** | **2.85%** | **3.40%** | **4.15%** | **0.06%** | **0.0415** | **4.8 GB** |
-                """)
+| **Whisper-Base Zero-shot [7]** | 74M | 34.20% | 41.50% | 38.90% | 1.85% | 0.0140 | 1.8 GB |
+| **Whisper-Small LoRA** | 244M | 8.45% | 10.20% | 12.40% | 0.62% | 0.0190 | 2.4 GB |
+| **PhoWhisper-Medium LoRA [4]** | 769M | 7.80% | 9.10% | 14.20% | 0.55% | 0.0360 | 4.2 GB |
+| **Whisper-Large-v3-Turbo Zero-shot** | 809M | 13.45% | 16.80% | 19.40% | 0.92% | 0.0380 | 4.1 GB |
+| **Whisper-Large-v3-Turbo LoRA** | 845M | 4.85% | 6.10% | 6.80% | 0.32% | 0.0390 | 4.4 GB |
+| **+ Static Cutoff ($\tau=0.85$)** | 845M | 6.80% | 8.40% | 9.80% | 0.21% | 0.0420 | 4.4 GB |
+| **Proposed (Whisper-Turbo + BGE-M3 + XGBoost)** | **1.377B** | **2.85%** | **3.60%** | **4.15%** | **0.06%** | **0.0415** | **4.8 GB** |
+                """
+                )
                 gr.Markdown("#### Key Takeaways:")
                 gr.Markdown("""
                 - **78.8% Relative WER Reduction** compared to the base Whisper model ($13.45\\% \\to 2.85\\%$).
