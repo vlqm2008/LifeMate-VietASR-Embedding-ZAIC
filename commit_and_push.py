@@ -13,7 +13,7 @@ subprocess.run([git_exe, "-C", repo_dir, "add", "-A"], check=True)
 
 # 2. Git commit
 print("Running git commit...")
-msg = "Clean and Purge Scratch/Intermediate Artifacts: Production-Ready Human-Authored Repository"
+msg = "Add Memory Breakdown Ledger and Collaborator Data Attribution & Sharing Guide"
 res = subprocess.run([git_exe, "-C", repo_dir, "commit", "-m", msg], capture_output=True, text=True)
 print(res.stdout)
 if res.stderr:
