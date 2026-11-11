@@ -1,7 +1,7 @@
 """
 LifeMate CS-ASR: Closed-Loop Bilingual Semantic Regularization & Dynamic Thresholding
 Sub-1.5B Conversational Vietnamese-English Code-Switching Speech Recognition
-FJCAI 2027 Official Research Implementation
+LifeMate CS-ASR Official Research Implementation
 """
 
 from .config import CONFIG

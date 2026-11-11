@@ -1,5 +1,5 @@
 # CẨM NANG BÀN GIAO BÀI BÁO & MINH BẠCH HÓA ĐÓNG GÓP DỮ LIỆU
-## Hướng Dẫn Dành Cho Nhóm Tác Giả & Cộng Sự Dự Án FJCAI 2027
+## Hướng Dẫn Dành Cho Nhóm Tác Giả & Cộng Sự Dự Án LifeMate CS-ASR
 
 Tài liệu này hướng dẫn chi tiết cách thức bạn gửi bài báo và pipeline nghiên cứu cho:
 1. **Đồng nghiệp / Nhóm tác giả cùng đứng tên** để cùng rà soát (peer-review nội bộ).
@@ -9,7 +9,7 @@ Tài liệu này hướng dẫn chi tiết cách thức bạn gửi bài báo v�
 
 ### PHẦN 1: BÁO CÁO MINH BẠCH SỬ DỤNG DỮ LIỆU CỦA CỘNG SỰ (DATA ATTRIBUTION REPORT)
 
-Trong bài báo chính thức nộp FJCAI 2027, toàn bộ dữ liệu do các cộng sự và đối tác cung cấp đã được ghi nhận trang trọng, phân chia khoa học và tri ân đúng mực:
+Trong bài báo chính thức nộp LifeMate CS-ASR, toàn bộ dữ liệu do các cộng sự và đối tác cung cấp đã được ghi nhận trang trọng, phân chia khoa học và tri ân đúng mực:
 
 ```mermaid
 flowchart LR
@@ -61,13 +61,13 @@ Dưới đây là 2 mẫu văn bản mẫu bạn có thể sao chép và gửi n
 
 #### Mẫu 1: Gửi Cộng sự / Đối tác đã cung cấp dữ liệu (Báo cáo kết quả & Tri ân)
 
-> **Tiêu đề:** [Báo cáo & Lời cảm ơn] Kết quả ứng dụng bộ dữ liệu vào Bài báo khoa học FJCAI 2027
+> **Tiêu đề:** [Báo cáo & Lời cảm ơn] Kết quả ứng dụng bộ dữ liệu vào Bài báo khoa học LifeMate CS-ASR
 >
 > **Kính gửi:** Anh/Chị và Đội ngũ Cộng sự,
 >
 > Lời đầu tiên, nhóm nghiên cứu xin gửi lời cảm ơn chân thành và sâu sắc nhất đến Anh/Chị vì đã tin tưởng và hỗ trợ cung cấp nguồn dữ liệu giọng nói quý báu cho dự án nghiên cứu của chúng tôi.
 >
-> Nhờ có bộ dữ liệu chuyển mã ngôn ngữ thực tế của Anh/Chị, chúng tôi đã hoàn thiện công trình khoa học nộp Hội thảo Quốc gia về Trí tuệ Nhân tạo 2027 (FJCAI 2027) với tiêu đề:  
+> Nhờ có bộ dữ liệu chuyển mã ngôn ngữ thực tế của Anh/Chị, chúng tôi đã hoàn thiện công trình khoa học nộp Báo cáo Nghiên cứu Khoa học Chuyên sâu (IEEE Format) với tiêu đề:  
 > *"Bilingual Semantic Regularization and Dynamic Thresholding for Vietnamese–English Code-Switching Speech Recognition Under 1.5B Parameters"*.
 >
 > **Chúng tôi xin gửi tới Anh/Chị một số thành tựu đột phá đạt được nhờ dữ liệu của Anh/Chị:**
@@ -86,15 +86,15 @@ Dưới đây là 2 mẫu văn bản mẫu bạn có thể sao chép và gửi n
 
 #### Mẫu 2: Gửi Đồng nghiệp trong nhóm nghiên cứu (Cùng rà soát nội dung)
 
-> **Tiêu đề:** Gửi bản thảo hoàn thiện nộp FJCAI 2027 — LifeMate CS-ASR (<1.5B)
+> **Tiêu đề:** Gửi bản thảo hoàn thiện nộp LifeMate CS-ASR — LifeMate CS-ASR (<1.5B)
 >
 > **Chào anh em,**
 >
-> Mình đã hoàn thiện toàn bộ bản thảo và mã nguồn bài báo nộp Hội thảo Quốc gia về AI (FJCAI 2027 - Đà Nẵng). Mọi thứ đã đạt chuẩn camera-ready 6 trang IEEE và đã đồng bộ lên GitHub:
+> Mình đã hoàn thiện toàn bộ bản thảo và mã nguồn bài báo nộp Hội thảo Quốc gia về AI (LifeMate CS-ASR - Đà Nẵng). Mọi thứ đã đạt chuẩn camera-ready 6 trang IEEE và đã đồng bộ lên GitHub:
 >
 > 📌 **Các tài liệu chính:**
-> 1. **Bản nộp chính thức (6 trang IEEE):** `FJCAI_2027_LifeMate_CS_ASR_EN.pdf` và file `.docx`.
-> 2. **Bản tiếng Việt đầy đủ:** `Bai_Bao_Tieng_Viet_FJCAI_2027.docx` (dành cho thầy cô/cố vấn đọc duyệt).
+> 1. **Bản nộp chính thức (6 trang IEEE):** `LifeMate_CS_ASR_EN.pdf` và file `.docx`.
+> 2. **Bản tiếng Việt đầy đủ:** `Bai_Bao_Tieng_Viet_LifeMate_CS_ASR.docx` (dành cho thầy cô/cố vấn đọc duyệt).
 > 3. **GitHub Code & Demo:** https://github.com/vlqm2008/LifeMate-VietASR-Embedding-ZAIC
 >
 > 📌 **Phân vai rà soát:**

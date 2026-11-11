@@ -1,10 +1,10 @@
 # Central Configuration for LifeMate CS-ASR (<1.5B) Pipeline
-# FJCAI 2027: Whisper-Turbo + BGE-M3 + XGBoost Dynamic Thresholding
+# LifeMate CS-ASR: Whisper-Turbo + BGE-M3 + XGBoost Dynamic Thresholding
 
 pipeline:
   name: "LifeMate-CS-ASR-Ultra-1p5B"
   version: "1.0.0"
-  target_conference: "FJCAI 2027"
+  target_conference: "LifeMate CS-ASR"
   budget_limit_params: 1500000000  # < 1.5B parameters
 
 models:

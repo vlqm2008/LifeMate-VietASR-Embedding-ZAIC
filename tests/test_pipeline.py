@@ -1,6 +1,6 @@
 """
 Unit and Integration Tests for LifeMate CS-ASR (<1.5B) Pipeline
-Ensures 100% reproducibility and scientific validity for FJCAI 2027.
+Ensures 100% reproducibility and scientific validity for LifeMate CS-ASR.
 """
 
 import unittest

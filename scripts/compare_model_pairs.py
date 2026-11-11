@@ -1,6 +1,6 @@
 """
 Compare Alternative Model Pairs for Vietnamese-English Code-Switching ASR (< 1.5B)
-FJCAI 2027 Comprehensive Model Comparison Benchmark
+LifeMate CS-ASR Comprehensive Model Comparison Benchmark
 """
 
 import json
@@ -122,7 +122,7 @@ def run_model_pairs_benchmark():
     ]
 
     print("=" * 85)
-    print("      FJCAI 2027: BẢNG SO SÁNH CÁC CẶP ĐÔI MÔ HÌNH ASR + EMBEDDING (< 1.5B)")
+    print("      LifeMate CS-ASR: BẢNG SO SÁNH CÁC CẶP ĐÔI MÔ HÌNH ASR + EMBEDDING (< 1.5B)")
     print("=" * 85)
     print(f"{'Mô hình':<35} | {'Params':<8} | {'WER (%)':<8} | {'E-WER (%)':<10} | {'RTF':<8} | {'VRAM':<6}")
     print("-" * 85)
@@ -144,7 +144,7 @@ def run_model_pairs_benchmark():
     md_report_path = benchmarks_dir / "MODEL_PAIRS_BENCHMARK.md"
     with open(md_report_path, "w", encoding="utf-8") as f:
         f.write("# BÁO CÁO ĐÁNH GIÁ VÀ SO SÁNH CÁC CẶP ĐÔI MÔ HÌNH (MODEL PAIRS BENCHMARK)\n\n")
-        f.write("**Hội thảo**: FJCAI 2027 - National Conference on Artificial Intelligence\n")
+        f.write("**Hội thảo**: LifeMate CS-ASR - National Conference on Artificial Intelligence\n")
         f.write("**Ngân sách tham số**: Tối đa 1.5 Tỷ tham số (< 1.5B Parameters)\n\n")
         f.write("## 1. Bảng so sánh tổng hợp các cặp mô hình\n\n")
         f.write("| STT | Cặp mô hình (ASR + Embedding) | Tổng Tham số | WER (%) | E-WER (%) | Tỉ lệ ảo giác | RTF | VRAM |\n")
@@ -168,7 +168,7 @@ def run_model_pairs_benchmark():
             f.write(f"- **Hạn chế**: {p['weaknesses']}\n\n")
 
         f.write("## 3. Kết luận và Khuyến nghị lựa chọn\n\n")
-        f.write("1. **Lựa chọn số 1 cho bài báo FJCAI 2027**: **Pair 1 (Whisper-Large-v3-Turbo + BGE-M3 + XGBoost)**. Đây là cấu hình duy nhất đạt ngưỡng **WER < 3% (2.85%)**, tận dụng tối đa ngân sách dưới 1.5B (1.377B), sở hữu tốc độ giải mã nhanh nhất phân khúc lớn (nhờ Turbo chỉ có 4 decoder layers).\n")
+        f.write("1. **Lựa chọn số 1 cho bài báo LifeMate CS-ASR**: **Pair 1 (Whisper-Large-v3-Turbo + BGE-M3 + XGBoost)**. Đây là cấu hình duy nhất đạt ngưỡng **WER < 3% (2.85%)**, tận dụng tối đa ngân sách dưới 1.5B (1.377B), sở hữu tốc độ giải mã nhanh nhất phân khúc lớn (nhờ Turbo chỉ có 4 decoder layers).\n")
         f.write("2. **Lựa chọn cho thiết bị cận biên (Edge/On-Device)**: **Pair 2 (Whisper-Small + Multilingual-E5-Base)**. Phù hợp nếu bạn cần triển khai trên máy tính nhúng, GPU yếu (< 4GB VRAM) hoặc CPU thuần, đạt WER 6.42% với chỉ 522M tham số.\n")
         f.write("3. **Lựa chọn cho dữ liệu phương ngữ thuần Việt**: **Pair 5 (PhoWhisper-Medium + BGE-M3)**. Tốt cho các tác vụ không có hoặc có rất ít từ chêm tiếng Anh.\n")
 

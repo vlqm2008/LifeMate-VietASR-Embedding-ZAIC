@@ -1,7 +1,7 @@
 {
   "compliance": "Quyết định số 2557/QĐ-BKHCN (Trung thực, Khả năng tái lập, Không ngụy tạo)",
   "timestamp": "2026-11-11 18:51:13",
-  "target_conference": "FJCAI 2027 (Hội thảo Quốc gia về Trí tuệ Nhân tạo - Đà Nẵng)",
+  "target_conference": "LifeMate CS-ASR (Hội thảo Quốc gia về Trí tuệ Nhân tạo - Đà Nẵng)",
   "hardware": {
     "gpu": "NVIDIA GeForce GTX 1660 SUPER",
     "vram_gb": 6.0,

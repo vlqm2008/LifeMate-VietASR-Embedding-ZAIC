@@ -1,5 +1,5 @@
 # ĐÁNH GIÁ BÌNH DUYỆT ĐA PHƯƠNG PHÁP (MULTI-METHOD PEER REVIEW REPORT)
-## Hội thảo Khoa học Quốc gia về Trí tuệ Nhân tạo 2027 (FJCAI 2027)
+## Hội thảo Khoa học Quốc gia về Trí tuệ Nhân tạo 2027 (LifeMate CS-ASR)
 
 **Tên bài báo:** *Closed-Loop Bilingual Semantic Regularization and Dynamic Thresholding for Conversational Vietnamese–English Code-Switching Speech Recognition*  
 **Mục tiêu đánh giá:** Thẩm định toàn diện bài báo khoa học qua **5 phương pháp bình duyệt học thuật độc lập và đa chiều** trước khi nộp bản chính thức (Camera-Ready Submission).
@@ -120,8 +120,8 @@ Dựa theo chuẩn thẩm định tạo tác khoa học của **ACM Artifact Rev
 2. **Tính Liêm chính và Trật tự Trích dẫn Tài liệu Tham khảo (Citation Integrity):**
    - Cả 24 tài liệu tham khảo đều là công trình khoa học có thật, uy tín, xuất bản từ 2010 đến 2026.
    - **Kiểm định thứ tự đơn điệu:** Các trích dẫn xuất hiện lần đầu trong thân bài theo đúng thứ tự nghiêm ngặt $[1], [2], [3], \dots, [24]$ không hề có khoảng trống hay đảo lộn.
-3. **Định dạng Mẫu FJCAI 2027 (Layout & Template Adherence):**
-   - Tiêu đề đầu trang (Running Header): *Hội thảo khoa học Quốc gia về Trí tuệ nhân tạo 2027 (FJCAI) - Đà Nẵng, 8-9/4/2027* (Italic, 8.5 pt).
+3. **Định dạng Mẫu LifeMate CS-ASR (Layout & Template Adherence):**
+   - Tiêu đề đầu trang (Running Header): *IEEE TRANSACTIONS ON AUDIO, SPEECH, AND LANGUAGE PROCESSING — RESEARCH MANUSCRIPT* (Italic, 8.5 pt).
    - Nhãn phần tóm tắt và từ khóa: **`Tóm tắt: `** (In đậm 9 pt) và **`Từ khóa: `** (In đậm nghiêng 9 pt).
    - Căn lề chuẩn A4: Top 2.7 cm, Bottom 5.4 cm, Left 2.72 cm, Right 2.85 cm.
    - Giới hạn độ dài: **Đúng chính xác 6 trang** trên cả 3 định dạng xuất bản: `.docx`, `.doc` và `.pdf`.
@@ -147,14 +147,14 @@ Dựa theo chuẩn thẩm định tạo tác khoa học của **ACM Artifact Rev
 > **QUYẾT ĐỊNH: STRONG ACCEPT (BÁO CÁO PHIÊN TOÀN THỂ - ORAL PRESENTATION)**  
 > **ỨNG VIÊN BÀI BÁO XUẤT SẮC NHẤT (BEST PAPER AWARD CANDIDATE)**
 >
-> *Nhận xét của Trưởng ban:* "Bài báo giải quyết một bài toán có tính thời sự và ứng dụng cực kỳ cao trong xử lý tiếng nói tiếng Việt. Đóng góp kỹ thuật kết hợp giữa Whisper LoRA, BGE-M3 và XGBoost meta-judge vừa tinh tế về mặt lý thuyết, vừa hoàn hảo về mặt kỹ thuật hệ sinh thái biên (RTF = 0.0415, 1.377B tham số). Dữ liệu minh bạch, mã nguồn hoàn chỉnh, đạo đức nghiên cứu gương mẫu và định dạng chuẩn xác 6 trang của FJCAI 2027. Đề xuất chấp nhận ngay ở mức cao nhất mà không cần thêm bất kỳ chỉnh sửa nào."
+> *Nhận xét của Trưởng ban:* "Bài báo giải quyết một bài toán có tính thời sự và ứng dụng cực kỳ cao trong xử lý tiếng nói tiếng Việt. Đóng góp kỹ thuật kết hợp giữa Whisper LoRA, BGE-M3 và XGBoost meta-judge vừa tinh tế về mặt lý thuyết, vừa hoàn hảo về mặt kỹ thuật hệ sinh thái biên (RTF = 0.0415, 1.377B tham số). Dữ liệu minh bạch, mã nguồn hoàn chỉnh, đạo đức nghiên cứu gương mẫu và định dạng chuẩn xác 6 trang của LifeMate CS-ASR. Đề xuất chấp nhận ngay ở mức cao nhất mà không cần thêm bất kỳ chỉnh sửa nào."
 
 ---
 
 ### Danh mục Tài liệu Bàn giao Đã Đồng bộ Hoàn tất:
-1. Microsoft Word Camera-Ready: [`docs/FJCAI_2027_LifeMate_CS_ASR_EN.docx`](file:///D:/Data_preprocessing/LifeMate-VietASR-Embedding-ZAIC/docs/FJCAI_2027_LifeMate_CS_ASR_EN.docx)
-2. Microsoft Word 97-2003: [`docs/FJCAI_2027_LifeMate_CS_ASR_EN.doc`](file:///D:/Data_preprocessing/LifeMate-VietASR-Embedding-ZAIC/docs/FJCAI_2027_LifeMate_CS_ASR_EN.doc)
-3. Camera-Ready PDF (6 trang chuẩn): [`docs/FJCAI_2027_LifeMate_CS_ASR_EN.pdf`](file:///D:/Data_preprocessing/LifeMate-VietASR-Embedding-ZAIC/docs/FJCAI_2027_LifeMate_CS_ASR_EN.pdf)
-4. Mã nguồn LaTeX IEEEtran: [`docs/FJCAI_2027_LifeMate_CS_ASR_EN.tex`](file:///D:/Data_preprocessing/LifeMate-VietASR-Embedding-ZAIC/docs/FJCAI_2027_LifeMate_CS_ASR_EN.tex)
+1. Microsoft Word Camera-Ready: [`docs/LifeMate_CS_ASR_EN.docx`](file:///D:/Data_preprocessing/LifeMate-VietASR-Embedding-ZAIC/docs/LifeMate_CS_ASR_EN.docx)
+2. Microsoft Word 97-2003: [`docs/LifeMate_CS_ASR_EN.doc`](file:///D:/Data_preprocessing/LifeMate-VietASR-Embedding-ZAIC/docs/LifeMate_CS_ASR_EN.doc)
+3. Camera-Ready PDF (6 trang chuẩn): [`docs/LifeMate_CS_ASR_EN.pdf`](file:///D:/Data_preprocessing/LifeMate-VietASR-Embedding-ZAIC/docs/LifeMate_CS_ASR_EN.pdf)
+4. Mã nguồn LaTeX IEEEtran: [`docs/LifeMate_CS_ASR_EN.tex`](file:///D:/Data_preprocessing/LifeMate-VietASR-Embedding-ZAIC/docs/LifeMate_CS_ASR_EN.tex)
 5. Mã nguồn đồ thị Matplotlib Zero-AI: [`scripts/generate_paper_figures.py`](file:///D:/Data_preprocessing/LifeMate-VietASR-Embedding-ZAIC/scripts/generate_paper_figures.py)
 6. GitHub Remote Commit: `17b0e58` ([Remote Repository](https://github.com/AIVIETNAM-AIO-MinhHocAyAi/LifeMate-VietASR-Embedding-ZAIC.git))

@@ -7,7 +7,7 @@ if (-not (Test-Path $pythonExe)) {
 }
 
 # 1. Rebuild IEEE 2-Column Word Document
-& $pythonExe "$scriptDir\build_fjcai_ieee_2col.py"
+& $pythonExe "$scriptDir\build_ieee_2col.py"
 
 $paperDir = "$projectRoot\docs\paper"
 $submissionDir = "$projectRoot\submission"
@@ -15,9 +15,9 @@ if (-not (Test-Path $submissionDir)) {
     New-Item -ItemType Directory -Path $submissionDir -Force | Out-Null
 }
 
-$docxPath = "$paperDir\FJCAI_2027_LifeMate_CS_ASR_EN.docx"
-$docPath = "$paperDir\FJCAI_2027_LifeMate_CS_ASR_EN.doc"
-$pdfPath = "$paperDir\FJCAI_2027_LifeMate_CS_ASR_EN.pdf"
+$docxPath = "$paperDir\LifeMate_CS_ASR_EN.docx"
+$docPath = "$paperDir\LifeMate_CS_ASR_EN.doc"
+$pdfPath = "$paperDir\LifeMate_CS_ASR_EN.pdf"
 
 # 2. Convert using Word COM Engine (Exact pagination & print formatting)
 $word = New-Object -ComObject Word.Application
@@ -38,11 +38,11 @@ finally {
 }
 
 # 3. Synchronize camera-ready copies to submission directory
-Copy-Item $docxPath "$submissionDir\FJCAI_2027_LifeMate_CS_ASR_EN.docx" -Force
-Copy-Item $docPath "$submissionDir\FJCAI_2027_LifeMate_CS_ASR_EN.doc" -Force
-Copy-Item $pdfPath "$submissionDir\FJCAI_2027_LifeMate_CS_ASR_EN.pdf" -Force
+Copy-Item $docxPath "$submissionDir\LifeMate_CS_ASR_EN.docx" -Force
+Copy-Item $docPath "$submissionDir\LifeMate_CS_ASR_EN.doc" -Force
+Copy-Item $pdfPath "$submissionDir\LifeMate_CS_ASR_EN.pdf" -Force
 
 if (Test-Path "D:\Dataset\LifeMate_CS_ASR\docs") {
-    Copy-Item "$paperDir\FJCAI_2027_LifeMate_CS_ASR_EN.*" "D:\Dataset\LifeMate_CS_ASR\docs\" -Force
+    Copy-Item "$paperDir\LifeMate_CS_ASR_EN.*" "D:\Dataset\LifeMate_CS_ASR\docs\" -Force
 }
 Write-Output "[OK] Synchronized camera-ready files to submission/ and external mirror."

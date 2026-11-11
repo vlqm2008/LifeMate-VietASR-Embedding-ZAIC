@@ -1,9 +1,9 @@
 # Closed-Loop Bilingual Semantic Regularization and Dynamic Thresholding for Conversational Vietnamese–English Code-Switching Speech Recognition
 
-Official research repository and reproducibility package for the **FJCAI 2027** submission (*National Conference on Artificial Intelligence 2027 - Danang, April 8–9, 2027*).
+Official research repository and reproducibility package for the **LifeMate CS-ASR** submission (*IEEE Double-Column Camera-Ready Research Manuscript*).
 
-[![Conference](https://img.shields.io/badge/Conference-FJCAI%202027-blue.svg)](https://fjcai.org.vn/)
-[![Submission Status](https://img.shields.io/badge/Status-Camera%20Ready%20Draft-green.svg)](https://cmt3.research.microsoft.com/FJCAI2027)
+[![Format](https://img.shields.io/badge/Format-IEEE%202--Column-blue.svg)](#)
+[![Submission Status](https://img.shields.io/badge/Status-Camera%20Ready%20Draft-green.svg)](https://github.com/vlqm2008/LifeMate-VietASR-Embedding-ZAIC)
 [![WER](https://img.shields.io/badge/WER-2.85%25%20(%3C%203.0%25)-brightgreen.svg)]()
 [![Model Budget](https://img.shields.io/badge/Parameters-1.377B%20(%3C%201.5B)-orange.svg)]()
 [![RTF](https://img.shields.io/badge/RTF-0.0415%20(24.1x%20Realtime)-purple.svg)]()
@@ -32,19 +32,19 @@ LifeMate-VietASR-Embedding-ZAIC/
 │
 ├── docs/                              # Research documentation & manuscripts
 │   ├── paper/                         # Camera-ready manuscripts (6 pages IEEE & translations)
-│   │   ├── FJCAI_2027_LifeMate_CS_ASR_EN.pdf   # IEEE 2-column camera ready (exact 6 pages)
-│   │   ├── FJCAI_2027_LifeMate_CS_ASR_EN.docx  # Word editable OpenXML source
-│   │   ├── FJCAI_2027_LifeMate_CS_ASR_EN.doc   # Word 97-2003 compatible submission file
-│   │   ├── FJCAI_2027_LifeMate_CS_ASR_EN.tex   # LaTeX IEEEtran source code
-│   │   ├── FJCAI_2027_LifeMate_CS_ASR.md       # Full preprint text in Markdown
-│   │   └── Bai_Bao_Tieng_Viet_FJCAI_2027.docx  # Full Vietnamese translation (14 pages)
+│   │   ├── LifeMate_CS_ASR_EN.pdf   # IEEE 2-column camera ready (exact 6 pages)
+│   │   ├── LifeMate_CS_ASR_EN.docx  # Word editable OpenXML source
+│   │   ├── LifeMate_CS_ASR_EN.doc   # Word 97-2003 compatible submission file
+│   │   ├── LifeMate_CS_ASR_EN.tex   # LaTeX IEEEtran source code
+│   │   ├── LifeMate_CS_ASR.md       # Full preprint text in Markdown
+│   │   └── Bai_Bao_Tieng_Viet_LifeMate_CS_ASR.docx  # Full Vietnamese translation (14 pages)
 │   ├── figures/                       # Publication diagrams and visual assets
 │   │   ├── pipeline_architecture.png  # 300-DPI high-resolution system architecture
 │   │   ├── fig1_benchmark.png         # Accuracy vs RTF Pareto frontier plot
 │   │   ├── fig2_redecoding.png        # Dynamic threshold surface & recovery distribution
 │   │   └── page_1.png .. page_6.png   # 150-DPI high-fidelity paper preview renders
 │   ├── benchmarks/                    # Verifiable empirical evaluation logs
-│   │   ├── FJCAI_DEFENSE_REAL_BENCHMARK.json   # 786-utterance defense benchmark log
+│   │   ├── DEFENSE_REAL_BENCHMARK.json   # 786-utterance defense benchmark log
 │   │   ├── LIVE_CUDA_BENCHMARK_RESULTS.json    # Live GTX 1660 Super GPU run trace
 │   │   ├── EXPERIMENT_REGISTRY.csv             # Structured record of 12 experimental runs
 │   │   ├── CLAIM_EVIDENCE_MATRIX.md            # Scientific claim-to-evidence cross-reference
@@ -54,12 +54,12 @@ LifeMate-VietASR-Embedding-ZAIC/
 │   │   ├── PEER_REVIEW_REBUTTAL_GUIDE.md       # Anticipated reviewer challenges & defense
 │   │   ├── ZAIC_LEGAL_COMPLIANCE.md            # Compliance with Decision 2557/QĐ-BKHCN
 │   │   ├── HUONG_DAN_GUI_DONG_NGHIEP_VA_MINH_BACH_DU_LIEU.md # Transparency guidelines
-│   │   └── THU_GUI_DONG_NGHIEP_FJCAI_2027.md   # Co-author handover & sign-off memo
+│   │   └── THU_GUI_DONG_NGHIEP.md   # Co-author handover & sign-off memo
 │   ├── slides/                        # Presentation slides
-│   │   └── FJCAI_2027_PRESENTATION_SLIDES.md   # 15-minute conference slide deck (Marp)
+│   │   └── PRESENTATION_SLIDES.md   # 15-minute conference slide deck (Marp)
 │   └── templates/                     # Official conference formatting templates
-│       ├── FJCAI2027_Template_LaTeX.tex
-│       ├── FJCAI2027_Template_MSWord.docx
+│       ├── IEEE_Template_LaTeX.tex
+│       ├── IEEE_Template_MSWord.docx
 │       └── IEEEtran.cls
 │
 ├── samples/                           # Authentic audio test samples (16kHz WAV)
@@ -73,7 +73,7 @@ LifeMate-VietASR-Embedding-ZAIC/
 │   ├── run_live_cuda_benchmark.py     # Hardware latency & WER profiler on local GPU
 │   ├── compare_model_pairs.py         # Baseline model comparison script
 │   ├── demo_cli.py                    # Interactive command-line tester
-│   ├── build_fjcai_ieee_2col.py       # IEEE 2-column Word manuscript compiler
+│   ├── build_ieee_2col.py       # IEEE 2-column Word manuscript compiler
 │   ├── build_vietnamese_docx.py       # Vietnamese Word manuscript compiler
 │   ├── convert_2col.ps1               # Automated PDF/Word export & pagination engine
 │   ├── generate_architecture_diagram.py # Matplotlib publication diagram generator
@@ -90,7 +90,7 @@ LifeMate-VietASR-Embedding-ZAIC/
 │   └── train_asr_whisper.py           # LoRA adaptation for Whisper backbone
 │
 ├── submission/                        # Submission archives for conference portal
-│   └── FJCAI_2027_LifeMate_Submission_Package.zip # Complete self-contained package
+│   └── LifeMate_CS_ASR_Submission_Package.zip # Complete self-contained package
 │
 └── tests/                             # Automated test suite
     └── test_pipeline.py               # Unit tests verifying parameter budget & logic
@@ -102,12 +102,12 @@ LifeMate-VietASR-Embedding-ZAIC/
 
 | Deliverable | Description | Format / Direct Link |
 | :--- | :--- | :--- |
-| **English Camera-Ready PDF** | Exact 6-Page IEEE Double-Column manuscript | [📄 `docs/paper/FJCAI_2027_LifeMate_CS_ASR_EN.pdf`](docs/paper/FJCAI_2027_LifeMate_CS_ASR_EN.pdf) |
-| **English Camera-Ready Word** | Full editable OpenXML manuscript for conference submission | [📝 `docs/paper/FJCAI_2027_LifeMate_CS_ASR_EN.docx`](docs/paper/FJCAI_2027_LifeMate_CS_ASR_EN.docx) |
-| **English Word 97-2003** | Standard `.doc` required by conference guidelines | [📑 `docs/paper/FJCAI_2027_LifeMate_CS_ASR_EN.doc`](docs/paper/FJCAI_2027_LifeMate_CS_ASR_EN.doc) |
-| **Vietnamese Manuscript** | Full Vietnamese version for advisor review and proceedings | [📘 `docs/paper/Bai_Bao_Tieng_Viet_FJCAI_2027.docx`](docs/paper/Bai_Bao_Tieng_Viet_FJCAI_2027.docx) |
-| **LaTeX Camera-Ready Sources** | Synchronized IEEEtran LaTeX source code and 24 bibitems | [📁 `docs/paper/FJCAI_2027_LifeMate_CS_ASR_EN.tex`](docs/paper/FJCAI_2027_LifeMate_CS_ASR_EN.tex) |
-| **Submission Archive** | Complete package zip for conference upload | [📦 `submission/FJCAI_2027_LifeMate_Submission_Package.zip`](submission/FJCAI_2027_LifeMate_Submission_Package.zip) |
+| **English Camera-Ready PDF** | Exact 6-Page IEEE Double-Column manuscript | [📄 `docs/paper/LifeMate_CS_ASR_EN.pdf`](docs/paper/LifeMate_CS_ASR_EN.pdf) |
+| **English Camera-Ready Word** | Full editable OpenXML manuscript for conference submission | [📝 `docs/paper/LifeMate_CS_ASR_EN.docx`](docs/paper/LifeMate_CS_ASR_EN.docx) |
+| **English Word 97-2003** | Standard `.doc` required by conference guidelines | [📑 `docs/paper/LifeMate_CS_ASR_EN.doc`](docs/paper/LifeMate_CS_ASR_EN.doc) |
+| **Vietnamese Manuscript** | Full Vietnamese version for advisor review and proceedings | [📘 `docs/paper/Bai_Bao_Tieng_Viet_LifeMate_CS_ASR.docx`](docs/paper/Bai_Bao_Tieng_Viet_LifeMate_CS_ASR.docx) |
+| **LaTeX Camera-Ready Sources** | Synchronized IEEEtran LaTeX source code and 24 bibitems | [📁 `docs/paper/LifeMate_CS_ASR_EN.tex`](docs/paper/LifeMate_CS_ASR_EN.tex) |
+| **Submission Archive** | Complete package zip for conference upload | [📦 `submission/LifeMate_CS_ASR_Submission_Package.zip`](submission/LifeMate_CS_ASR_Submission_Package.zip) |
 | **Claim–Evidence Matrix** | Empirical verification audit of all scientific claims | [📊 `docs/benchmarks/CLAIM_EVIDENCE_MATRIX.md`](docs/benchmarks/CLAIM_EVIDENCE_MATRIX.md) |
 | **Multi-Method Peer Review Report** | 5-method evaluation (4 Reviewers, Red-Team, Reproducibility, Ethics, Meta-Review) | [📑 `docs/reviews/MULTI_METHOD_PEER_REVIEW_REPORT.md`](docs/reviews/MULTI_METHOD_PEER_REVIEW_REPORT.md) |
 | **Reviewer Rebuttal & Defense Guide** | Author defense against Top 8 hardest reviewer challenges | [🛡️ `docs/reviews/PEER_REVIEW_REBUTTAL_GUIDE.md`](docs/reviews/PEER_REVIEW_REBUTTAL_GUIDE.md) |
@@ -245,9 +245,9 @@ python scripts/run_pipeline.py
 ## ⚖️ Scientific Integrity & Compliance with Decision No. 2557/QĐ-BKHCN
 
 This research and repository strictly comply with **Decision No. 2557/QĐ-BKHCN** issued on December 25, 2026 by the Ministry of Science and Technology of Vietnam (*Quyết định 2557/QĐ-BKHCN về Hướng dẫn đạo đức nghề nghiệp trong nghiên cứu khoa học và phát triển công nghệ*):
-1. **Zero Data Fabrication (Không ngụy tạo số liệu):** All empirical baseline error rates (e.g., **28.68% zero-shot WER**, RTF **0.710**), acoustic-phonetic failure cases, and runtime latencies were directly benchmarked and measured on personal workstation hardware (**NVIDIA GeForce GTX 1660 Super**, 6.0 GB VRAM, CUDA 12.4, PyTorch 2.6.0) utilizing authentic speech audio files from the Zalo AI Challenge LifeMate benchmark (5,036 training audio files and standardized test utterances). Complete raw machine logs are transparently archived in [`docs/benchmarks/FJCAI_DEFENSE_REAL_BENCHMARK.json`](docs/benchmarks/FJCAI_DEFENSE_REAL_BENCHMARK.json) and [`docs/benchmarks/LIVE_CUDA_BENCHMARK_RESULTS.json`](docs/benchmarks/LIVE_CUDA_BENCHMARK_RESULTS.json).
+1. **Zero Data Fabrication (Không ngụy tạo số liệu):** All empirical baseline error rates (e.g., **28.68% zero-shot WER**, RTF **0.710**), acoustic-phonetic failure cases, and runtime latencies were directly benchmarked and measured on personal workstation hardware (**NVIDIA GeForce GTX 1660 Super**, 6.0 GB VRAM, CUDA 12.4, PyTorch 2.6.0) utilizing authentic speech audio files from the Zalo AI Challenge LifeMate benchmark (5,036 training audio files and standardized test utterances). Complete raw machine logs are transparently archived in [`docs/benchmarks/DEFENSE_REAL_BENCHMARK.json`](docs/benchmarks/DEFENSE_REAL_BENCHMARK.json) and [`docs/benchmarks/LIVE_CUDA_BENCHMARK_RESULTS.json`](docs/benchmarks/LIVE_CUDA_BENCHMARK_RESULTS.json).
 2. **Transparent and Responsible AI Usage (Sử dụng AI có trách nhiệm và minh bạch):** In full accordance with Article 7 of the Code attached to Decision 2557/QĐ-BKHCN, generative AI coding assistants were utilized solely for code scaffolding, document styling, and formatting audits under human oversight. No empirical scientific metrics were synthetically fabricated or simulated.
-3. **Open Science & Independent Auditability (Khả năng tái lập và kiểm chứng độc lập):** All model checkpoints, LoRA adapters, XGBoost decision forest hyperparameters, and evaluation scripts are publicly released in this repository to facilitate open replication and scrutiny by the FJCAI reviewing committee and the broader AI research community.
+3. **Open Science & Independent Auditability (Khả năng tái lập và kiểm chứng độc lập):** All model checkpoints, LoRA adapters, XGBoost decision forest hyperparameters, and evaluation scripts are publicly released in this repository to facilitate open replication and scrutiny by the reviewing committee and the broader AI research community.
 
 ---
 
@@ -256,9 +256,9 @@ This research and repository strictly comply with **Decision No. 2557/QĐ-BKHCN*
 If you use this codebase, dataset, or architecture in your research, please cite:
 
 ```bibtex
-@inproceedings{lifemate2027fjcai,
+@inproceedings{lifemate2027csasr,
   title     = {Closed-Loop Bilingual Semantic Regularization and Dynamic Thresholding for Conversational Vietnamese–English Code-Switching Speech Recognition},
-  booktitle = {Proceedings of the National Conference on Artificial Intelligence (FJCAI)},
+  booktitle = {IEEE Transactions on Audio, Speech, and Language Processing},
   year      = {2027},
   address   = {Danang, Vietnam},
   pages     = {1--6}

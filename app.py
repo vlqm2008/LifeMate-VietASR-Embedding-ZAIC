@@ -1,6 +1,6 @@
 """
 LifeMate CS-ASR: Interactive Gradio Web Application
-FJCAI 2027: Bilingual Semantic Regularization & Dynamic Thresholding Under 1.5B Parameters
+LifeMate CS-ASR: Bilingual Semantic Regularization & Dynamic Thresholding Under 1.5B Parameters
 Double-Blind Review Copy (Author details omitted)
 """
 
@@ -131,11 +131,11 @@ def build_gradio_app():
     .metric-badge { display: inline-block; padding: 4px 12px; margin: 4px; background: rgba(255,255,255,0.2); border-radius: 20px; font-size: 13px; }
     """
 
-    with gr.Blocks(title="LifeMate CS-ASR (<1.5B) - FJCAI 2027", css=custom_css) as demo:
+    with gr.Blocks(title="LifeMate CS-ASR (<1.5B) - LifeMate CS-ASR", css=custom_css) as demo:
         with gr.Column(elem_classes=["header-box"]):
             gr.Markdown("""
             # 🎙️ Bilingual Semantic Regularization & Dynamic Thresholding for Vietnamese–English Code-Switching ASR
-            ### **National Conference on Artificial Intelligence (FJCAI 2027)**
+            ### **Conversational Bilingual Code-Switching ASR**
             """)
             gr.Markdown("""
             <span class='metric-badge'>🏆 Total Parameters: <b>1.377B &lt; 1.5B</b></span>
@@ -225,19 +225,19 @@ def build_gradio_app():
 
             # TAB 4: PUBLICATION ARTIFACTS
             with gr.Tab("📄 IEEE Publication Artifacts & Downloads"):
-                gr.Markdown("### Official Conference Deliverables for FJCAI 2027")
+                gr.Markdown("### Official Conference Deliverables for LifeMate CS-ASR")
                 gr.Markdown("""
-                - **Microsoft Word Document (Required Submission Format):** [`docs/paper/FJCAI_2027_LifeMate_CS_ASR_EN.doc`](docs/paper/FJCAI_2027_LifeMate_CS_ASR_EN.doc) (Word 97-2003, exactly 6 pages, IEEE 2-column format).
-                - **Modern Word Document:** [`docs/paper/FJCAI_2027_LifeMate_CS_ASR_EN.docx`](docs/paper/FJCAI_2027_LifeMate_CS_ASR_EN.docx).
-                - **Compiled Camera-Ready PDF:** [`docs/paper/FJCAI_2027_LifeMate_CS_ASR_EN.pdf`](docs/paper/FJCAI_2027_LifeMate_CS_ASR_EN.pdf) (Compiled via Word COM).
-                - **LaTeX Source Code:** [`docs/paper/FJCAI_2027_LifeMate_CS_ASR_EN.tex`](docs/paper/FJCAI_2027_LifeMate_CS_ASR_EN.tex) (IEEEtran format).
+                - **Microsoft Word Document (Required Submission Format):** [`docs/paper/LifeMate_CS_ASR_EN.doc`](docs/paper/LifeMate_CS_ASR_EN.doc) (Word 97-2003, exactly 6 pages, IEEE 2-column format).
+                - **Modern Word Document:** [`docs/paper/LifeMate_CS_ASR_EN.docx`](docs/paper/LifeMate_CS_ASR_EN.docx).
+                - **Compiled Camera-Ready PDF:** [`docs/paper/LifeMate_CS_ASR_EN.pdf`](docs/paper/LifeMate_CS_ASR_EN.pdf) (Compiled via Word COM).
+                - **LaTeX Source Code:** [`docs/paper/LifeMate_CS_ASR_EN.tex`](docs/paper/LifeMate_CS_ASR_EN.tex) (IEEEtran format).
                 - **Peer-Review Rebuttal Guide:** [`docs/reviews/PEER_REVIEW_REBUTTAL_GUIDE.md`](docs/reviews/PEER_REVIEW_REBUTTAL_GUIDE.md) (Top 8 reviewer questions & formal answers).
-                - **Presentation Slides:** [`docs/slides/FJCAI_2027_PRESENTATION_SLIDES.md`](docs/slides/FJCAI_2027_PRESENTATION_SLIDES.md) (15-slide Marp deck for Oral presentation).
+                - **Presentation Slides:** [`docs/slides/PRESENTATION_SLIDES.md`](docs/slides/PRESENTATION_SLIDES.md) (15-slide Marp deck for Oral presentation).
                 """)
 
         gr.Markdown("""
         ---
-        *LifeMate CS-ASR Research Project © 2026. Codebase and Artifacts prepared for Double-Blind Review at FJCAI 2027.*
+        *LifeMate CS-ASR Research Project © 2026. Codebase and Artifacts prepared for Double-Blind Review at LifeMate CS-ASR.*
         """)
 
     return demo

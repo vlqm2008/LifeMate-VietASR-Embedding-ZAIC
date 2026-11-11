@@ -12,7 +12,7 @@ color: #0f172a
 
 **Nhóm tác giả:** Phùng Nguyễn Như Bách, Đỗ Phú Hưng, Võ Lê Quang Minh  
 *(Vietnam AI Research Consortium)*  
-**Hội thảo:** Hội thảo Quốc gia về Trí tuệ Nhân tạo 2027 (FJCAI 2027)  
+**Hội thảo:** Báo cáo Nghiên cứu Khoa học Chuyên sâu (IEEE Format)  
 **Track:** Xử lý ngôn ngữ & Tiếng Việt / Học máy & Học sâu  
 
 ---
@@ -178,7 +178,7 @@ color: #0f172a
 ## 11. Cam Kết Liêm Chính Học Thuật (QĐ 2557/QĐ-BKHCN)
 
 * **Tuân thủ Quyết định 2557/QĐ-BKHCN ngày 25/12/2026 của Bộ KH&CN:**
-  * **Không Ngụy Tạo Số Liệu (Zero Data Fabrication):** Toàn bộ Baseline Zero-shot 28.68% và các ca lỗi được đo đạc trực tiếp trên GPU máy trạm NVIDIA GTX 1660 Super với tập âm thanh LifeMate. Log thô lưu tại `FJCAI_DEFENSE_REAL_BENCHMARK.json`.
+  * **Không Ngụy Tạo Số Liệu (Zero Data Fabrication):** Toàn bộ Baseline Zero-shot 28.68% và các ca lỗi được đo đạc trực tiếp trên GPU máy trạm NVIDIA GTX 1660 Super với tập âm thanh LifeMate. Log thô lưu tại `DEFENSE_REAL_BENCHMARK.json`.
   * **Minh Bạch Trí Tuệ Nhân Tạo (Điều 7):** Công cụ AI tạo sinh chỉ phục vụ hỗ trợ định dạng và kiểm tra chính tả dưới sự giám sát và chịu trách nhiệm toàn diện của nhóm tác giả.
   * **Mã Nguồn Mở & Tái Lập (Open Science):** Toàn bộ mã nguồn, trọng số và pipeline được công khai tại GitHub để cộng đồng khoa học kiểm chứng độc lập.
 

@@ -1,6 +1,6 @@
 # Kiến Trúc Nhận Dạng Tiếng Nói Chuyển Mã Việt – Anh Hội Thoại Qua Cơ Chế Phản Hồi Ngữ Nghĩa Song Ngữ và Định Ngưỡng Động
 
-**Hội thảo:** Hội thảo Quốc gia về Trí tuệ Nhân tạo 2027 (FJCAI 2027)  
+**Hội thảo:** Báo cáo Nghiên cứu Khoa học Chuyên sâu (IEEE Format)  
 **Chuyên đề (Track):** Xử lý ngôn ngữ & Tiếng Việt / Học máy & Học sâu  
 **Hình thức bài báo:** Bài toàn văn chuẩn IEEE Camera-Ready (Full Research Paper)  
 
@@ -12,7 +12,7 @@ Hiện tượng chuyển mã ngôn ngữ (Code-Switching – CS) giữa tiếng 
 
 Trong công trình này, chúng tôi đề xuất một kiến trúc nhận dạng tiếng nói chuyển mã Việt – Anh đột phá với tổng quy mô dưới 1.5 tỷ tham số ($< 1.5\text{B}$ parameters), kết hợp mô hình ASR Whisper-Large-v3-Turbo tinh chỉnh LoRA, bộ trích xuất ngữ nghĩa dày đặc đa ngôn ngữ BGE-M3, và cơ chế định ngưỡng động dựa trên Gradient Boosted Decision Trees (XGBoost). Cụ thể, hệ thống tích hợp điểm tổn thất logarithm ($\mathcal{L}_{ASR}$) cùng độ tương đồng ngữ nghĩa đa tầng (Dense, Sparse, Multi-vector) để dự báo ngưỡng tin cậy động $T_{dynamic}(x)$ trong thời gian thực. Khi giả thuyết nhận dạng không vượt qua được kiểm định ngữ nghĩa đa chiều, hệ thống tự động kích hoạt vòng lặp tái giải mã (re-decoding loop) có áp đặt độ phạt logit nhằm triệt tiêu lỗi suy diễn cục bộ. Thực nghiệm diện rộng trên các bộ dữ liệu chuyển mã thực tế gồm SEA Code-Switching Speech, ViMedCSS, GigaSpeech 2 và ZAIC 2026 LifeMate chứng minh mô hình đạt Word Error Rate (WER) ấn tượng **2.85%** (giảm hơn 78% lỗi so với mô hình gốc), đồng thời duy trì hệ số thời gian thực (RTF) ở mức $0.0415$, thiết lập trạng thái tân tiến (SOTA) trong giới hạn tài nguyên khắt khe.
 
-**Từ khóa (Keywords):** Nhận dạng tiếng nói tự động, Chuyển mã ngôn ngữ (Code-Switching ASR), Whisper-Large-v3-Turbo, BGE-M3 Semantic Reranking, Ngưỡng động XGBoost (Dynamic Thresholding), Dưới 1.5B tham số, FJCAI 2027.
+**Từ khóa (Keywords):** Nhận dạng tiếng nói tự động, Chuyển mã ngôn ngữ (Code-Switching ASR), Whisper-Large-v3-Turbo, BGE-M3 Semantic Reranking, Ngưỡng động XGBoost (Dynamic Thresholding), Dưới 1.5B tham số, LifeMate CS-ASR.
 
 ---
 
@@ -269,22 +269,22 @@ Nhằm làm rõ cơ chế khôi phục lỗi của hệ thống vòng lặp ph�
 
 ## VII. Kết Luận (Conclusion)
 
-Bài báo đã trình bày một kiến trúc ASR chuyển mã ngôn ngữ Việt – Anh đột phá, tích hợp hài hòa giữa Whisper-Large-v3-Turbo LoRA, bộ trích xuất ngữ nghĩa đa ngôn ngữ BGE-M3 và cơ chế định ngưỡng động thích ứng XGBoost. Với tổng quy mô nghiêm ngặt **1.377 tỷ tham số** ($< 1.5\text{B}$ parameters), hệ thống thiết lập kỷ lục mới với **Word Error Rate 2.85%** trên bộ dữ liệu LifeMate Code-Switching, giảm thiểu hơn $78.6\%$ lỗi trên từ vựng tiếng Anh mượn và triệt tiêu gần như hoàn toàn ảo giác giải mã ($0.06\%$), đồng thời duy trì hệ số thời gian thực ấn tượng $RTF = 0.0415$. Kết quả thực nghiệm và các kiểm định thống kê nghiêm ngặt chứng minh kiến trúc đề xuất là giải pháp tối ưu cho các bài toán nhận dạng giọng nói chuyển mã trong thực tế và là một đóng góp học thuật giá trị cho hội thảo **FJCAI 2027**.
+Bài báo đã trình bày một kiến trúc ASR chuyển mã ngôn ngữ Việt – Anh đột phá, tích hợp hài hòa giữa Whisper-Large-v3-Turbo LoRA, bộ trích xuất ngữ nghĩa đa ngôn ngữ BGE-M3 và cơ chế định ngưỡng động thích ứng XGBoost. Với tổng quy mô nghiêm ngặt **1.377 tỷ tham số** ($< 1.5\text{B}$ parameters), hệ thống thiết lập kỷ lục mới với **Word Error Rate 2.85%** trên bộ dữ liệu LifeMate Code-Switching, giảm thiểu hơn $78.6\%$ lỗi trên từ vựng tiếng Anh mượn và triệt tiêu gần như hoàn toàn ảo giác giải mã ($0.06\%$), đồng thời duy trì hệ số thời gian thực ấn tượng $RTF = 0.0415$. Kết quả thực nghiệm và các kiểm định thống kê nghiêm ngặt chứng minh kiến trúc đề xuất là giải pháp tối ưu cho các bài toán nhận dạng giọng nói chuyển mã trong thực tế và là một đóng góp học thuật giá trị cho hội thảo **LifeMate CS-ASR**.
 
 ---
 
 ## VIII. Cam Kết Liêm Chính Nghiên Cứu và Đạo Đức Khoa Học (Tuân thủ Quyết định số 2557/QĐ-BKHCN)
 
 Công trình nghiên cứu này được thực hiện với sự tuân thủ tuyệt đối **Quyết định số 2557/QĐ-BKHCN** ngày 25/12/2026 của Bộ Khoa học và Công nghệ Việt Nam ban hành "Hướng dẫn đạo đức nghề nghiệp trong nghiên cứu khoa học và phát triển công nghệ":
-1. **Nguyên tắc Trung thực & Không Ngụy tạo Số liệu (Zero Data Fabrication):** Toàn bộ các kết quả đo đạc thực nghiệm cơ sở (Baseline Zero-shot WER 28.68%, RTF 0.710) và các ca phân tích âm vị lỗi được kiểm định trực tiếp trên phần cứng máy trạm cá nhân cục bộ (GPU NVIDIA GeForce GTX 1660 Super 6GB VRAM, CUDA 12.4, PyTorch 2.6.0) sử dụng tập dữ liệu âm thanh thực tế từ Zalo AI Challenge LifeMate (5,036 tệp huấn luyện và 200 tệp kiểm thử chuẩn hóa). Tuyệt đối không sử dụng số liệu giả lập, số liệu ngẫu nhiên hay bất kỳ hình thức ngụy tạo kết quả nghiên cứu nào. Mọi nhật ký đo đạc được lưu vết minh bạch tại tệp `docs/FJCAI_DEFENSE_REAL_BENCHMARK.json` và `docs/LIVE_CUDA_BENCHMARK_RESULTS.json`.
+1. **Nguyên tắc Trung thực & Không Ngụy tạo Số liệu (Zero Data Fabrication):** Toàn bộ các kết quả đo đạc thực nghiệm cơ sở (Baseline Zero-shot WER 28.68%, RTF 0.710) và các ca phân tích âm vị lỗi được kiểm định trực tiếp trên phần cứng máy trạm cá nhân cục bộ (GPU NVIDIA GeForce GTX 1660 Super 6GB VRAM, CUDA 12.4, PyTorch 2.6.0) sử dụng tập dữ liệu âm thanh thực tế từ Zalo AI Challenge LifeMate (5,036 tệp huấn luyện và 200 tệp kiểm thử chuẩn hóa). Tuyệt đối không sử dụng số liệu giả lập, số liệu ngẫu nhiên hay bất kỳ hình thức ngụy tạo kết quả nghiên cứu nào. Mọi nhật ký đo đạc được lưu vết minh bạch tại tệp `docs/DEFENSE_REAL_BENCHMARK.json` và `docs/LIVE_CUDA_BENCHMARK_RESULTS.json`.
 2. **Sử dụng Trí tuệ Nhân tạo Minh bạch & Có Trách nhiệm (Transparent AI Usage):** Tuân thủ Điều 7 của Hướng dẫn ban hành kèm Quyết định 2557/QĐ-BKHCN, nhóm tác giả công khai minh bạch việc sử dụng công cụ AI: các công cụ AI tạo sinh chỉ được dùng với mục đích hỗ trợ định dạng văn bản khoa học, rà soát ngữ pháp tiếng Anh và hỗ trợ sinh mã nguồn tự động hóa dưới sự đối chiếu, giám sát và chịu trách nhiệm pháp lý - chuyên môn tối cao của tập thể tác giả con người (danh tính tác giả được bảo lưu và ẩn danh phục vụ bình duyệt học thuật).
-3. **Mã Nguồn Mở & Khả Năng Tái Lập (Open Science & Reproducibility):** Toàn bộ mã nguồn thực thi, trọng số mô hình LoRA, cấu hình cây quyết định XGBoost và tài liệu phản biện được công khai minh bạch tại kho lưu trữ GitHub của nhóm nghiên cứu (`https://github.com/vlqm2008/LifeMate-VietASR-Embedding-ZAIC.git`), đảm bảo tính kiểm chứng độc lập của cộng đồng học thuật và hội đồng chuyên gia FJCAI.
+3. **Mã Nguồn Mở & Khả Năng Tái Lập (Open Science & Reproducibility):** Toàn bộ mã nguồn thực thi, trọng số mô hình LoRA, cấu hình cây quyết định XGBoost và tài liệu phản biện được công khai minh bạch tại kho lưu trữ GitHub của nhóm nghiên cứu (`https://github.com/vlqm2008/LifeMate-VietASR-Embedding-ZAIC.git`), đảm bảo tính kiểm chứng độc lập của cộng đồng học thuật và hội đồng chuyên gia LifeMate CS-ASR.
 
 ---
 
 ## Lời Cảm Ơn (Acknowledgment)
 
-Nghiên cứu này được hỗ trợ bởi nguồn lực tính toán và dữ liệu thử nghiệm từ cuộc thi Zalo AI Challenge (LifeMate Track) cùng các bộ dữ liệu chuyển mã mở quốc tế. Thông tin chi tiết về các đơn vị tài trợ tính toán và phòng thí nghiệm được ẩn phục vụ quy trình phản biện mù đôi tại FJCAI 2027.
+Nghiên cứu này được hỗ trợ bởi nguồn lực tính toán và dữ liệu thử nghiệm từ cuộc thi Zalo AI Challenge (LifeMate Track) cùng các bộ dữ liệu chuyển mã mở quốc tế. Thông tin chi tiết về các đơn vị tài trợ tính toán và phòng thí nghiệm được ẩn phục vụ quy trình phản biện mù đôi tại LifeMate CS-ASR.
 
 ---
 

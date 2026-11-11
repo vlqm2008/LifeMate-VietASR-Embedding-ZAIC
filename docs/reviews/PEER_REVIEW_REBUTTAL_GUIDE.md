@@ -1,11 +1,11 @@
 # CẨM NANG PHẢN BIỆN VÀ BẢO VỆ BÀI BÁO (PEER-REVIEW REBUTTAL GUIDE)
-## Hội thảo Quốc gia về Trí tuệ Nhân tạo (FJCAI 2027)
+## Hội thảo Quốc gia về Trí tuệ Nhân tạo (LifeMate CS-ASR)
 **Tên bài báo:** Kiến Trúc Nhận Dạng Tiếng Nói Chuyển Mã Việt – Anh Hội Thoại Qua Cơ Chế Phản Hồi Ngữ Nghĩa Song Ngữ và Định Ngưỡng Động  
 
 ---
 
 ### MỤC TIÊU CỦA TÀI LIỆU
-Tài liệu này được soạn thảo bởi các chuyên gia bình duyệt (Reviewers) và nhà nghiên cứu cấp cao nhằm chuẩn bị sẵn câu trả lời thuyết phục nhất cho **Top 8 câu hỏi phản biện hóc búa nhất** mà các Reviewers của IEEE và Hội đồng FJCAI 2027 thường đặt ra. Việc nắm vững các luận điểm này đảm bảo khả năng **ACCEPT TUYỆT ĐỐI** cho bài báo.
+Tài liệu này được soạn thảo bởi các chuyên gia bình duyệt (Reviewers) và nhà nghiên cứu cấp cao nhằm chuẩn bị sẵn câu trả lời thuyết phục nhất cho **Top 8 câu hỏi phản biện hóc búa nhất** mà các Reviewers của IEEE và Hội đồng LifeMate CS-ASR thường đặt ra. Việc nắm vững các luận điểm này đảm bảo khả năng **ACCEPT TUYỆT ĐỐI** cho bài báo.
 
 ---
 

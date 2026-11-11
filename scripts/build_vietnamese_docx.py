@@ -111,10 +111,10 @@ def render_table(doc, table_lines):
 
 def create_vietnamese_docx():
     project_root = Path(__file__).resolve().parent.parent
-    src_md = project_root / "docs" / "paper" / "FJCAI_2027_LifeMate_CS_ASR.md"
-    out_docx = project_root / "docs" / "paper" / "Bai_Bao_Tieng_Viet_FJCAI_2027.docx"
-    sub_docx = project_root / "submission" / "Bai_Bao_Tieng_Viet_FJCAI_2027.docx"
-    sec_docx = Path("D:/Dataset/LifeMate_CS_ASR/docs/Bai_Bao_Tieng_Viet_FJCAI_2027.docx")
+    src_md = project_root / "docs" / "paper" / "LifeMate_CS_ASR_VI.md"
+    out_docx = project_root / "docs" / "paper" / "Bai_Bao_Tieng_Viet_LifeMate_CS_ASR.docx"
+    sub_docx = project_root / "submission" / "Bai_Bao_Tieng_Viet_LifeMate_CS_ASR.docx"
+    sec_docx = Path("D:/Dataset/LifeMate_CS_ASR/docs/Bai_Bao_Tieng_Viet_LifeMate_CS_ASR.docx")
     
     with open(src_md, 'r', encoding='utf-8') as f:
         md_text = f.read()
@@ -134,7 +134,7 @@ def create_vietnamese_docx():
         header = section.header
         p_hdr = header.paragraphs[0]
         p_hdr.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        r_hdr = p_hdr.add_run("Hội thảo khoa học Quốc gia về Trí tuệ nhân tạo 2027 (FJCAI 2027) - Đà Nẵng, 8-9/4/2027")
+        r_hdr = p_hdr.add_run("BÁO CÁO KHOA HỌC: NHẬN DẠNG TIẾNG NÓI CHUYỂN MÃ VIỆT - ANH")
         r_hdr.font.name = "Times New Roman"
         r_hdr.font.size = Pt(8.5)
         r_hdr.font.italic = True

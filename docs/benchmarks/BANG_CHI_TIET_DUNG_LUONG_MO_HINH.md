@@ -1,5 +1,5 @@
 # BẢNG CHI TIẾT DUNG LƯỢNG VÀ BỘ NHỚ TỪNG KHỐI HỆ THỐNG
-## Dự án: LifeMate CS-ASR (<1.5B Parameters) — FJCAI 2027
+## Dự án: LifeMate CS-ASR (<1.5B Parameters) — LifeMate CS-ASR
 
 Tài liệu này lưu trữ thông số định lượng chính thức về số lượng tham số, dung lượng tệp lưu trữ trên ổ cứng và bộ nhớ đồ họa (GPU VRAM) khi vận hành mô hình trong thực tế.
 
@@ -23,10 +23,10 @@ Tài liệu này lưu trữ thông số định lượng chính thức về số
 Bảng số liệu trên được lưu trữ đồng bộ và xuyên suốt tại các vị trí sau trong máy tính của bạn:
 
 1. **Trong mã nguồn bài báo nộp hội thảo chính thức:**
-   - [**`FJCAI_2027_LifeMate_CS_ASR_EN.docx`**](file:///D:/Data_preprocessing/LifeMate-VietASR-Embedding-ZAIC/FJCAI_2027_LifeMate_CS_ASR_EN.docx) — Mục **IV-A. System Architecture Overview** và **Table IV (Parameter Breakdown)**.
-   - [**`FJCAI_2027_LifeMate_CS_ASR_EN.pdf`**](file:///D:/Data_preprocessing/LifeMate-VietASR-Embedding-ZAIC/FJCAI_2027_LifeMate_CS_ASR_EN.pdf) — Trang 3, cột 2.
-   - [**`Bai_Bao_Tieng_Viet_FJCAI_2027.docx`**](file:///D:/Data_preprocessing/LifeMate-VietASR-Embedding-ZAIC/Bai_Bao_Tieng_Viet_FJCAI_2027.docx) — Mục IV. Phương pháp đề xuất.
-   - [**`docs/FJCAI_2027_LifeMate_CS_ASR_EN.tex`**](file:///D:/Data_preprocessing/LifeMate-VietASR-Embedding-ZAIC/docs/FJCAI_2027_LifeMate_CS_ASR_EN.tex) — Dòng 160-175.
+   - [**`LifeMate_CS_ASR_EN.docx`**](file:///D:/Data_preprocessing/LifeMate-VietASR-Embedding-ZAIC/LifeMate_CS_ASR_EN.docx) — Mục **IV-A. System Architecture Overview** và **Table IV (Parameter Breakdown)**.
+   - [**`LifeMate_CS_ASR_EN.pdf`**](file:///D:/Data_preprocessing/LifeMate-VietASR-Embedding-ZAIC/LifeMate_CS_ASR_EN.pdf) — Trang 3, cột 2.
+   - [**`Bai_Bao_Tieng_Viet_LifeMate_CS_ASR.docx`**](file:///D:/Data_preprocessing/LifeMate-VietASR-Embedding-ZAIC/Bai_Bao_Tieng_Viet_LifeMate_CS_ASR.docx) — Mục IV. Phương pháp đề xuất.
+   - [**`docs/LifeMate_CS_ASR_EN.tex`**](file:///D:/Data_preprocessing/LifeMate-VietASR-Embedding-ZAIC/docs/LifeMate_CS_ASR_EN.tex) — Dòng 160-175.
 2. **Trong tài liệu kiểm toán và trang chủ GitHub:**
    - [**`README.md`**](file:///D:/Data_preprocessing/LifeMate-VietASR-Embedding-ZAIC/README.md) — Mục *Parameter Budget Allocation*.
    - [**`docs/CLAIM_EVIDENCE_MATRIX.md`**](file:///D:/Data_preprocessing/LifeMate-VietASR-Embedding-ZAIC/docs/CLAIM_EVIDENCE_MATRIX.md) — Luận điểm C1 (*Strict Sub-1.5B Parameter Constraint*).

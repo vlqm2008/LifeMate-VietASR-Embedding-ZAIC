@@ -6,7 +6,7 @@ permalink: lifemate-cs-asr/claim-evidence-matrix
 
 # Claim–Evidence Matrix: Vietnamese–English Code-Switching ASR
 
-This matrix audits the scientific, empirical, and architectural claims made in the FJCAI 2027 submission:
+This matrix audits the scientific, empirical, and architectural claims made in the LifeMate CS-ASR submission:
 **"Closed-Loop Bilingual Semantic Regularization and Dynamic Thresholding for Conversational Vietnamese–English Code-Switching Speech Recognition"**  
 
 ---

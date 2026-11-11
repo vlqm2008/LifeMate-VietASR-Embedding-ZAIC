@@ -1,5 +1,5 @@
 """
-Scientific Data Plotting Script for FJCAI 2027 Research Paper
+Scientific Data Plotting Script for LifeMate CS-ASR Research Paper
 STRICT COMPLIANCE: 100% Programmatic Matplotlib Code - ZERO Generative AI Images
 Double-Blind Review Copy (Author details omitted)
 """

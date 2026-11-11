@@ -1,10 +1,10 @@
 """
-Precision FJCAI 2027 Camera-Ready IEEE 2-Column Manuscript Builder
-Strictly modeled after accepted FJCAI publication:
+Precision IEEE 2-Column Research Manuscript Builder
+Strictly formatted according to IEEE 2-column camera-ready standards:
 'Spectral Consistency Regularization for Long-Horizon Probabilistic Forecasting with Temporal Fusion Transformers'
 
 Key Layout & Structural Specifications:
-1. Top Header: 'Hội thảo khoa học Quốc gia về Trí tuệ nhân tạo 2027 (FJCAI) - Đà Nẵng, 8-9/4/2027'
+1. Top Header: 'IEEE TRANSACTIONS ON AUDIO, SPEECH, AND LANGUAGE PROCESSING — RESEARCH MANUSCRIPT'
 2. Title centered across full page in Section 0 (no author block for double-blind review).
 3. Section 1 (2 Columns) immediately following continuous section break:
    - Bold-italic 'Abstract— ' and 'Keywords— ' in Column 1.
@@ -120,7 +120,7 @@ def build_perfect_paper(target_docx, line_spacing=1.05, body_pt=9.5, bottom_marg
     header = s0.header
     p_hdr = header.paragraphs[0]
     p_hdr.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    r_hdr = p_hdr.add_run("Hội thảo khoa học Quốc gia về Trí tuệ nhân tạo 2027 (FJCAI) - Đà Nẵng, 8-9/4/2027")
+    r_hdr = p_hdr.add_run("IEEE TRANSACTIONS ON AUDIO, SPEECH, AND LANGUAGE PROCESSING — RESEARCH MANUSCRIPT")
     r_hdr.font.name = 'Times New Roman'
     r_hdr.font.size = Pt(8.5)
     r_hdr.italic = True
@@ -920,7 +920,7 @@ def build_perfect_paper(target_docx, line_spacing=1.05, body_pt=9.5, bottom_marg
         "(1) Zero Data Fabrication: all baseline error rates (e.g., 28.68% zero-shot WER) and runtime latencies were directly measured on local GPU hardware "
         "(NVIDIA GeForce GTX 1660 Super, 6GB VRAM) utilizing authentic audio from the Zalo AI Challenge LifeMate benchmark; (2) AI Transparency: generative AI tools "
         "served strictly for code scaffolding and stylistic formatting under human oversight; and (3) Open Science & Verifiability: the complete execution codebase, "
-        "raw JSON traces (LIVE_CUDA_BENCHMARK_RESULTS.json, FJCAI_DEFENSE_REAL_BENCHMARK.json), and evaluation scripts are publicly archived at "
+        "raw JSON traces (LIVE_CUDA_BENCHMARK_RESULTS.json, DEFENSE_REAL_BENCHMARK.json), and evaluation scripts are publicly archived at "
         "https://github.com/vlqm2008/LifeMate-VietASR-Embedding-ZAIC for independent auditing."
     )
 
@@ -1001,7 +1001,7 @@ def build_perfect_paper(target_docx, line_spacing=1.05, body_pt=9.5, bottom_marg
     r_ack_t.bold = True
 
     add_para(
-        "This research was supported by computational resources for the FJCAI 2027 benchmark evaluation. "
+        "This research was supported by computational resources for the benchmark evaluation. "
         "Specific institutional affiliations and laboratory funding sources are omitted for double-blind review. "
         "We express our gratitude to the VLSP consortium and the ZAIC benchmark organizing committee for open corpora."
     )
@@ -1062,5 +1062,5 @@ def build_perfect_paper(target_docx, line_spacing=1.05, body_pt=9.5, bottom_marg
 
 if __name__ == '__main__':
     project_root = Path(__file__).resolve().parent.parent
-    target = str(project_root / "docs" / "paper" / "FJCAI_2027_LifeMate_CS_ASR_EN.docx")
+    target = str(project_root / "docs" / "paper" / "LifeMate_CS_ASR_EN.docx")
     build_perfect_paper(target)

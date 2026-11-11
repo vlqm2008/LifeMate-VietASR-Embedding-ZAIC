@@ -1,6 +1,6 @@
 """
 Interactive CLI Demonstration of Closed-Loop Code-Switching ASR
-FJCAI 2027: Whisper-Turbo + BGE-M3 + XGBoost Dynamic Thresholding (< 1.5B)
+LifeMate CS-ASR: Whisper-Turbo + BGE-M3 + XGBoost Dynamic Thresholding (< 1.5B)
 Double-Blind Review Copy (Author details omitted)
 """
 
@@ -21,7 +21,7 @@ def print_banner():
     banner = """
 ========================================================================================
    LIFEMATE CS-ASR (<1.5B) | DUAL-MODEL CLOSED-LOOP RE-DECODING PIPELINE
-   FJCAI 2027 (Track: NLP & Vietnamese) | Double-Blind Review Evaluation
+   LifeMate CS-ASR (Track: NLP & Vietnamese) | Double-Blind Review Evaluation
 ========================================================================================
 """
     print(banner)

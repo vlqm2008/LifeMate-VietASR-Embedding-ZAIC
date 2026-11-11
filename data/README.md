@@ -1,6 +1,6 @@
 # Dataset Preparation & Format Specification
 
-This directory describes the data organization for training, validating, and testing the **LifeMate CS-ASR** closed-loop pipeline in compliance with **FJCAI 2027** standards and **Decision No. 2557/QĐ-BKHCN**.
+This directory describes the data organization for training, validating, and testing the **LifeMate CS-ASR** closed-loop pipeline in compliance with **LifeMate CS-ASR** standards and **Decision No. 2557/QĐ-BKHCN**.
 
 ---
 

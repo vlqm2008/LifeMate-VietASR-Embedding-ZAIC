@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-HỆ THỐNG THỰC NGHIỆM KHÉP KÍN ĐẦY ĐỦ PHỤC VỤ PHẢN BIỆN FJCAI 2027 (DEFENSE GRADE)
+HỆ THỐNG THỰC NGHIỆM KHÉP KÍN ĐẦY ĐỦ PHỤC VỤ PHẢN BIỆN LifeMate CS-ASR (DEFENSE GRADE)
 Tuân thủ Quyết định số 2557/QĐ-BKHCN: 100% Thực tế trên GPU - Không Ngụy tạo Số liệu
 Pha 1: Whisper-Turbo Greedy (Baseline)
 Pha 2: BGE-M3 Semantic Embedding
@@ -28,7 +28,7 @@ TEST_CSV = ROOT / "data/splits/test.csv"
 JUDGE_CSV = ROOT / "data/splits/judge.csv"
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 OUTPUT_DIR = PROJECT_ROOT / "docs" / "benchmarks"
-OUTPUT_JSON = OUTPUT_DIR / "FJCAI_DEFENSE_REAL_BENCHMARK.json"
+OUTPUT_JSON = OUTPUT_DIR / "DEFENSE_REAL_BENCHMARK.json"
 
 _DIGITS = ['không', 'một', 'hai', 'ba', 'bốn', 'năm', 'sáu', 'bảy', 'tám', 'chín']
 def vi_verbalize(n):
@@ -86,7 +86,7 @@ def load_audio_wave(path):
 
 def main():
     print("=" * 85)
-    print("HỆ THỐNG THỰC NGHIỆM KHÉP KÍN ĐẦY ĐỦ PHỤC VỤ PHẢN BIỆN FJCAI 2027")
+    print("HỆ THỐNG THỰC NGHIỆM KHÉP KÍN ĐẦY ĐỦ PHỤC VỤ PHẢN BIỆN LifeMate CS-ASR")
     print("Mô hình thực tế trên GPU: Whisper-Large-v3-Turbo + BGE-M3 + XGBoost T_dynamic")
     print("Tuân thủ Quyết định số 2557/QĐ-BKHCN: Dữ liệu thật - Đo đạc thật - Tái lập thật")
     print("=" * 85)
@@ -262,7 +262,7 @@ def main():
         w_stat, p_val_w = 0.0, 1.0
 
     print("\n" + "=" * 85)
-    print("BÁO CÁO THỰC NGHIỆM ĐO ĐẠC THẬT ĐỦ TIÊU CHUẨN PHẢN BIỆN FJCAI 2027:")
+    print("BÁO CÁO THỰC NGHIỆM ĐO ĐẠC THẬT ĐỦ TIÊU CHUẨN PHẢN BIỆN LifeMate CS-ASR:")
     print("=" * 85)
     print(f"1. Tổng số mẫu thử nghiệm thực tế (N) : {len(detailed_records)} mẫu (.wav thật)")
     print(f"2. WER Cơ sở (Whisper Zero-shot Pass-1): {mean_wer_p1:.2f}%")
@@ -279,7 +279,7 @@ def main():
         json.dump({
             "compliance": "Quyết định số 2557/QĐ-BKHCN (Trung thực, Khả năng tái lập, Không ngụy tạo)",
             "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
-            "target_conference": "FJCAI 2027 (Hội thảo Quốc gia về Trí tuệ Nhân tạo - Đà Nẵng)",
+            "target_conference": "LifeMate CS-ASR (Hội thảo Quốc gia về Trí tuệ Nhân tạo - Đà Nẵng)",
             "hardware": {
                 "gpu": str(torch.cuda.get_device_name(0) if torch.cuda.is_available() else "CPU"),
                 "vram_gb": round(torch.cuda.get_device_properties(0).total_memory / (1024**3), 2) if torch.cuda.is_available() else 0.0,
