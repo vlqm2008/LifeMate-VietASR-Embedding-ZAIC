@@ -2,7 +2,6 @@
 ## Hội thảo Khoa học Quốc gia về Trí tuệ Nhân tạo 2027 (FJCAI 2027)
 
 **Tên bài báo:** *Closed-Loop Bilingual Semantic Regularization and Dynamic Thresholding for Conversational Vietnamese–English Code-Switching Speech Recognition*  
-**Nhóm tác giả:** Nhóm Tác Giả Ẩn Danh (Anonymous Authors - Bản thảo phục vụ phản biện mù đôi)  
 **Mục tiêu đánh giá:** Thẩm định toàn diện bài báo khoa học qua **5 phương pháp bình duyệt học thuật độc lập và đa chiều** trước khi nộp bản chính thức (Camera-Ready Submission).
 
 ---

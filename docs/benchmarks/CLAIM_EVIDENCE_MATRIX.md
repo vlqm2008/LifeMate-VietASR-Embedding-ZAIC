@@ -8,7 +8,6 @@ permalink: lifemate-cs-asr/claim-evidence-matrix
 
 This matrix audits the scientific, empirical, and architectural claims made in the FJCAI 2027 submission:
 **"Closed-Loop Bilingual Semantic Regularization and Dynamic Thresholding for Conversational Vietnamese–English Code-Switching Speech Recognition"**  
-*(Double-Blind Review Copy: Author affiliations and details omitted)*
 
 ---
 

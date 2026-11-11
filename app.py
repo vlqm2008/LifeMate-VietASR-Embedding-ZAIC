@@ -136,7 +136,6 @@ def build_gradio_app():
             gr.Markdown("""
             # 🎙️ Bilingual Semantic Regularization & Dynamic Thresholding for Vietnamese–English Code-Switching ASR
             ### **National Conference on Artificial Intelligence (FJCAI 2027)**
-            **Authors:** Anonymous Authors *(Omitted for Double-Blind Review)*
             """)
             gr.Markdown("""
             <span class='metric-badge'>🏆 Total Parameters: <b>1.377B &lt; 1.5B</b></span>

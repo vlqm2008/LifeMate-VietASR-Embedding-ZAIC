@@ -1,7 +1,6 @@
 # CẨM NANG PHẢN BIỆN VÀ BẢO VỆ BÀI BÁO (PEER-REVIEW REBUTTAL GUIDE)
 ## Hội thảo Quốc gia về Trí tuệ Nhân tạo (FJCAI 2027)
 **Tên bài báo:** Kiến Trúc Nhận Dạng Tiếng Nói Chuyển Mã Việt – Anh Hội Thoại Qua Cơ Chế Phản Hồi Ngữ Nghĩa Song Ngữ và Định Ngưỡng Động  
-**Nhóm tác giả:** Nhóm Tác Giả Ẩn Danh (Anonymous Authors - Bản thảo phục vụ phản biện mù đôi)  
 
 ---
 

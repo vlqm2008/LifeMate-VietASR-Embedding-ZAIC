@@ -43,14 +43,10 @@ Nhóm nghiên cứu đã hoàn tất việc tinh chỉnh toàn diện bài báo 
 
 ---
 
-### 3. Nhờ Các Đồng Tác Giả Rà Soát & Xác Nhận (Checklist Cần Phản Hồi)
+### 3. Checklist Rà Soát Trước Khi Nộp Cổng CMT3
 
 Kính nhờ quý Thầy Cô và các tác giả kiểm tra giúp em các thông tin sau:
-- [ ] **Thứ tự và định dạng đồng tác giả:**
-  - 1. Phung-Nguyen-Nhu Bach
-  - 2. Do-Phu Hung
-  - 3. Vo-Le-Quang Minh (Corresponding Author)
-  *(Các chi tiết email và đơn vị công tác cá nhân đã được ẩn trên bản thảo công khai để bảo vệ tính ẩn danh phản biện)*
+- [ ] **Rà soát tính ẩn danh bản nộp:** Toàn bộ tên tác giả và đơn vị công tác (Authors & Affiliations) đã được xóa hoàn toàn trên kho lưu trữ để tuân thủ quy chuẩn phản biện mù đôi.
 - [ ] **Mục Lời cảm ơn (Acknowledgment):** Các đơn vị tài trợ tính toán và phòng thí nghiệm (được ẩn tạm thời phục vụ quy trình phản biện mù đôi).
 - [ ] **Phê duyệt bản nộp:** Xác nhận đồng thuận nội dung bài báo và cam kết liêm chính khoa học theo Quyết định 2557/QĐ-BKHCN để tiến hành nộp bài.
 

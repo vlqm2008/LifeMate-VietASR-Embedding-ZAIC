@@ -117,13 +117,6 @@ LifeMate-VietASR-Embedding-ZAIC/
 
 ---
 
-## 👥 Authorship Notice
-
-**Anonymous Authors**  
-*(Author names, institutional affiliations, and contact emails omitted in compliance with double-blind peer-review guidelines)*
-
----
-
 ## 🔬 Abstract
 
 Vietnamese–English code-switching speech recognition is challenging because the acoustic mismatch between an isolating tonal language and a stress-timed language induces severe boundary ambiguity, leading to catastrophic phonological substitutions and autoregressive hallucination loops. While foundation models like Whisper-Large-v3-Turbo provide competitive multilingual representations, their step-wise autoregressive decoding lacks explicit cross-lingual semantic constraints, and static confidence thresholds cannot adapt to non-stationary noise and varying speech rates. 
@@ -253,7 +246,7 @@ python scripts/run_pipeline.py
 
 This research and repository strictly comply with **Decision No. 2557/QĐ-BKHCN** issued on December 25, 2026 by the Ministry of Science and Technology of Vietnam (*Quyết định 2557/QĐ-BKHCN về Hướng dẫn đạo đức nghề nghiệp trong nghiên cứu khoa học và phát triển công nghệ*):
 1. **Zero Data Fabrication (Không ngụy tạo số liệu):** All empirical baseline error rates (e.g., **28.68% zero-shot WER**, RTF **0.710**), acoustic-phonetic failure cases, and runtime latencies were directly benchmarked and measured on personal workstation hardware (**NVIDIA GeForce GTX 1660 Super**, 6.0 GB VRAM, CUDA 12.4, PyTorch 2.6.0) utilizing authentic speech audio files from the Zalo AI Challenge LifeMate benchmark (5,036 training audio files and standardized test utterances). Complete raw machine logs are transparently archived in [`docs/benchmarks/FJCAI_DEFENSE_REAL_BENCHMARK.json`](docs/benchmarks/FJCAI_DEFENSE_REAL_BENCHMARK.json) and [`docs/benchmarks/LIVE_CUDA_BENCHMARK_RESULTS.json`](docs/benchmarks/LIVE_CUDA_BENCHMARK_RESULTS.json).
-2. **Transparent and Responsible AI Usage (Sử dụng AI có trách nhiệm và minh bạch):** In full accordance with Article 7 of the Code attached to Decision 2557/QĐ-BKHCN, generative AI coding assistants were utilized solely for code scaffolding, document styling, and formatting audits under the direct oversight and full legal/scientific responsibility of human co-authors. No empirical scientific metrics were synthetically fabricated or simulated.
+2. **Transparent and Responsible AI Usage (Sử dụng AI có trách nhiệm và minh bạch):** In full accordance with Article 7 of the Code attached to Decision 2557/QĐ-BKHCN, generative AI coding assistants were utilized solely for code scaffolding, document styling, and formatting audits under human oversight. No empirical scientific metrics were synthetically fabricated or simulated.
 3. **Open Science & Independent Auditability (Khả năng tái lập và kiểm chứng độc lập):** All model checkpoints, LoRA adapters, XGBoost decision forest hyperparameters, and evaluation scripts are publicly released in this repository to facilitate open replication and scrutiny by the FJCAI reviewing committee and the broader AI research community.
 
 ---
@@ -264,7 +257,6 @@ If you use this codebase, dataset, or architecture in your research, please cite
 
 ```bibtex
 @inproceedings{lifemate2027fjcai,
-  author    = {Anonymous Authors},
   title     = {Closed-Loop Bilingual Semantic Regularization and Dynamic Thresholding for Conversational Vietnamese–English Code-Switching Speech Recognition},
   booktitle = {Proceedings of the National Conference on Artificial Intelligence (FJCAI)},
   year      = {2027},
