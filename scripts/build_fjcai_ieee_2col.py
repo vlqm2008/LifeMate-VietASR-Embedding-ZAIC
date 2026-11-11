@@ -118,7 +118,7 @@ def build_perfect_paper(target_docx, line_spacing=1.05, body_pt=9.5, bottom_marg
     p_title = doc.add_paragraph()
     p_title.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p_title.paragraph_format.space_before = Pt(0)
-    p_title.paragraph_format.space_after = Pt(6)
+    p_title.paragraph_format.space_after = Pt(14)
     r_title = p_title.add_run(
         "Closed-Loop Bilingual Semantic Regularization and Dynamic Thresholding for\n"
         "Conversational Vietnamese–English Code-Switching Speech Recognition"
@@ -127,31 +127,8 @@ def build_perfect_paper(target_docx, line_spacing=1.05, body_pt=9.5, bottom_marg
     r_title.font.size = Pt(15.5)
     r_title.bold = True
 
-    # 2. Authors - Centered Text Block
-    p_auth = doc.add_paragraph()
-    p_auth.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_auth.paragraph_format.space_before = Pt(2)
-    p_auth.paragraph_format.space_after = Pt(2)
-    p_auth.paragraph_format.line_spacing = 1.05
-    r_auth = p_auth.add_run("Anonymous Authors")
-    r_auth.font.name = 'Times New Roman'
-    r_auth.font.size = Pt(10.0)
-    r_auth.bold = True
-
-    p_aff = doc.add_paragraph()
-    p_aff.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_aff.paragraph_format.space_before = Pt(0)
-    p_aff.paragraph_format.space_after = Pt(6)
-    p_aff.paragraph_format.line_spacing = 1.02
-    
-    r_aff = p_aff.add_run("(Author affiliations and contact emails omitted for double-blind peer review)")
-    r_aff.font.name = 'Times New Roman'
-    r_aff.font.size = Pt(8.5)
-    r_aff.font.italic = True
-    r_aff.font.color.rgb = RGBColor(90, 90, 90)
-
     # =========================================================================
-    # SECTION 1: TWO-COLUMN BODY SECTION (Continuous Break immediately after author block!)
+    # SECTION 1: TWO-COLUMN BODY SECTION (Continuous Break immediately after title!)
     # =========================================================================
     s1 = doc.add_section(WD_SECTION_START.CONTINUOUS)
     s1.page_width = Inches(8.27)

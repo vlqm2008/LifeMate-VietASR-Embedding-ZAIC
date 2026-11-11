@@ -154,31 +154,11 @@ def create_vietnamese_docx():
     # Subtitle / Note
     p_sub = doc.add_paragraph()
     p_sub.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_sub.paragraph_format.space_after = Pt(12)
+    p_sub.paragraph_format.space_after = Pt(14)
     r_sub = p_sub.add_run("(Bản Toàn Văn Tiếng Việt Phục Vụ Thẩm Định Chuyên Gia & Hội Đồng Cố Vấn)")
     r_sub.font.name = "Times New Roman"
     r_sub.font.size = Pt(10)
     r_sub.font.italic = True
-
-    # Authors
-    p_auth = doc.add_paragraph()
-    p_auth.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_auth.paragraph_format.space_after = Pt(4)
-    r_auth = p_auth.add_run("Nhóm Tác Giả Ẩn Danh (Anonymous Authors)")
-    r_auth.font.name = "Times New Roman"
-    r_auth.font.size = Pt(11)
-    r_auth.font.bold = True
-
-    p_aff = doc.add_paragraph()
-    p_aff.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_aff.paragraph_format.space_after = Pt(14)
-    r_aff = p_aff.add_run(
-        "(Thông tin chi tiết đơn vị công tác và email liên hệ được ẩn phục vụ phản biện học thuật ẩn danh tại FJCAI 2027)"
-    )
-    r_aff.font.name = "Times New Roman"
-    r_aff.font.size = Pt(9.5)
-    r_aff.font.italic = True
-    r_aff.font.color.rgb = RGBColor(90, 90, 90)
 
     # Process markdown lines
     raw_lines = md_text.splitlines()

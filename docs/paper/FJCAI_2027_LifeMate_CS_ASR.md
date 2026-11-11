@@ -1,10 +1,5 @@
 # Kiến Trúc Nhận Dạng Tiếng Nói Chuyển Mã Việt – Anh Hội Thoại Qua Cơ Chế Phản Hồi Ngữ Nghĩa Song Ngữ và Định Ngưỡng Động
 
-**Tác giả:**  
-**Phùng Nguyễn Như Bách**¹*, **Đỗ Phú Hưng**²*, **Võ Lê Quang Minh**³*  
-*Liên minh Nghiên cứu Trí tuệ Nhân tạo Việt Nam (Vietnam AI Research Consortium)*  
-*(Thông tin chi tiết đơn vị công tác và email liên hệ được ẩn phục vụ phản biện học thuật ẩn danh)*  
-
 **Hội thảo:** Hội thảo Quốc gia về Trí tuệ Nhân tạo 2027 (FJCAI 2027)  
 **Chuyên đề (Track):** Xử lý ngôn ngữ & Tiếng Việt / Học máy & Học sâu  
 **Hình thức bài báo:** Bài toàn văn chuẩn IEEE Camera-Ready (Full Research Paper)  
