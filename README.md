@@ -166,8 +166,8 @@ This research and repository strictly comply with **Decision No. 2557/QĐ-BKHCN*
 If you use this codebase, dataset, or architecture in your research, please cite:
 
 ```bibtex
-@inproceedings{bach2027lifemate,
-  author    = {Phung-Nguyen-Nhu Bach and Do-Phu Hung and Vo-Le-Quang Minh},
+@inproceedings{lifemate2027fjcai,
+  author    = {Anonymous Authors},
   title     = {Closed-Loop Bilingual Semantic Regularization and Dynamic Thresholding for Conversational Vietnamese–English Code-Switching Speech Recognition},
   booktitle = {Proceedings of the National Conference on Artificial Intelligence (FJCAI)},
   year      = {2027},
