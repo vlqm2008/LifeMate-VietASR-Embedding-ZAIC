@@ -13,7 +13,7 @@ subprocess.run([git_exe, "-C", repo_dir, "add", "-A"], check=True)
 
 # 2. Git commit
 print("Running git commit...")
-msg = "Final Polish: Complete Project Verification, Data Integrity Audit, Synchronized 6-Page Camera-Ready Documents"
+msg = "Camera-Ready Peer Review Refinements: Boundary Token Indexing and Tail Latency Profiles Incorporated"
 res = subprocess.run([git_exe, "-C", repo_dir, "commit", "-m", msg], capture_output=True, text=True)
 print(res.stdout)
 if res.stderr:

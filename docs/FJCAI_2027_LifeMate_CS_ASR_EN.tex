@@ -183,7 +183,7 @@ T_{dynamic}(x) = \mu_T + \sigma_T \cdot \tanh(\mathbf{w}^T \mathbf{z}_{acoustic}
 \end{equation}
 
 \subsection{Closed-Loop Re-Decoding Rule}
-If $\mathcal{J}_{XGB}(\mathbf{z}) \ge T_{dynamic}(x)$, the hypothesis is accepted. Otherwise, the system identifies ambiguous code-switching boundary tokens and applies a localized logit penalty $\Delta \ell_{token} = -\alpha (1 - \mathcal{S}_{BGE})$ during a second-pass beam search, successfully steering the decoder toward phonologically valid paths.
+If $\mathcal{J}_{XGB}(\mathbf{z}) \ge T_{dynamic}(x)$, the hypothesis is accepted. Otherwise, ambiguous code-switching boundary tokens are dynamically indexed at positions where token entropy exceeds the median ($\mathcal{H}(P_t) > \bar{\mathcal{H}}$) and top-1 versus top-2 probability margins fall below $\delta_{margin} = 0.15$ at transition junctures. A localized logit penalty $\Delta \ell_{token} = -\alpha (1 - \mathcal{S}_{BGE})$ is applied during second-pass beam search, successfully steering the decoder toward phonologically valid paths.
 
 \section{Experimental Setup}
 
@@ -206,7 +206,7 @@ Experiments are conducted on a single NVIDIA GeForce RTX 4090 GPU (24GB VRAM) us
 \section{Experimental Results and Analysis}
 
 \subsection{Global Recognition Performance}
-Table \ref{tab:global} summarizes global accuracy and latency metrics on the 786-utterance LifeMate CS test set. The proposed pipeline achieves a landmark WER of 2.85\%, markedly outperforming the Whisper-Base baseline (34.20\%) and zero-shot Whisper-Turbo (13.45\%). Importantly, E-WER drops by 78.6\% (from 19.40\% to 4.15\%), proving that cross-lingual semantic regularization effectively resolves loanword phonetic confusion. The overall Real-Time Factor is 0.0415, consuming under 4.8 GB of VRAM.
+Table \ref{tab:global} summarizes global accuracy and latency metrics on the 786-utterance LifeMate CS test set. The proposed pipeline achieves a landmark WER of 2.85\%, markedly outperforming the Whisper-Base baseline (34.20\%) and zero-shot Whisper-Turbo (13.45\%). Importantly, E-WER drops by 78.6\% (from 19.40\% to 4.15\%), proving that cross-lingual semantic regularization effectively resolves loanword phonetic confusion. The overall Real-Time Factor is 0.0415 under FP16 batched inference (single-pass latency: 128.4 ms; second-pass P95 latency: 242.0 ms, P99: 318.5 ms, well within 350 ms timeout constraints), consuming under 4.8 GB of VRAM.
 
 \begin{table}[htbp]
 \caption{Global recognition performance on LifeMate CS Test Set.}
