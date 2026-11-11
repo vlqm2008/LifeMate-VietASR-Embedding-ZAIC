@@ -100,7 +100,7 @@ def build_perfect_paper(target_docx, line_spacing=1.05, body_pt=9.5, bottom_marg
     header = s0.header
     p_hdr = header.paragraphs[0]
     p_hdr.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    r_hdr = p_hdr.add_run("Hội thảo khoa học Quốc gia về Trí tuệ nhân tạo 2027 (FJCAI)")
+    r_hdr = p_hdr.add_run("Hội thảo khoa học Quốc gia về Trí tuệ nhân tạo 2027 (FJCAI) - Đà Nẵng, 8-9/4/2027")
     r_hdr.font.name = 'Times New Roman'
     r_hdr.font.size = Pt(8.5)
     r_hdr.italic = True
@@ -223,7 +223,7 @@ def build_perfect_paper(target_docx, line_spacing=1.05, body_pt=9.5, bottom_marg
     p_abs.paragraph_format.space_after = Pt(3)
     p_abs.paragraph_format.line_spacing = line_spacing
     
-    r_abs_lbl = p_abs.add_run("Abstract: ")
+    r_abs_lbl = p_abs.add_run("Tóm tắt: ")
     r_abs_lbl.bold = True
     r_abs_lbl.font.name = 'Times New Roman'
     r_abs_lbl.font.size = Pt(9.0)
@@ -251,7 +251,7 @@ def build_perfect_paper(target_docx, line_spacing=1.05, body_pt=9.5, bottom_marg
     p_kw.paragraph_format.space_after = Pt(6)
     p_kw.paragraph_format.line_spacing = line_spacing
     
-    r_kw_lbl = p_kw.add_run("Keywords: ")
+    r_kw_lbl = p_kw.add_run("Từ khóa: ")
     r_kw_lbl.bold = True
     r_kw_lbl.font.name = 'Times New Roman'
     r_kw_lbl.font.size = Pt(9.0)
@@ -261,6 +261,7 @@ def build_perfect_paper(target_docx, line_spacing=1.05, body_pt=9.5, bottom_marg
     )
     r_kw_txt.font.name = 'Times New Roman'
     r_kw_txt.font.size = Pt(9.0)
+    r_kw_txt.italic = True
 
     # --- SECTION I: INTRODUCTION ---
     add_sec("I. INTRODUCTION")

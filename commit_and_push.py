@@ -13,7 +13,7 @@ subprocess.run([git_exe, "-C", repo_dir, "add", "-A"], check=True)
 
 # 2. Git commit
 print("Running git commit...")
-msg = "Camera-Ready FJCAI 2027: Precision 6-Page IEEE Two-Column Layout, Gradio Web App, and Page Previews"
+msg = "Official FJCAI 2027 Template Alignment: Exact Header, Tóm tắt, Từ khóa, IEEEtran.cls, and Synchronized 6-Page doc/docx/pdf"
 res = subprocess.run([git_exe, "-C", repo_dir, "commit", "-m", msg], capture_output=True, text=True)
 print(res.stdout)
 if res.stderr:

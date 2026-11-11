@@ -1,34 +1,116 @@
-\documentclass[conference]{IEEEtran}
-\IEEEoverridecommandlockouts
+\documentclass[9pt, conference, a4paper, compsocconf]{IEEEtran}
+\usepackage{amsmath,amsxtra,amssymb,amsthm,latexsym,amscd,amsfonts}
+\usepackage[utf8]{vietnam}
+\usepackage[top=2.7cm, bottom = 5.4cm, left=2.72cm, right = 2.85cm]{geometry}
+\headsep = 0.7cm
+\headheight = 1.0cm 
+\footskip = 1.0cm
+\voffset = -0.74 cm 
+\usepackage{balance}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
 \usepackage{cite}
-\usepackage{amsmath,amssymb,amsfonts}
 \usepackage{algorithmic}
 \usepackage{graphicx}
 \usepackage{textcomp}
+\usepackage{booktabs}   
+\usepackage{tabularx}  
 \usepackage{xcolor}
-\usepackage{booktabs}
 \usepackage{multirow}
-\usepackage{url}
-\usepackage{hyperref}
+\usepackage[english]{babel}
+\renewcommand{\sectionmark}[1]{\markright{\MakeUppercase{#1}}{}}
+\renewcommand{\headrulewidth}{0pt}
+\ifCLASSINFOpdf
+\usepackage[pdftex]{graphicx}
+  \DeclareGraphicsExtensions{.pdf,.jpeg,.png,.jpg}
+\else
+\usepackage[dvips]{graphicx}
+  \DeclareGraphicsExtensions{.eps}
+\fi
+\usepackage{array}
 
-\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
-    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\usepackage{caption}
+\captionsetup{
+  font={footnotesize}, 
+  justification=centering,
+  singlelinecheck=false
+}
 
-\markboth{Hội thảo khoa học Quốc gia về Trí tuệ nhân tạo 2027 (FJCAI)}{}
+\makeatletter
+\def\ps@IEEEtitlepagestyle{%
+\def\@oddhead{\hfil \small{\textit{Hội thảo khoa học Quốc gia về Trí tuệ nhân tạo 2027 (FJCAI) - Đà Nẵng, 8-9/4/2027}\hfil}%
+	\def\@evenhead{\hfil\small{\textit{Hội thảo khoa học Quốc gia về Trí tuệ nhân tạo 2027 (FJCAI) - Đà Nẵng, 8-9/4/2027}\hfil}}%
+		\def\@oddfoot{\scriptsize \thepage \hfil }%
+		\def\@evenfoot{\scriptsize \hfil \thepage}
+	}
+}
+
+\def\@maketitle{%
+  \newpage
+  \null
+  \begin{center}%
+    {%
+      \fontsize{16}{18}\selectfont
+      \bfseries \@title \par
+    }%
+    \vskip 2.5em%
+    {%
+    \fontsize{9}{3.5}\selectfont
+      
+      \begin{tabular}[t]{c}%
+        \@author
+      \end{tabular}\par
+    }%
+  \end{center}%
+  \par
+}
+
+\renewenvironment{abstract}
+  {\normalfont
+   \@IEEEabskeysecsize
+   \setlength{\parindent}{0pt}
+   \noindent
+   \if@twocolumn
+     \bfseries\textit{\abstractname}: 
+   \else
+     \begin{center}\textbf{\abstractname}\end{center}
+   \fi}
+  {\par}
+  
+\renewenvironment{IEEEkeywords}
+  {\normalfont
+   \@IEEEabskeysecsize
+   \vspace{0.3em}       
+   \setlength{\parindent}{0pt}
+   \noindent
+   {\bfseries\itshape \IEEEkeywordsname: }\ignorespaces}
+  {\par}
+
+\def\IEEEbibitemsep{1.5pt plus .5pt}
+
+\makeatother
+
+\makeatletter
+\AtBeginDocument{
+  \renewcommand{\abstractname}{Tóm tắt}
+}
+\renewcommand{\IEEEkeywordsname}{Từ khóa}
+\makeatother
 
 \begin{document}
+\pagenumbering{gobble}
+\fontsize{9}{10}
+\selectfont
+
+\fancyhead[RE,LO]{\centering{\small{\textit{Hội thảo khoa học Quốc gia về Trí tuệ nhân tạo 2027 (FJCAI) - Đà Nẵng, 8-9/4/2027}}}}
 
 \title{Bilingual Semantic Regularization and Dynamic Thresholding for Vietnamese–English Code-Switching Speech Recognition Under 1.5B Parameters}
 
-\author{
-\IEEEauthorblockN{Phung-Nguyen-Nhu Bach$^{*}$, Do-Phu Hung$^{\dagger}$, Vo-Le-Quang Minh$^{\ddagger}$}
-\IEEEauthorblockA{$^{*}$Faculty of Information Technology, Quy Nhon University (QNU), Quy Nhon, Vietnam \\
-Email: bachpnn@qnu.edu.vn}
-\IEEEauthorblockA{$^{\dagger}$Department of ICT, University of Science and Technology of Hanoi (USTH), Hanoi, Vietnam \\
-Email: hung.dp@usth.edu.vn}
-\IEEEauthorblockA{$^{\ddagger}$Faculty of Computer Science, Vietnam--Korea University of Information and Communication Technology (VKU), \\
-University of Danang, Danang, Vietnam \\
-Email: minhvlq@vku.udn.vn}
+\author{\IEEEauthorblockN{Phung-Nguyen-Nhu Bach\IEEEauthorrefmark{1}, Do-Phu Hung\IEEEauthorrefmark{2}, Vo-Le-Quang Minh\IEEEauthorrefmark{3}}
+	\IEEEauthorblockA{\IEEEauthorrefmark{1}Faculty of Information Technology, Quy Nhon University (QNU), Quy Nhon, Vietnam}
+	\IEEEauthorblockA{\IEEEauthorrefmark{2}Department of ICT, University of Science and Technology of Hanoi (USTH), Hanoi, Vietnam}
+	\IEEEauthorblockA{\IEEEauthorrefmark{3}Faculty of Computer Science, Vietnam--Korea University of Information and Communication Technology (VKU), The University of Danang, Vietnam}
+	\IEEEauthorblockA{Email: bachpnn@qnu.edu.vn, hung.dp@usth.edu.vn, minhvlq@vku.udn.vn}
 }
 
 \maketitle
