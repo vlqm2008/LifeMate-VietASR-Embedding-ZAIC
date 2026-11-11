@@ -1,0 +1,67 @@
+# Central Configuration for LifeMate CS-ASR (<1.5B) Pipeline
+# FJCAI 2027: Whisper-Turbo + BGE-M3 + XGBoost Dynamic Thresholding
+
+pipeline:
+  name: "LifeMate-CS-ASR-Ultra-1p5B"
+  version: "1.0.0"
+  target_conference: "FJCAI 2027"
+  budget_limit_params: 1500000000  # < 1.5B parameters
+
+models:
+  asr:
+    base_model: "openai/whisper-large-v3-turbo"
+    params: 809000000
+    lora:
+      r: 16
+      alpha: 32
+      dropout: 0.05
+      target_modules: ["q_proj", "v_proj", "k_proj", "out_proj"]
+      trainable_params: 36000000
+  embedding:
+    model_name: "BAAI/bge-m3"
+    params: 568000000
+    dimension: 1024
+    pooling: "dense"
+    similarity_metric: "cosine"
+  meta_judge:
+    type: "xgboost"
+    params: 150000
+    n_estimators: 500
+    max_depth: 5
+    learning_rate: 0.05
+    subsample: 0.8
+    colsample_bytree: 0.8
+    features_dim: 32
+
+decoding:
+  beam_size: 5
+  temperature: 0.0
+  max_redecode_iter: 3
+  penalty_alpha: 1.5
+  default_dynamic_threshold_bias: 0.70
+  default_dynamic_threshold_scale: 0.15
+
+datasets:
+  asr_training:
+    - name: "SEA Code-Switching Speech"
+      hours: 45.3
+    - name: "ViMedCSS"
+      hours: 32.64
+    - name: "GigaSpeech 2 (Filtered)"
+      hours: 350.0
+  asr_evaluation:
+    - name: "ZAIC 2026 LifeMate"
+      hours: 6.83
+      samples: 5036
+  embedding_training:
+    - name: "mMARCO Vietnamese"
+      samples: 39780000
+    - name: "PhoMT Bilingual"
+      samples: 3020000
+    - name: "UIT-ViQuAD 2.0"
+      samples: 35000
+
+hardware_benchmarks:
+  vram_inference_fp16_gb: 4.8
+  target_rtf: 0.0415
+  target_wer: 0.0285  # 2.85% < 3.0%
