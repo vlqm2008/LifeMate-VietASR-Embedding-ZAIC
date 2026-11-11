@@ -13,6 +13,20 @@ Official research repository and reproducibility package for the **LifeMate CS-A
 
 ---
 
+## 🌿 Repository Branching Architecture
+
+To maintain a modular, reproducible, and production-ready scientific repository, the project is structured into dedicated branches:
+
+| Branch Name | Role & Purpose | Key Contents & Target Audience |
+| :--- | :--- | :--- |
+| **[main](https://github.com/vlqm2008/LifeMate-VietASR-Embedding-ZAIC/tree/main)** | **Production & Canonical Release** | Clean master branch containing the stable pipeline, camera-ready papers, and verified evaluation reports. |
+| **[develop](https://github.com/vlqm2008/LifeMate-VietASR-Embedding-ZAIC/tree/develop)** | **Active Engineering Workbench** | Ongoing development, model tuning, LoRA hyperparameter optimization, and experimental features. |
+| **[paper/camera-ready](https://github.com/vlqm2008/LifeMate-VietASR-Embedding-ZAIC/tree/paper/camera-ready)** | **Academic Publication & Submissions** | IEEE 2-column Word/LaTeX manuscript sources, 6-page PDF, submission packages, and high-res diagram assets. |
+| **[deploy/gradio-demo](https://github.com/vlqm2008/LifeMate-VietASR-Embedding-ZAIC/tree/deploy/gradio-demo)** | **Interactive Web Application** | Standalone Gradio web application (pp.py), UI styling, and ready-to-deploy HuggingFace Spaces bundle. |
+| **[enchmark/reproducibility](https://github.com/vlqm2008/LifeMate-VietASR-Embedding-ZAIC/tree/benchmark/reproducibility)** | **Empirical Hardware Verification** | Raw GPU execution JSON traces (GTX 1660 Super auditability), statistical tests, and baseline comparison logs. |
+
+---
+
 ## 📁 Repository Organization
 
 This codebase is structured according to the scientific reproducible research standards of major AI conferences (IEEE, ACL, Interspeech, ICLR):
