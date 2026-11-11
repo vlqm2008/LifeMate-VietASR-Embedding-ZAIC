@@ -13,7 +13,7 @@ subprocess.run([git_exe, "-C", repo_dir, "add", "-A"], check=True)
 
 # 2. Git commit
 print("Running git commit...")
-msg = "Add Comprehensive Multi-Method Peer Review Report (5 Academic Review Frameworks)"
+msg = "Upgrade Repository to Gold Standard: Quick Access Deliverables, Claim-Evidence Matrix, Experiment Registry, Vietnamese Word Manuscript, and Professional README"
 res = subprocess.run([git_exe, "-C", repo_dir, "commit", "-m", msg], capture_output=True, text=True)
 print(res.stdout)
 if res.stderr:
