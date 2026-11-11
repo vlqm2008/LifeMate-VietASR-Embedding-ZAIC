@@ -1,12 +1,10 @@
 """
-Precision Page-Flow Calibration for FJCAI 2027 Camera-Ready Paper.
-Target: 
-Page 1: Title, Authors, Abstract, Keywords, Sec I (Intro), Sec II (Related Work A)
-Page 2: Sec II (B, C), Sec III (Hypotheses), Sec IV (Methodology A, B, C, D)
-Page 3: Sec IV (E, Alg 1, F, Table IV), Sec V (Setup A, B, C)
-Page 4: Sec VI.A (Benchmark), Table I, Fig 1, Sec VI.B (Ablation), Table II, Fig 2
-Page 5: Sec VI.C (Cross-Dataset), Table III, Sec VI.D (Case Studies), Sec VI.E (Error Analysis), Sec VI.F (Runtime), Table V, Sec VII (Conclusion), Sec VIII (Ethical)
-Page 6: Appendix A, Table VI (Hypotheses), Acknowledgment, References [1]-[24] (Filled ~75-80%)
+Precision Test for exact FJCAI format:
+1. Title + Authors centered in Section 0 (NO TABLE).
+2. Continuous break to Section 1 (2 columns) IMMEDIATELY after author block.
+3. Abstract: and Keywords: in Column 1.
+4. All Section headings (I., II., etc.) CENTERED in their column.
+5. All Subsection headings (A., B., etc.) Left-aligned Italic.
 """
 
 import os
@@ -86,14 +84,14 @@ def add_equation_box(doc, eq_text, eq_num):
     set_cell_margins(c1, 10, 10, 15, 15)
     return t
 
-def build_full_paper(target_docx, line_spacing=1.05, body_pt=9.5, bottom_margin_in=0.78):
+def build_perfect_paper(target_docx, line_spacing=1.05, body_pt=9.5, bottom_margin_in=0.76):
     doc = docx.Document()
     
-    # Page setup - Section 0 (Full width for Title, Authors, Abstract)
+    # Section 0: Full width for Title & Authors ONLY
     s0 = doc.sections[0]
     s0.page_width = Inches(8.27)
     s0.page_height = Inches(11.69)
-    s0.top_margin = Inches(0.72)
+    s0.top_margin = Inches(0.70)
     s0.bottom_margin = Inches(bottom_margin_in)
     s0.left_margin = Inches(0.68)
     s0.right_margin = Inches(0.68)
@@ -119,58 +117,113 @@ def build_full_paper(target_docx, line_spacing=1.05, body_pt=9.5, bottom_margin_
     p_title = doc.add_paragraph()
     p_title.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p_title.paragraph_format.space_before = Pt(0)
-    p_title.paragraph_format.space_after = Pt(5)
+    p_title.paragraph_format.space_after = Pt(6)
     r_title = p_title.add_run(
         "Bilingual Semantic Regularization and Dynamic Thresholding for\n"
         "Vietnamese–English Code-Switching Speech Recognition Under 1.5B Parameters"
     )
     r_title.font.name = 'Times New Roman'
-    r_title.font.size = Pt(16.0)
+    r_title.font.size = Pt(15.5)
     r_title.bold = True
 
-    # 2. Authors
-    table_auth = doc.add_table(rows=1, cols=3)
-    table_auth.alignment = WD_TABLE_ALIGNMENT.CENTER
-    table_auth.autofit = False
-    for cell in table_auth.rows[0].cells:
-        cell.width = Inches(2.28)
+    # 2. Authors - Centered Text Block (NO TABLE, matching ELCameraSpectralTFT1.pdf)
+    p_auth = doc.add_paragraph()
+    p_auth.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p_auth.paragraph_format.space_before = Pt(2)
+    p_auth.paragraph_format.space_after = Pt(2)
+    p_auth.paragraph_format.line_spacing = 1.05
+    r_auth = p_auth.add_run("Phung-Nguyen-Nhu Bach*, Do-Phu Hung†, Vo-Le-Quang Minh‡")
+    r_auth.font.name = 'Times New Roman'
+    r_auth.font.size = Pt(10.0)
+    r_auth.bold = True
 
-    auth_data = [
-        ("Phung-Nguyen-Nhu Bach*", "Faculty of Information Technology\nQuy Nhon University (QNU), Vietnam\nEmail: bachpnn@qnu.edu.vn"),
-        ("Do-Phu Hung†", "Department of ICT\nUniv. of Science and Technology of Hanoi\nEmail: hung.dp@usth.edu.vn"),
-        ("Vo-Le-Quang Minh‡", "Faculty of Computer Science\nVietnam–Korea Univ. of Info. & Comm. Tech. (VKU)\nUniversity of Danang, Vietnam\nEmail: minhvlq@vku.udn.vn")
-    ]
+    p_aff = doc.add_paragraph()
+    p_aff.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p_aff.paragraph_format.space_before = Pt(0)
+    p_aff.paragraph_format.space_after = Pt(6)
+    p_aff.paragraph_format.line_spacing = 1.02
+    
+    r_aff1 = p_aff.add_run("*Faculty of Information Technology, Quy Nhon University (QNU), Quy Nhon, Vietnam\nEmail: bachpnn@qnu.edu.vn\n")
+    r_aff1.font.name = 'Times New Roman'
+    r_aff1.font.size = Pt(8.5)
+    r_aff1.font.color.rgb = RGBColor(60, 60, 60)
+    
+    r_aff2 = p_aff.add_run("†Department of ICT, University of Science and Technology of Hanoi (USTH), Hanoi, Vietnam\nEmail: hung.dp@usth.edu.vn\n")
+    r_aff2.font.name = 'Times New Roman'
+    r_aff2.font.size = Pt(8.5)
+    r_aff2.font.color.rgb = RGBColor(60, 60, 60)
+    
+    r_aff3 = p_aff.add_run("‡Faculty of Computer Science, Vietnam–Korea University of Info. & Comm. Tech. (VKU), The University of Danang, Vietnam\nEmail: minhvlq@vku.udn.vn")
+    r_aff3.font.name = 'Times New Roman'
+    r_aff3.font.size = Pt(8.5)
+    r_aff3.font.color.rgb = RGBColor(60, 60, 60)
 
-    for idx, (name, affil) in enumerate(auth_data):
-        cell = table_auth.rows[0].cells[idx]
-        set_cell_borders(cell)
-        p = cell.paragraphs[0]
+    # =========================================================================
+    # SECTION 1: TWO-COLUMN BODY SECTION (Continuous Break immediately after author block!)
+    # =========================================================================
+    s1 = doc.add_section(WD_SECTION_START.CONTINUOUS)
+    s1.page_width = Inches(8.27)
+    s1.page_height = Inches(11.69)
+    s1.top_margin = Inches(0.70)
+    s1.bottom_margin = Inches(bottom_margin_in)
+    s1.left_margin = Inches(0.68)
+    s1.right_margin = Inches(0.68)
+    s1.header_distance = Inches(0.35)
+
+    s1_pr = s1._sectPr
+    cols = s1_pr.xpath('.//w:cols')
+    if cols:
+        cols[0].set(qn('w:num'), '2')
+        cols[0].set(qn('w:space'), '317') # ~0.22 in (18 pt)
+    else:
+        s1_pr.append(parse_xml(f'<w:cols {nsdecls("w")} w:num="2" w:space="317"/>'))
+
+    col_w = Inches(3.34)
+
+    def add_sec(title):
+        p = doc.add_paragraph()
         p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        p.paragraph_format.space_after = Pt(0)
-        p.paragraph_format.line_spacing = 1.02
-        
-        r_name = p.add_run(name + "\n")
-        r_name.font.name = 'Times New Roman'
-        r_name.font.size = Pt(9.5)
-        r_name.bold = True
-        
-        r_aff = p.add_run(affil)
-        r_aff.font.name = 'Times New Roman'
-        r_aff.font.size = Pt(8.0)
-        r_aff.font.color.rgb = RGBColor(60, 60, 60)
+        p.paragraph_format.space_before = Pt(6.5)
+        p.paragraph_format.space_after = Pt(2.5)
+        p.paragraph_format.keep_with_next = True
+        r = p.add_run(title)
+        r.font.name = 'Times New Roman'
+        r.font.size = Pt(9.5)
+        r.bold = True
+        return p
 
-    p_sp = doc.add_paragraph()
-    p_sp.paragraph_format.space_before = Pt(0)
-    p_sp.paragraph_format.space_after = Pt(3)
+    def add_subsec(title):
+        p = doc.add_paragraph()
+        p.alignment = WD_ALIGN_PARAGRAPH.LEFT
+        p.paragraph_format.space_before = Pt(4.0)
+        p.paragraph_format.space_after = Pt(1.5)
+        p.paragraph_format.keep_with_next = True
+        r = p.add_run(title)
+        r.font.name = 'Times New Roman'
+        r.font.size = Pt(9.0)
+        r.bold = True
+        r.italic = True
+        return p
 
-    # 3. Abstract & Keywords
+    def add_para(text):
+        p = doc.add_paragraph()
+        p.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+        p.paragraph_format.space_before = Pt(0)
+        p.paragraph_format.space_after = Pt(2.2)
+        p.paragraph_format.line_spacing = line_spacing
+        r = p.add_run(text)
+        r.font.name = 'Times New Roman'
+        r.font.size = Pt(body_pt)
+        return p
+
+    # 3. Abstract: in Column 1 (Bold label + colon, matching ELCameraSpectralTFT1.pdf)
     p_abs = doc.add_paragraph()
     p_abs.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
-    p_abs.paragraph_format.left_indent = Inches(0.2)
-    p_abs.paragraph_format.right_indent = Inches(0.2)
+    p_abs.paragraph_format.space_before = Pt(0)
     p_abs.paragraph_format.space_after = Pt(3)
+    p_abs.paragraph_format.line_spacing = line_spacing
     
-    r_abs_lbl = p_abs.add_run("Abstract—")
+    r_abs_lbl = p_abs.add_run("Abstract: ")
     r_abs_lbl.bold = True
     r_abs_lbl.font.name = 'Times New Roman'
     r_abs_lbl.font.size = Pt(9.0)
@@ -191,78 +244,23 @@ def build_full_paper(target_docx, line_spacing=1.05, body_pt=9.5, bottom_margin_
     r_abs_txt.font.name = 'Times New Roman'
     r_abs_txt.font.size = Pt(9.0)
 
+    # 4. Keywords: in Column 1 (Semicolon separated, matching ELCameraSpectralTFT1.pdf)
     p_kw = doc.add_paragraph()
     p_kw.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
-    p_kw.paragraph_format.left_indent = Inches(0.2)
-    p_kw.paragraph_format.right_indent = Inches(0.2)
+    p_kw.paragraph_format.space_before = Pt(0)
     p_kw.paragraph_format.space_after = Pt(6)
+    p_kw.paragraph_format.line_spacing = line_spacing
     
-    r_kw_lbl = p_kw.add_run("Keywords—")
+    r_kw_lbl = p_kw.add_run("Keywords: ")
     r_kw_lbl.bold = True
     r_kw_lbl.font.name = 'Times New Roman'
     r_kw_lbl.font.size = Pt(9.0)
     
     r_kw_txt = p_kw.add_run(
-        "Code-switching ASR, Whisper-Large-v3-Turbo, BGE-M3, semantic regularization, dynamic thresholding, XGBoost, closed-loop re-decoding, VLSP evaluation, low-latency speech recognition."
+        "Code-switching ASR; Whisper-Large-v3-Turbo; BGE-M3; semantic regularization; dynamic thresholding; XGBoost; closed-loop re-decoding; VLSP evaluation; low-latency speech recognition."
     )
     r_kw_txt.font.name = 'Times New Roman'
     r_kw_txt.font.size = Pt(9.0)
-
-    # Section 1: Two Columns Continuous
-    s1 = doc.add_section(WD_SECTION_START.CONTINUOUS)
-    s1.page_width = Inches(8.27)
-    s1.page_height = Inches(11.69)
-    s1.top_margin = Inches(0.72)
-    s1.bottom_margin = Inches(bottom_margin_in)
-    s1.left_margin = Inches(0.68)
-    s1.right_margin = Inches(0.68)
-    s1.header_distance = Inches(0.35)
-
-    s1_pr = s1._sectPr
-    cols = s1_pr.xpath('.//w:cols')
-    if cols:
-        cols[0].set(qn('w:num'), '2')
-        cols[0].set(qn('w:space'), '317') # ~0.22 in
-    else:
-        s1_pr.append(parse_xml(f'<w:cols {nsdecls("w")} w:num="2" w:space="317"/>'))
-
-    col_w = Inches(3.34)
-
-    def add_sec(title):
-        p = doc.add_paragraph()
-        p.alignment = WD_ALIGN_PARAGRAPH.LEFT
-        p.paragraph_format.space_before = Pt(5.5)
-        p.paragraph_format.space_after = Pt(2.0)
-        p.paragraph_format.keep_with_next = True
-        r = p.add_run(title)
-        r.font.name = 'Times New Roman'
-        r.font.size = Pt(9.5)
-        r.bold = True
-        return p
-
-    def add_subsec(title):
-        p = doc.add_paragraph()
-        p.alignment = WD_ALIGN_PARAGRAPH.LEFT
-        p.paragraph_format.space_before = Pt(3.5)
-        p.paragraph_format.space_after = Pt(1.5)
-        p.paragraph_format.keep_with_next = True
-        r = p.add_run(title)
-        r.font.name = 'Times New Roman'
-        r.font.size = Pt(9.0)
-        r.bold = True
-        r.italic = True
-        return p
-
-    def add_para(text):
-        p = doc.add_paragraph()
-        p.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
-        p.paragraph_format.space_before = Pt(0)
-        p.paragraph_format.space_after = Pt(2.2)
-        p.paragraph_format.line_spacing = line_spacing
-        r = p.add_run(text)
-        r.font.name = 'Times New Roman'
-        r.font.size = Pt(body_pt)
-        return p
 
     # --- SECTION I: INTRODUCTION ---
     add_sec("I. INTRODUCTION")
@@ -732,20 +730,21 @@ def build_full_paper(target_docx, line_spacing=1.05, body_pt=9.5, bottom_margin_
 
     add_subsec("D. Qualitative Case Studies and Error Mitigation")
     add_para(
-        "To illustrate the concrete mechanism of our closed-loop re-decoding framework, we examine three representative conversational failure modes:\n"
+        "To illustrate the concrete mechanism of our closed-loop re-decoding framework, we examine three representative conversational failure modes:\\n"
         "• Case 1 (Engineering Dialogue - Boundary Ambiguity): Ground truth: \"Nhớ review PR và deploy lên staging trước 5 giờ chiều.\" "
         "The baseline Whisper model erroneously decoded: \"Nhớ review PR và đi bôi lên tây giêng...\", substituting technical English loanwords with phonetically similar Vietnamese syllables. "
         "Our BGE-M3 cross-lingual scorer detected severe semantic divergence (S_sem = 0.412 vs dynamic threshold T_dyn = 0.685). The meta-judge flagged ('đi bôi', 'tây giêng') "
-        "as boundary anomalies and triggered selective re-decoding with logit penalties, recovering the exact ground truth transcript.\n"
+        "as boundary anomalies and triggered selective re-decoding with logit penalties, recovering the exact ground truth transcript.\\n"
         "• Case 2 (Smart Home - Hallucination Loop): Ground truth: \"Bật smart TV và kết nối bluetooth với soundbar.\" "
         "The baseline Whisper model fell into an autoregressive hallucination loop: \"Bật smart TV TV TV...\". "
         "Our Tier 3 conversational dynamics detector flagged high repetition (0.42 > 0.15 cutoff), prompting the XGBoost judge to reject the hypothesis (J_score = 0.28). "
-        "Re-decoding successfully suppressed repeating tokens and restored accurate transcription.\n"
+        "Re-decoding successfully suppressed repeating tokens and restored accurate transcription.\\n"
         "• Case 3 (Clinical Consultation - Prosodic Assimilation): Ground truth: \"Bác sĩ đã schedule một buổi ultrasound vào tuần sau.\" Baseline produces \"Bác sĩ đã séc-đun một buổi an-tra-sao...\", "
         "failing to segment loanwords in rapid speech. Our meta-judge flagged low semantic alignment (S_BGE = 0.542) and re-decoded with targeted boundary penalties, "
         "correctly outputting the bilingual medical terms."
     )
 
+    # Page Break before VI.E
     doc.add_page_break()
     add_subsec("E. Error Analysis, Acoustic Ambiguity, and Dialect Robustness")
     add_para(
@@ -917,6 +916,7 @@ def build_full_paper(target_docx, line_spacing=1.05, body_pt=9.5, bottom_margin_
 
     # ACKNOWLEDGMENT
     p_ack = doc.add_paragraph()
+    p_ack.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p_ack.paragraph_format.space_before = Pt(5)
     p_ack.paragraph_format.space_after = Pt(2)
     p_ack.paragraph_format.keep_with_next = True
@@ -935,6 +935,7 @@ def build_full_paper(target_docx, line_spacing=1.05, body_pt=9.5, bottom_margin_
     # --- REFERENCES ---
     add_column_break(doc)
     p_ref_h = doc.add_paragraph()
+    p_ref_h.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p_ref_h.paragraph_format.space_before = Pt(6)
     p_ref_h.paragraph_format.space_after = Pt(2.5)
     p_ref_h.paragraph_format.keep_with_next = True
@@ -987,4 +988,4 @@ def build_full_paper(target_docx, line_spacing=1.05, body_pt=9.5, bottom_margin_
 
 if __name__ == '__main__':
     target = r"D:\Data_preprocessing\LifeMate-VietASR-Embedding-ZAIC\docs\FJCAI_2027_LifeMate_CS_ASR_EN.docx"
-    build_full_paper(target)
+    build_perfect_paper(target)
