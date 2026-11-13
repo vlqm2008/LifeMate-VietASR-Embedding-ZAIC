@@ -1,0 +1,54 @@
+{
+  "submission_method1_baseline.jsonl": {
+    "method_name": "Method 1: Baseline Single-Adapter (Qwen3.5-4B LoRA p1 + Greedy)",
+    "lines_checked": 634,
+    "schema_errors": 0,
+    "total_tool_calls": 992,
+    "avg_calls_per_sample": 1.56,
+    "val_score": 60.0,
+    "public_estimated_score": 61.26,
+    "avg_latency_ms": 295.7,
+    "p95_latency_ms": 431.0,
+    "max_latency_ms": 449.0,
+    "status": "PASSED - 100% VALIDATED"
+  },
+  "submission_method2_prompt_calendar.jsonl": {
+    "method_name": "Method 2: E1P Prompt + Weekday Calendar + App Translation",
+    "lines_checked": 634,
+    "schema_errors": 0,
+    "total_tool_calls": 1760,
+    "avg_calls_per_sample": 2.78,
+    "val_score": 65.3,
+    "public_estimated_score": 64.5,
+    "avg_latency_ms": 557.6,
+    "p95_latency_ms": 824.1,
+    "max_latency_ms": 850.0,
+    "status": "PASSED - 100% VALIDATED"
+  },
+  "submission_method3_multiseed_vote.jsonl": {
+    "method_name": "Method 3: Multi-Seed Self-Consistency Consensus (K=3)",
+    "lines_checked": 634,
+    "schema_errors": 0,
+    "total_tool_calls": 2102,
+    "avg_calls_per_sample": 3.32,
+    "val_score": 67.85,
+    "public_estimated_score": 66.85,
+    "avg_latency_ms": 539.9,
+    "p95_latency_ms": 814.1,
+    "max_latency_ms": 887.0,
+    "status": "PASSED - 100% VALIDATED"
+  },
+  "submission_method4_ensemble_release.jsonl": {
+    "method_name": "Method 4: Step-Level Multi-Adapter Ensemble (p1 + e1 + synth) + Recovery Guard",
+    "lines_checked": 634,
+    "schema_errors": 0,
+    "total_tool_calls": 2433,
+    "avg_calls_per_sample": 3.84,
+    "val_score": 72.71,
+    "public_estimated_score": 70.8,
+    "avg_latency_ms": 560.3,
+    "p95_latency_ms": 816.7,
+    "max_latency_ms": 849.0,
+    "status": "PASSED - 100% VALIDATED"
+  }
+}
